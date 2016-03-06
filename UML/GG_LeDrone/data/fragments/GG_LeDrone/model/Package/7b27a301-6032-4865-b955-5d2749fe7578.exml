@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="gg_ledrone" version="4">
+  <OBJECT>
+    <ID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
+    <PID name="GG_LeDrone" mc="Standard.Project" uid="a380e78c-967f-4178-8d43-98c1cdefa0a7"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[gg_ledrone]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="overview diagram" mc="Standard.ClassDiagram" uid="51f0cd20-e3f7-4361-b374-33c7baa66073"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

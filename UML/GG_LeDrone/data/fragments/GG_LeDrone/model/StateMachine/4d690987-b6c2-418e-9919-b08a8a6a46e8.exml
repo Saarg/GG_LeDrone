@@ -1,0 +1,344 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="State Machine" version="4">
+  <OBJECT>
+    <ID name="State Machine" mc="Standard.StateMachine" uid="4d690987-b6c2-418e-9919-b08a8a6a46e8"/>
+    <PID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
+    <ATTRIBUTES>
+      <ATT name="Kind">Dynamic</ATT>
+      <ATT name="IsReentrant">false</ATT>
+      <ATT name="Name"><![CDATA[State Machine]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Top">
+        <OBJECT>
+          <ID name="" mc="Standard.Region" uid="cae126d3-69b8-430f-a33c-7b214ea87b60"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Sub">
+              <OBJECT>
+                <ID name="Menu" mc="Standard.State" uid="b7e25c57-0afc-47a8-9aaa-d3ff021ced90"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Menu]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="OutGoing">
+                    <OBJECT>
+                      <ID name="Transition" mc="Standard.Transition" uid="ac342b9a-ed53-4df5-b3a7-a8dacbc43ab7"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Transition]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Trigger">
+                          <REFOBJ>
+                            <ID name="Menu.selectMode" mc="Standard.Event" uid="1fd67895-74d4-4fcb-95c8-bde35220d71c"/>
+                          </REFOBJ>
+                        </LINK>
+                        <LINK relation="Target">
+                          <REFOBJ>
+                            <ID name="Junction" mc="Standard.JunctionPseudoState" uid="b39766d7-b2f0-451d-8d3d-8652f350d780"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="Initial State" mc="Standard.InitialPseudoState" uid="139f7620-4252-4756-a31c-63bd28ae255d"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Initial State]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="OutGoing">
+                    <OBJECT>
+                      <ID name="Transition" mc="Standard.Transition" uid="2109816c-4a74-41c0-aa6a-94b7605bfe98"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Transition]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Processed">
+                          <REFOBJ>
+                            <ID name="menu" mc="Standard.Operation" uid="668c4d69-45f4-4b95-9576-bb21b34d6cf4"/>
+                          </REFOBJ>
+                        </LINK>
+                        <LINK relation="Target">
+                          <REFOBJ>
+                            <ID name="Menu" mc="Standard.State" uid="b7e25c57-0afc-47a8-9aaa-d3ff021ced90"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="Mode autopilot" mc="Standard.State" uid="8bab12e1-dc67-49b6-ab16-12985e70a522"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Mode autopilot]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Internal">
+                    <OBJECT>
+                      <ID name="Do" mc="Standard.InternalTransition" uid="2332640b-22cc-425a-bf09-b95275fc6ff9"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"><![CDATA[Do]]></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Do]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Processed">
+                          <REFOBJ>
+                            <ID name="run" mc="Standard.Operation" uid="3c91f0cf-3ede-44cf-a139-fcd8e011bc9b"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                  <COMP relation="OutGoing">
+                    <OBJECT>
+                      <ID name="Transition" mc="Standard.Transition" uid="23696ac4-6f40-46d5-8ebd-59daf753f8de"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Transition]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Processed">
+                          <REFOBJ>
+                            <ID name="interupt" mc="Standard.Operation" uid="43c5b28b-3641-4baa-b18b-f6866c0b6c86"/>
+                          </REFOBJ>
+                        </LINK>
+                        <LINK relation="Trigger">
+                          <REFOBJ>
+                            <ID name="Menu.interuptMode" mc="Standard.Event" uid="3b85ced2-8a0a-4fa4-b8f1-3cd4c909ebc5"/>
+                          </REFOBJ>
+                        </LINK>
+                        <LINK relation="Target">
+                          <REFOBJ>
+                            <ID name="Menu" mc="Standard.State" uid="b7e25c57-0afc-47a8-9aaa-d3ff021ced90"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                    <OBJECT>
+                      <ID name="Transition1" mc="Standard.Transition" uid="8ebe0413-5866-46cd-85eb-4644bb04df6c"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Transition1]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Target">
+                          <REFOBJ>
+                            <ID name="Menu" mc="Standard.State" uid="b7e25c57-0afc-47a8-9aaa-d3ff021ced90"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="Mode manuel" mc="Standard.State" uid="94534d90-2aa6-428d-bbba-3daff49d21c5"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Mode manuel]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Internal">
+                    <OBJECT>
+                      <ID name="Do" mc="Standard.InternalTransition" uid="bb254c52-094d-424a-9806-749747d21ac1"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"><![CDATA[Do]]></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Do]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Processed">
+                          <REFOBJ>
+                            <ID name="run" mc="Standard.Operation" uid="3c91f0cf-3ede-44cf-a139-fcd8e011bc9b"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                  <COMP relation="OutGoing">
+                    <OBJECT>
+                      <ID name="Transition" mc="Standard.Transition" uid="ac4a051b-36ec-47f9-9133-91407e8f904e"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Transition]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Target">
+                          <REFOBJ>
+                            <ID name="Menu" mc="Standard.State" uid="b7e25c57-0afc-47a8-9aaa-d3ff021ced90"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                    <OBJECT>
+                      <ID name="Transition1" mc="Standard.Transition" uid="b1fd86cc-c9dd-4407-802a-6f78a12bcc66"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Transition1]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Processed">
+                          <REFOBJ>
+                            <ID name="interupt" mc="Standard.Operation" uid="43c5b28b-3641-4baa-b18b-f6866c0b6c86"/>
+                          </REFOBJ>
+                        </LINK>
+                        <LINK relation="Trigger">
+                          <REFOBJ>
+                            <ID name="Menu.interuptMode" mc="Standard.Event" uid="3b85ced2-8a0a-4fa4-b8f1-3cd4c909ebc5"/>
+                          </REFOBJ>
+                        </LINK>
+                        <LINK relation="Target">
+                          <REFOBJ>
+                            <ID name="Menu" mc="Standard.State" uid="b7e25c57-0afc-47a8-9aaa-d3ff021ced90"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="Junction" mc="Standard.JunctionPseudoState" uid="b39766d7-b2f0-451d-8d3d-8652f350d780"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Junction]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="OutGoing">
+                    <OBJECT>
+                      <ID name="Transition" mc="Standard.Transition" uid="6f26d896-177a-455e-9d74-374663b143c8"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"><![CDATA[else]]></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Transition]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Target">
+                          <REFOBJ>
+                            <ID name="Mode autopilot" mc="Standard.State" uid="8bab12e1-dc67-49b6-ab16-12985e70a522"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                    <OBJECT>
+                      <ID name="Transition1" mc="Standard.Transition" uid="993a0567-7a29-41c5-ae3f-065cdca4677c"/>
+                      <ATTRIBUTES>
+                        <ATT name="Effect"></ATT>
+                        <ATT name="ReceivedEvents"></ATT>
+                        <ATT name="SentEvents"></ATT>
+                        <ATT name="Guard"><![CDATA[mode=manuel]]></ATT>
+                        <ATT name="PostCondition"></ATT>
+                        <ATT name="Name"><![CDATA[Transition1]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <LINK relation="Target">
+                          <REFOBJ>
+                            <ID name="Mode manuel" mc="Standard.State" uid="94534d90-2aa6-428d-bbba-3daff49d21c5"/>
+                          </REFOBJ>
+                        </LINK>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="EComponent">
+        <OBJECT>
+          <ID name="Menu.selectMode" mc="Standard.Event" uid="1fd67895-74d4-4fcb-95c8-bde35220d71c"/>
+          <ATTRIBUTES>
+            <ATT name="Expression"></ATT>
+            <ATT name="Kind">CallEvent</ATT>
+            <ATT name="Name"><![CDATA[Menu.selectMode]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Called">
+              <REFOBJ>
+                <ID name="selectMode" mc="Standard.Operation" uid="104aa4a7-a091-43a0-8adf-3a89fd9459ef"/>
+              </REFOBJ>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Menu.interuptMode" mc="Standard.Event" uid="3b85ced2-8a0a-4fa4-b8f1-3cd4c909ebc5"/>
+          <ATTRIBUTES>
+            <ATT name="Expression"></ATT>
+            <ATT name="Kind">CallEvent</ATT>
+            <ATT name="Name"><![CDATA[Menu.interuptMode]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Called">
+              <REFOBJ>
+                <ID name="interuptMode" mc="Standard.Operation" uid="35d4fd81-9a90-402e-ae03-4527a9c9cb0f"/>
+              </REFOBJ>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="State Machine State Machine diagram" mc="Standard.StateMachineDiagram" uid="6e3fbed2-76ba-4a6c-b40d-4498312f89aa"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

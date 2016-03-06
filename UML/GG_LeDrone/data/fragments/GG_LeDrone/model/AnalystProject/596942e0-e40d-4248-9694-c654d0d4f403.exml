@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="GG_LeDrone" version="4">
+  <OBJECT>
+    <ID name="GG_LeDrone" mc="Standard.AnalystProject" uid="596942e0-e40d-4248-9694-c654d0d4f403"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[GG_LeDrone]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="PropertyRoot">
+        <COMPID name="GG_LeDrone" mc="Standard.PropertyContainer" uid="55b0ad5d-a79b-4fcc-8dc1-97206d8b40da"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

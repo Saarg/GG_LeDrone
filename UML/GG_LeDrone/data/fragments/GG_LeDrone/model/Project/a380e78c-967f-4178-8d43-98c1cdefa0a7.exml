@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="GG_LeDrone" version="4">
+  <OBJECT>
+    <ID name="GG_LeDrone" mc="Standard.Project" uid="a380e78c-967f-4178-8d43-98c1cdefa0a7"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[GG_LeDrone]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="DiagramRoot">
+        <COMPID name="GG_LeDrone" mc="Standard.DiagramSet" uid="0fc3e1c2-e5ca-4a70-bf5e-d7a955d990bd"/>
+      </COMP>
+      <COMP relation="Model">
+        <COMPID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Interface" version="4">
+  <OBJECT>
+    <ID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
+    <PID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Interface]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="State Machine" mc="Standard.StateMachine" uid="4d690987-b6c2-418e-9919-b08a8a6a46e8"/>
+      </COMP>
+      <COMP relation="OwnedElement">
+        <COMPID name="ListChercheur" mc="Standard.Class" uid="4615ef5c-77a7-49b1-9fa9-3660ed1b2948"/>
+        <COMPID name="Mode" mc="Standard.Class" uid="2683ec69-c31d-4b46-b986-ca00ebf00ac8"/>
+        <COMPID name="Menu" mc="Standard.Class" uid="9307ddbb-ebef-4c77-b5cf-967941d8a103"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Interface Class diagram" mc="Standard.ClassDiagram" uid="95682000-613c-4320-be63-223b9bbf3702"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

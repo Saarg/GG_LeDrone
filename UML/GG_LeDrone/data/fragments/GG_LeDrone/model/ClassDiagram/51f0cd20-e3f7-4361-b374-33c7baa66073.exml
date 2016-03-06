@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="overview diagram" version="4">
+  <OBJECT>
+    <ID name="overview diagram" mc="Standard.ClassDiagram" uid="51f0cd20-e3f7-4361-b374-33c7baa66073"/>
+    <PID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
+    <ATTRIBUTES>
+      <ATT name="UiDataVersion">356</ATT>
+      <ATT name="UiData"><![CDATA[eJztll1v2jAUhv9KlPuEkEBoVUpVoGKorFSwVdoVcpITcHFsZJtC/v0cAqykJaSFsV1U4gJ/nPd8PcdQv1lGRHsBLjCj13rZtHTtplHve8/gSw0HakvXZDyDa53xsRmxAAhmZoDRmKPIhABLxk0hkcRTEwhEQKVI1/7mUicartbtdK1rEXpmfLR1aumN+iNnM+Ay1iiKlC+CYjaXbSSROntCZA7rIOicEL3UqJc2Bm9MhzImoO+kYOelIJL7wvQZBzO1LRBfCwkfBRBsnN0t5QDCgl4elMTaUoOlbHtdFePqa/IlgBDNicwkWUrTyUucA0ESAhVHpmbfky3tJdlRkRMkxLoTWrUcWn5gWwY4Yc2oOG7Z8JxaxXAcv+Yh5LpWzcmvtlKT95QtaA95QDKOh5JjOtYbTJXyBcNCW1ejXlrdyk2GEejSFotmTGCp2rBHuoBUa4JJwCFR6GEhd8hwjoU7SSsL+JPaOwrygQoP0XHCx7prrnWlPhW7fOVY5Q/zX/nr/Cfwp5N2Dmwvq+6FbVmW4ZYdX2GrAPbAdQzbdrxLzwudmpUN5DPYdqkEHiIftJX3/4/eai69G17nEfFZFDG6OZqAah1X1K7r+W21Pv+z7BbFUkkt46PZrHyxeWI2xYQtRth/I9Fkygei2wJJPof8nFdKU4gXjAcHxEJExCE1ifzpSKgKATuBWhIbeacXBdL8w1g6vMWOMgH0MJ2K7fwfvN4ctzlaqB72UKzGemfkaoVejCC1FyZJFJKH4rXged6Jj1n9k/8+OIvqZnTaHbN3++tuMGretu47g/7Ph/ZnXvo8ZvaqvG6VeO9H4+ILgXMi8KP/eOre7z36DUHUzsw=]]></ATT>
+      <ATT name="PdeProperties"></ATT>
+      <ATT name="Name"><![CDATA[overview diagram]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>
