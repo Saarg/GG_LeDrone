@@ -17,7 +17,6 @@
         <COMPID name="Machine à état de l'interface" mc="Standard.StateMachine" uid="4d690987-b6c2-418e-9919-b08a8a6a46e8"/>
       </COMP>
       <COMP relation="OwnedElement">
-        <COMPID name="ListChercheur" mc="Standard.Class" uid="4615ef5c-77a7-49b1-9fa9-3660ed1b2948"/>
         <COMPID name="Mode" mc="Standard.Class" uid="2683ec69-c31d-4b46-b986-ca00ebf00ac8"/>
         <COMPID name="Interface" mc="Standard.Class" uid="9307ddbb-ebef-4c77-b5cf-967941d8a103"/>
         <COMPID name="ModeManuel" mc="Standard.Class" uid="4331d66f-a2ec-4a56-97aa-0e6a4bc1be66"/>

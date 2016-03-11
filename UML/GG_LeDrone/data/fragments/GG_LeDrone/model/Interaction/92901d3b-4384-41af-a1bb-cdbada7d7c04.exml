@@ -254,11 +254,6 @@
                       <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="bdbf9459-b332-4ebd-bf13-dd925d538a44"/>
                     </REFOBJ>
                   </LINK>
-                  <LINK relation="Invoked">
-                    <REFOBJ>
-                      <ID name="addChercheur" mc="Standard.Operation" uid="6c5319fb-9406-44b6-a85f-228012d84466"/>
-                    </REFOBJ>
-                  </LINK>
                 </DEPENDENCIES>
               </OBJECT>
             </COMP>

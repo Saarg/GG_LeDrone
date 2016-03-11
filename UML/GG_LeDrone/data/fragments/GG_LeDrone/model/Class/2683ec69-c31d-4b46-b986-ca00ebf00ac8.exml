@@ -29,30 +29,6 @@
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
-            <COMP relation="IO">
-              <OBJECT>
-                <ID name="Parameter" mc="Standard.Parameter" uid="f601f384-1202-4389-895f-7480ed198ca5"/>
-                <ATTRIBUTES>
-                  <ATT name="ParameterPassing">In</ATT>
-                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-                  <ATT name="TypeConstraint"></ATT>
-                  <ATT name="DefaultValue"></ATT>
-                  <ATT name="IsOrdered">false</ATT>
-                  <ATT name="IsUnique">false</ATT>
-                  <ATT name="IsException">false</ATT>
-                  <ATT name="IsStream">false</ATT>
-                  <ATT name="Effect">ReadEffect</ATT>
-                  <ATT name="Name"><![CDATA[Parameter]]></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES>
-                  <LINK relation="Type">
-                    <ID name="ListChercheur" mc="Standard.Class" uid="4615ef5c-77a7-49b1-9fa9-3660ed1b2948"/>
-                  </LINK>
-                </DEPENDENCIES>
-              </OBJECT>
-            </COMP>
             <LINK relation="Extension">
               <FOREIGNID name="create" mc="Standard.Stereotype" uid="00700680-0000-0204-0000-000000000000"/>
             </LINK>
@@ -82,6 +58,20 @@
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">true</ATT>
             <ATT name="Name"><![CDATA[interupt]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="display" mc="Standard.Operation" uid="ba6ff95f-8d1d-429d-9787-ffb3b28143c4"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">true</ATT>
+            <ATT name="Name"><![CDATA[display]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES></DEPENDENCIES>
@@ -136,19 +126,27 @@
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
-      </COMP>
-      <COMP relation="DependsOnDependency">
         <OBJECT>
-          <ID name="" mc="Standard.Usage" uid="e3e3acac-4a38-40d1-8c64-da40c86dd060"/>
+          <ID name="droneHandler" mc="Standard.Attribute" uid="b9338d03-13a5-4b62-9cf6-7bcb9e0a3abd"/>
           <ATTRIBUTES>
-            <ATT name="DependsOnId"></ATT>
-            <ATT name="DependsOnName"></ATT>
-            <ATT name="Name"></ATT>
+            <ATT name="TypeConstraint"></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Changeable">ReadWrite</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[droneHandler]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
-            <LINK relation="DependsOn">
-              <ID name="ListChercheur" mc="Standard.Class" uid="4615ef5c-77a7-49b1-9fa9-3660ed1b2948"/>
+            <LINK relation="Type">
+              <ID name="DroneHandler" mc="Standard.Class" uid="e427b4fe-cdf6-4624-8975-63cfbeaf5c85"/>
             </LINK>
           </DEPENDENCIES>
         </OBJECT>

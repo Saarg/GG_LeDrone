@@ -2,7 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Machine à état de l'interface" version="4">
   <OBJECT>
     <ID name="Machine à état de l'interface" mc="Standard.StateMachine" uid="4d690987-b6c2-418e-9919-b08a8a6a46e8"/>
-    <PID name="Diagrame de classe de l'iterface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
+    <PID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
     <ATTRIBUTES>
       <ATT name="Kind">Dynamic</ATT>
       <ATT name="IsReentrant">false</ATT>
@@ -98,7 +98,7 @@
                 <DEPENDENCIES>
                   <COMP relation="Internal">
                     <OBJECT>
-                      <ID name="Do" mc="Standard.InternalTransition" uid="2332640b-22cc-425a-bf09-b95275fc6ff9"/>
+                      <ID name="Do" mc="Standard.InternalTransition" uid="1250edbc-99ad-4254-9855-0b5c72317199"/>
                       <ATTRIBUTES>
                         <ATT name="Effect"></ATT>
                         <ATT name="ReceivedEvents"><![CDATA[Do]]></ATT>
@@ -111,7 +111,7 @@
                       <DEPENDENCIES>
                         <LINK relation="Processed">
                           <REFOBJ>
-                            <ID name="run" mc="Standard.Operation" uid="3c91f0cf-3ede-44cf-a139-fcd8e011bc9b"/>
+                            <ID name="display" mc="Standard.Operation" uid="3697190d-53ec-414d-8235-981fec8bc7aa"/>
                           </REFOBJ>
                         </LINK>
                       </DEPENDENCIES>
@@ -178,7 +178,7 @@
                 <DEPENDENCIES>
                   <COMP relation="Internal">
                     <OBJECT>
-                      <ID name="Do" mc="Standard.InternalTransition" uid="bb254c52-094d-424a-9806-749747d21ac1"/>
+                      <ID name="Do" mc="Standard.InternalTransition" uid="64dae281-d218-4b28-a88f-0c87e92991c2"/>
                       <ATTRIBUTES>
                         <ATT name="Effect"></ATT>
                         <ATT name="ReceivedEvents"><![CDATA[Do]]></ATT>
@@ -191,7 +191,7 @@
                       <DEPENDENCIES>
                         <LINK relation="Processed">
                           <REFOBJ>
-                            <ID name="run" mc="Standard.Operation" uid="3c91f0cf-3ede-44cf-a139-fcd8e011bc9b"/>
+                            <ID name="display" mc="Standard.Operation" uid="6447c910-2797-44ff-9a8c-bff6960e6538"/>
                           </REFOBJ>
                         </LINK>
                       </DEPENDENCIES>
@@ -326,7 +326,7 @@
                 <DEPENDENCIES>
                   <COMP relation="Internal">
                     <OBJECT>
-                      <ID name="Do" mc="Standard.InternalTransition" uid="ab7261d6-4387-4736-a934-9758d74b8529"/>
+                      <ID name="Do" mc="Standard.InternalTransition" uid="90982253-6c27-4b15-ad00-7ffa995a92dd"/>
                       <ATTRIBUTES>
                         <ATT name="Effect"></ATT>
                         <ATT name="ReceivedEvents"><![CDATA[Do]]></ATT>
@@ -339,7 +339,7 @@
                       <DEPENDENCIES>
                         <LINK relation="Processed">
                           <REFOBJ>
-                            <ID name="run" mc="Standard.Operation" uid="3c91f0cf-3ede-44cf-a139-fcd8e011bc9b"/>
+                            <ID name="display" mc="Standard.Operation" uid="3697190d-53ec-414d-8235-981fec8bc7aa"/>
                           </REFOBJ>
                         </LINK>
                       </DEPENDENCIES>
