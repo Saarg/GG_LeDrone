@@ -15,6 +15,8 @@
     <DEPENDENCIES>
       <COMP relation="OwnedBehavior">
         <COMPID name="Machine à état de l'interface" mc="Standard.StateMachine" uid="4d690987-b6c2-418e-9919-b08a8a6a46e8"/>
+        <COMPID name="Diagramme de sequence bureau à bureau" mc="Standard.Interaction" uid="a00038a6-e4c5-4c15-9c33-f79c01d57216"/>
+        <COMPID name="Diagramme de sequence interface" mc="Standard.Interaction" uid="92901d3b-4384-41af-a1bb-cdbada7d7c04"/>
       </COMP>
       <COMP relation="OwnedElement">
         <COMPID name="Mode" mc="Standard.Class" uid="2683ec69-c31d-4b46-b986-ca00ebf00ac8"/>
@@ -24,7 +26,7 @@
         <COMPID name="ModeBureauABureau" mc="Standard.Class" uid="2b8f4bdb-1e5b-4e1a-be6e-7903e2009cab"/>
       </COMP>
       <COMP relation="Product">
-        <COMPID name="Interface Class diagram" mc="Standard.ClassDiagram" uid="95682000-613c-4320-be63-223b9bbf3702"/>
+        <COMPID name="Diagramme de classe interface" mc="Standard.ClassDiagram" uid="95682000-613c-4320-be63-223b9bbf3702"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

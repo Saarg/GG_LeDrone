@@ -13,16 +13,20 @@
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
-      <COMP relation="OwnedBehavior">
-        <COMPID name="Diagramme de sequence interface" mc="Standard.Interaction" uid="92901d3b-4384-41af-a1bb-cdbada7d7c04"/>
-        <COMPID name="Diagramme de sequence bureau à bureau" mc="Standard.Interaction" uid="a00038a6-e4c5-4c15-9c33-f79c01d57216"/>
-      </COMP>
       <COMP relation="OwnedElement">
         <COMPID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
         <COMPID name="Application" mc="Standard.Package" uid="be23c080-8a02-4981-a3e8-4533ef824ac5"/>
+        <COMPID name="Utilisateur" mc="Standard.Actor" uid="d4aaf53b-c7f6-401e-ac6c-87d24debadc6"/>
+        <COMPID name="Déplacer le drone manuelement" mc="Standard.UseCase" uid="585cb8f3-49b0-4646-a889-67ab5d5b12af"/>
+        <COMPID name="Aller a un bureau" mc="Standard.UseCase" uid="a43d9bfe-8533-4570-be91-243db5b2e9f3"/>
+        <COMPID name="Aller de bureau à bureau" mc="Standard.UseCase" uid="b895de47-31e6-4053-ae80-9ad8a66c53b1"/>
+        <COMPID name="Déplacer le drone automatiquement" mc="Standard.UseCase" uid="94eec81d-b848-499b-a561-55b0d9c3c904"/>
+        <COMPID name="Choisir mode" mc="Standard.UseCase" uid="efdb6452-5e5f-4609-819a-067ab80c7899"/>
+        <COMPID name="Parrot sumo" mc="Standard.Actor" uid="c8dd87ca-dff8-4409-9070-5f44a05e4109"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="overview diagram" mc="Standard.ClassDiagram" uid="51f0cd20-e3f7-4361-b374-33c7baa66073"/>
+        <COMPID name="Diagramme de cas d'utilisation" mc="Standard.UseCaseDiagram" uid="feb4c4c3-1bf1-4ef5-ace9-feae172c402c"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>
