@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="gg" version="4">
+  <OBJECT>
+    <ID name="gg" mc="Standard.Project" uid="f9339943-760b-4d31-81fc-19efe0caafad"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[gg]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="DiagramRoot">
+        <COMPID name="gg" mc="Standard.DiagramSet" uid="8d1e501d-c870-4b58-8ba7-da54454bf006"/>
+      </COMP>
+      <COMP relation="Model">
+        <COMPID name="gg" mc="Standard.Package" uid="4d601050-bb55-476b-97c9-64320ef89550"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

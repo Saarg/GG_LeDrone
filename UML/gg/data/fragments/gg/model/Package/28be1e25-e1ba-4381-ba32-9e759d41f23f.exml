@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Application" version="4">
+  <OBJECT>
+    <ID name="Application" mc="Standard.Package" uid="28be1e25-e1ba-4381-ba32-9e759d41f23f"/>
+    <PID name="gg" mc="Standard.Package" uid="4d601050-bb55-476b-97c9-64320ef89550"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Application]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Color" mc="Standard.Class" uid="db1bb302-41e8-4546-9246-cf2eaf4817e4"/>
+        <COMPID name="Image" mc="Standard.Class" uid="9781a57d-0d0a-4eed-879d-a9417eb44666"/>
+        <COMPID name="DroneHandler" mc="Standard.Class" uid="3d67922c-36dc-4506-8d9a-bc9a444977dc"/>
+        <COMPID name="Arc" mc="Standard.Class" uid="aebed26f-9d93-4de8-89a6-1ce92f94310a"/>
+        <COMPID name="Camera" mc="Standard.Class" uid="17f0c467-678a-4803-b4d6-665d02453403"/>
+        <COMPID name="Drone" mc="Standard.Class" uid="9dbf30fb-2e41-4ce0-abe4-3f2c3acee3ac"/>
+        <COMPID name="Office" mc="Standard.Class" uid="c2118160-fd0d-49b5-87ca-4742cc3eb30e"/>
+        <COMPID name="Message" mc="Standard.Class" uid="96edb5d2-84e8-4cce-9d93-4e90ff1ac85d"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Package" version="4">
+  <OBJECT>
+    <ID name="Package" mc="Standard.Package" uid="c0595aa9-1ec9-4ebb-8947-3d731bf6343f"/>
+    <PID name="gg" mc="Standard.Package" uid="4d601050-bb55-476b-97c9-64320ef89550"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Package]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Interface" mc="Standard.Class" uid="2714beff-1187-4341-92ee-b7b6a3cd5c23"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

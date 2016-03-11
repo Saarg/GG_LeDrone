@@ -14,10 +14,12 @@
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="OwnedBehavior">
-        <COMPID name="Diagrame de sequence" mc="Standard.Interaction" uid="92901d3b-4384-41af-a1bb-cdbada7d7c04"/>
+        <COMPID name="Diagramme de sequence interface" mc="Standard.Interaction" uid="92901d3b-4384-41af-a1bb-cdbada7d7c04"/>
+        <COMPID name="Diagramme de sequence bureau à bureau" mc="Standard.Interaction" uid="a00038a6-e4c5-4c15-9c33-f79c01d57216"/>
       </COMP>
       <COMP relation="OwnedElement">
-        <COMPID name="Diagrame de classe de l'iterface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
+        <COMPID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
+        <COMPID name="Application" mc="Standard.Package" uid="be23c080-8a02-4981-a3e8-4533ef824ac5"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="overview diagram" mc="Standard.ClassDiagram" uid="51f0cd20-e3f7-4361-b374-33c7baa66073"/>

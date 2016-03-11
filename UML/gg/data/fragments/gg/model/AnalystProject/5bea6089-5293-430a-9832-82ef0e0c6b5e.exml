@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="gg" version="4">
+  <OBJECT>
+    <ID name="gg" mc="Standard.AnalystProject" uid="5bea6089-5293-430a-9832-82ef0e0c6b5e"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[gg]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="PropertyRoot">
+        <COMPID name="gg" mc="Standard.PropertyContainer" uid="c01f40a8-5624-4b9d-b370-01f96352607b"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

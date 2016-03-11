@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Diagrame de classe de l'iterface" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Interface" version="4">
   <OBJECT>
-    <ID name="Diagrame de classe de l'iterface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
+    <ID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
     <PID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
     <ATTRIBUTES>
       <ATT name="IsInstantiable">false</ATT>
@@ -9,7 +9,7 @@
       <ATT name="IsLeaf">false</ATT>
       <ATT name="IsRoot">false</ATT>
       <ATT name="Visibility">Public</ATT>
-      <ATT name="Name"><![CDATA[Diagrame de classe de l'iterface]]></ATT>
+      <ATT name="Name"><![CDATA[Interface]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
@@ -20,7 +20,7 @@
         <COMPID name="ListChercheur" mc="Standard.Class" uid="4615ef5c-77a7-49b1-9fa9-3660ed1b2948"/>
         <COMPID name="Mode" mc="Standard.Class" uid="2683ec69-c31d-4b46-b986-ca00ebf00ac8"/>
         <COMPID name="Interface" mc="Standard.Class" uid="9307ddbb-ebef-4c77-b5cf-967941d8a103"/>
-        <COMPID name="Mode Manuel" mc="Standard.Class" uid="4331d66f-a2ec-4a56-97aa-0e6a4bc1be66"/>
+        <COMPID name="ModeManuel" mc="Standard.Class" uid="4331d66f-a2ec-4a56-97aa-0e6a4bc1be66"/>
         <COMPID name="ModeBureau" mc="Standard.Class" uid="097d7703-069c-4998-8a37-c58edcb1adf5"/>
         <COMPID name="ModeBureauABureau" mc="Standard.Class" uid="2b8f4bdb-1e5b-4e1a-be6e-7903e2009cab"/>
       </COMP>

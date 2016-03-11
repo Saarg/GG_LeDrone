@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="gg" version="4">
+  <OBJECT>
+    <ID name="gg" mc="Standard.Package" uid="4d601050-bb55-476b-97c9-64320ef89550"/>
+    <PID name="gg" mc="Standard.Project" uid="f9339943-760b-4d31-81fc-19efe0caafad"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[gg]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Application" mc="Standard.Package" uid="28be1e25-e1ba-4381-ba32-9e759d41f23f"/>
+        <COMPID name="Package" mc="Standard.Package" uid="c0595aa9-1ec9-4ebb-8947-3d731bf6343f"/>
+        <COMPID name="Communication" mc="Standard.Class" uid="216bb068-3182-48d9-99a1-967b4e440d26"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="overview diagram" mc="Standard.ClassDiagram" uid="d86b5a53-9ab2-4f99-96bb-246d6cf06038"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

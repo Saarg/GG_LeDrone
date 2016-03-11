@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Sequence bureau à bureau" version="4">
+  <OBJECT>
+    <ID name="Sequence bureau à bureau" mc="Standard.SequenceDiagram" uid="dc9fc1cd-17d3-4104-9121-9538ed0868a0"/>
+    <PID name="Diagramme de sequence bureau à bureau" mc="Standard.Interaction" uid="a00038a6-e4c5-4c15-9c33-f79c01d57216"/>
+    <ATTRIBUTES>
+      <ATT name="UiDataVersion">56</ATT>
+      <ATT name="UiData"><![CDATA[eJztU91O2zAUfhXL93UT2m2tFIqgQRUio6jdkHaFTuPTzsyxO9uB5m14l73YHJoA7dQokxC72ZWPjs93vvPznehkk0lyj8YKrY5pyAJKTkbRdHGHqSOCexclrljjMdVmxTLNUQrNuICVgYwhF04bZvFnjipFhhIzVM4+e+rASTavPPHWQ0kGd9rcPlMHdBRdG71G4wqiIPOMEgqduxgc+L8bkDlWpahcStodRd0a8Ad07gqJdKeRo6ZGbBlvWaoNsi22RX1jsClw5DXZ+cbNcNmS5cqnqJAENy5eXPgan8zS4LiEXLq9JrvbdpoaNyjBIfd17M3sc+ki96XHj2d3GYSnw2UaprwTfuK9Tj8M+p1heBR2hh96A+TB4OMAguaBS7DuUukHlcAC5R733BmhVnRU05JFbhBy8uuxsqLuU3hjY1rihRrrbK2tcH4lBzhapBp/F5IbLDMkwpbjrJ6DiESoH7Z9+NkqNvDgy0mgQLMrw17jPdX3w7d4y2SZwZ/PTsL3uZ2/Q/0r4Ql+QAjxhCWn385nt2en48vJbPr1Kn4bbbS4wtfbetHNKxX0/6vgnVXwZXr91us/+PUbgASOJw==]]></ATT>
+      <ATT name="PdeProperties"></ATT>
+      <ATT name="Name"><![CDATA[Sequence bureau à bureau]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Standard.Note" uid="7168ce9a-8a0e-4148-a4f4-2a993b749c67"/>
+          <ATTRIBUTES>
+            <ATT name="Content"></ATT>
+            <ATT name="MimeType"></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Standard.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
