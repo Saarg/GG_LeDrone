@@ -2,7 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Aller a un bureau" version="4">
   <OBJECT>
     <ID name="Aller a un bureau" mc="Standard.UseCase" uid="a43d9bfe-8533-4570-be91-243db5b2e9f3"/>
-    <PID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
+    <PID name="UseCase" mc="Standard.Package" uid="702d6bd5-919f-4b17-a679-6eb858a17762"/>
     <ATTRIBUTES>
       <ATT name="IsElementary">false</ATT>
       <ATT name="IsAbstract">false</ATT>

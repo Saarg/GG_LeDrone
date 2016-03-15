@@ -2,7 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Déplacer le drone manuelement" version="4">
   <OBJECT>
     <ID name="Déplacer le drone manuelement" mc="Standard.UseCase" uid="585cb8f3-49b0-4646-a889-67ab5d5b12af"/>
-    <PID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
+    <PID name="UseCase" mc="Standard.Package" uid="702d6bd5-919f-4b17-a679-6eb858a17762"/>
     <ATTRIBUTES>
       <ATT name="IsElementary">false</ATT>
       <ATT name="IsAbstract">false</ATT>

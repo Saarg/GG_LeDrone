@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="UseCase" version="4">
+  <OBJECT>
+    <ID name="UseCase" mc="Standard.Package" uid="702d6bd5-919f-4b17-a679-6eb858a17762"/>
+    <PID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[UseCase]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Déplacer le drone manuelement" mc="Standard.UseCase" uid="585cb8f3-49b0-4646-a889-67ab5d5b12af"/>
+        <COMPID name="Aller a un bureau" mc="Standard.UseCase" uid="a43d9bfe-8533-4570-be91-243db5b2e9f3"/>
+        <COMPID name="Aller de bureau à bureau" mc="Standard.UseCase" uid="b895de47-31e6-4053-ae80-9ad8a66c53b1"/>
+        <COMPID name="Déplacer le drone automatiquement" mc="Standard.UseCase" uid="94eec81d-b848-499b-a561-55b0d9c3c904"/>
+        <COMPID name="Choisir mode" mc="Standard.UseCase" uid="efdb6452-5e5f-4609-819a-067ab80c7899"/>
+        <COMPID name="Utilisateur" mc="Standard.Actor" uid="d4aaf53b-c7f6-401e-ac6c-87d24debadc6"/>
+        <COMPID name="Parrot sumo" mc="Standard.Actor" uid="c8dd87ca-dff8-4409-9070-5f44a05e4109"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Diagramme de cas d'utilisation" mc="Standard.UseCaseDiagram" uid="feb4c4c3-1bf1-4ef5-ace9-feae172c402c"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

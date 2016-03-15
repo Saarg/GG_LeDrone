@@ -2,7 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Choisir mode" version="4">
   <OBJECT>
     <ID name="Choisir mode" mc="Standard.UseCase" uid="efdb6452-5e5f-4609-819a-067ab80c7899"/>
-    <PID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
+    <PID name="UseCase" mc="Standard.Package" uid="702d6bd5-919f-4b17-a679-6eb858a17762"/>
     <ATTRIBUTES>
       <ATT name="IsElementary">false</ATT>
       <ATT name="IsAbstract">false</ATT>

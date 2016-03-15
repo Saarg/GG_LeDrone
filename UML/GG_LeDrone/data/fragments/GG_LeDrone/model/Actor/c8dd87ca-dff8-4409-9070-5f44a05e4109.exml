@@ -2,7 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Parrot sumo" version="4">
   <OBJECT>
     <ID name="Parrot sumo" mc="Standard.Actor" uid="c8dd87ca-dff8-4409-9070-5f44a05e4109"/>
-    <PID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
+    <PID name="UseCase" mc="Standard.Package" uid="702d6bd5-919f-4b17-a679-6eb858a17762"/>
     <ATTRIBUTES>
       <ATT name="IsElementary">false</ATT>
       <ATT name="IsAbstract">false</ATT>

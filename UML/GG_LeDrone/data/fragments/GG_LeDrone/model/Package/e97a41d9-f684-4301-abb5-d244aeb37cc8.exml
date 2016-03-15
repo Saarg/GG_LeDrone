@@ -14,8 +14,6 @@
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="OwnedBehavior">
-        <COMPID name="Machine à état de l'interface" mc="Standard.StateMachine" uid="4d690987-b6c2-418e-9919-b08a8a6a46e8"/>
-        <COMPID name="Diagramme de sequence bureau à bureau" mc="Standard.Interaction" uid="a00038a6-e4c5-4c15-9c33-f79c01d57216"/>
         <COMPID name="Diagramme de sequence interface" mc="Standard.Interaction" uid="92901d3b-4384-41af-a1bb-cdbada7d7c04"/>
       </COMP>
       <COMP relation="OwnedElement">
