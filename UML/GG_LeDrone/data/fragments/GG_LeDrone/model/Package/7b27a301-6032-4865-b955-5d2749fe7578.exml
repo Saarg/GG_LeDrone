@@ -16,12 +16,13 @@
       <COMP relation="OwnedBehavior">
         <COMPID name="Machine à état de l'interface" mc="Standard.StateMachine" uid="4d690987-b6c2-418e-9919-b08a8a6a46e8"/>
         <COMPID name="Diagramme activité parcour chemin" mc="Standard.Activity" uid="fe696780-7ac9-46a7-9297-d3ce1c73322b"/>
+        <COMPID name="Machine à état de l'application" mc="Standard.StateMachine" uid="43482b0a-5ef9-4c84-81d7-b24043b07dcc"/>
       </COMP>
       <COMP relation="OwnedElement">
         <COMPID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
         <COMPID name="Application" mc="Standard.Package" uid="be23c080-8a02-4981-a3e8-4533ef824ac5"/>
         <COMPID name="UseCase" mc="Standard.Package" uid="702d6bd5-919f-4b17-a679-6eb858a17762"/>
-        <COMPID name="Diagramme activité modes" mc="Standard.Package" uid="a3d2df09-6941-44a3-8011-e148b0f10f80"/>
+        <COMPID name="Diagramme activité global" mc="Standard.Package" uid="a3d2df09-6941-44a3-8011-e148b0f10f80"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="overview diagram" mc="Standard.ClassDiagram" uid="51f0cd20-e3f7-4361-b374-33c7baa66073"/>
