@@ -17,6 +17,7 @@
         <COMPID name="Machine à état de l'interface" mc="Standard.StateMachine" uid="4d690987-b6c2-418e-9919-b08a8a6a46e8"/>
         <COMPID name="Diagramme activité parcour chemin" mc="Standard.Activity" uid="fe696780-7ac9-46a7-9297-d3ce1c73322b"/>
         <COMPID name="Machine à état de l'application" mc="Standard.StateMachine" uid="43482b0a-5ef9-4c84-81d7-b24043b07dcc"/>
+        <COMPID name="Diagramme de sequence interface" mc="Standard.Interaction" uid="92901d3b-4384-41af-a1bb-cdbada7d7c04"/>
       </COMP>
       <COMP relation="OwnedElement">
         <COMPID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>

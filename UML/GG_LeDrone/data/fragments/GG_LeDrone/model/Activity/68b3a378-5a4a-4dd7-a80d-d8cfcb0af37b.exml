@@ -140,7 +140,7 @@
                     <OBJECT>
                       <ID name="ControlFlow" mc="Standard.ControlFlow" uid="46adeb22-ba5a-450e-a6ae-b42de51fd0c2"/>
                       <ATTRIBUTES>
-                        <ATT name="Guard"></ATT>
+                        <ATT name="Guard"><![CDATA[cmd=act]]></ATT>
                         <ATT name="Weight"><![CDATA[1]]></ATT>
                         <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
@@ -156,7 +156,7 @@
                     <OBJECT>
                       <ID name="ControlFlow" mc="Standard.ControlFlow" uid="428ae071-9ab8-4672-8e93-4a807fb35dda"/>
                       <ATTRIBUTES>
-                        <ATT name="Guard"></ATT>
+                        <ATT name="Guard"><![CDATA[cmd=mvt]]></ATT>
                         <ATT name="Weight"><![CDATA[1]]></ATT>
                         <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
@@ -313,6 +313,46 @@
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
+                  <COMP relation="Output">
+                    <OBJECT>
+                      <ID name="bureau" mc="Standard.OutputPin" uid="955d1b04-2cd1-4635-bd79-14918475d8f5"/>
+                      <ATTRIBUTES>
+                        <ATT name="IsControl">false</ATT>
+                        <ATT name="IsExpansion">false</ATT>
+                        <ATT name="IsControlType">false</ATT>
+                        <ATT name="Ordering">FIFO</ATT>
+                        <ATT name="SelectionBehavior"></ATT>
+                        <ATT name="UpperBound"><![CDATA[1]]></ATT>
+                        <ATT name="Name"><![CDATA[bureau]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <COMP relation="Outgoing">
+                          <OBJECT>
+                            <ID name="ObjectFlow" mc="Standard.ObjectFlow" uid="96f3de6a-8bc9-43b9-bfde-3af235792633"/>
+                            <ATTRIBUTES>
+                              <ATT name="TransformationBehavior"></ATT>
+                              <ATT name="SelectionBehavior"></ATT>
+                              <ATT name="IsMultiCast">false</ATT>
+                              <ATT name="IsMultiReceive">false</ATT>
+                              <ATT name="Effect">ReadFlow</ATT>
+                              <ATT name="Guard"></ATT>
+                              <ATT name="Weight"><![CDATA[1]]></ATT>
+                              <ATT name="Name"><![CDATA[ObjectFlow]]></ATT>
+                              <ATT name="status">1970354901745664</ATT>
+                            </ATTRIBUTES>
+                            <DEPENDENCIES>
+                              <LINK relation="Target">
+                                <REFOBJ>
+                                  <ID name="destination" mc="Standard.InputPin" uid="a39534c7-0e24-4256-9f52-e86d7d5c25d1"/>
+                                </REFOBJ>
+                              </LINK>
+                            </DEPENDENCIES>
+                          </OBJECT>
+                        </COMP>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
                   <COMP relation="Outgoing">
                     <OBJECT>
                       <ID name="ControlFlow" mc="Standard.ControlFlow" uid="cae3b436-8bc0-4539-8199-d90c9ddf266e"/>
@@ -346,6 +386,23 @@
                   <LINK relation="Called">
                     <ID name="Diagramme activité parcour chemin" mc="Standard.Activity" uid="fe696780-7ac9-46a7-9297-d3ce1c73322b"/>
                   </LINK>
+                  <COMP relation="Input">
+                    <OBJECT>
+                      <ID name="destination" mc="Standard.InputPin" uid="a39534c7-0e24-4256-9f52-e86d7d5c25d1"/>
+                      <ATTRIBUTES>
+                        <ATT name="IsSelf">false</ATT>
+                        <ATT name="IsControl">false</ATT>
+                        <ATT name="IsExpansion">false</ATT>
+                        <ATT name="IsControlType">false</ATT>
+                        <ATT name="Ordering">FIFO</ATT>
+                        <ATT name="SelectionBehavior"></ATT>
+                        <ATT name="UpperBound"><![CDATA[1]]></ATT>
+                        <ATT name="Name"><![CDATA[destination]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
                   <COMP relation="Outgoing">
                     <OBJECT>
                       <ID name="ControlFlow" mc="Standard.ControlFlow" uid="50882e25-212e-4c41-a58e-647f6e2d341c"/>
@@ -452,6 +509,79 @@
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
+                  <COMP relation="Output">
+                    <OBJECT>
+                      <ID name="bureau1" mc="Standard.OutputPin" uid="bbe2a4be-89c8-4b6f-bce2-adf16521d36a"/>
+                      <ATTRIBUTES>
+                        <ATT name="IsControl">false</ATT>
+                        <ATT name="IsExpansion">false</ATT>
+                        <ATT name="IsControlType">false</ATT>
+                        <ATT name="Ordering">FIFO</ATT>
+                        <ATT name="SelectionBehavior"></ATT>
+                        <ATT name="UpperBound"><![CDATA[1]]></ATT>
+                        <ATT name="Name"><![CDATA[bureau1]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <COMP relation="Outgoing">
+                          <OBJECT>
+                            <ID name="ObjectFlow" mc="Standard.ObjectFlow" uid="c64e9ff2-1ec5-42b9-a2f3-a845caa2adb3"/>
+                            <ATTRIBUTES>
+                              <ATT name="TransformationBehavior"></ATT>
+                              <ATT name="SelectionBehavior"></ATT>
+                              <ATT name="IsMultiCast">false</ATT>
+                              <ATT name="IsMultiReceive">false</ATT>
+                              <ATT name="Effect">ReadFlow</ATT>
+                              <ATT name="Guard"></ATT>
+                              <ATT name="Weight"><![CDATA[1]]></ATT>
+                              <ATT name="Name"><![CDATA[ObjectFlow]]></ATT>
+                              <ATT name="status">1970354901745664</ATT>
+                            </ATTRIBUTES>
+                            <DEPENDENCIES>
+                              <LINK relation="Target">
+                                <REFOBJ>
+                                  <ID name="destination" mc="Standard.InputPin" uid="a92af772-4684-48f4-8c7c-19dffe234b55"/>
+                                </REFOBJ>
+                              </LINK>
+                            </DEPENDENCIES>
+                          </OBJECT>
+                        </COMP>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                    <OBJECT>
+                      <ID name="bureau2" mc="Standard.OutputPin" uid="d013f09b-0af1-420e-ac90-8d04526e8cc5"/>
+                      <ATTRIBUTES>
+                        <ATT name="IsControl">false</ATT>
+                        <ATT name="IsExpansion">false</ATT>
+                        <ATT name="IsControlType">false</ATT>
+                        <ATT name="Ordering">FIFO</ATT>
+                        <ATT name="SelectionBehavior"></ATT>
+                        <ATT name="UpperBound"><![CDATA[1]]></ATT>
+                        <ATT name="Name"><![CDATA[bureau2]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <COMP relation="Outgoing">
+                          <OBJECT>
+                            <ID name="ControlFlow" mc="Standard.ControlFlow" uid="dbc70d14-ca6e-4d87-8436-7a877f59d57d"/>
+                            <ATTRIBUTES>
+                              <ATT name="Guard"></ATT>
+                              <ATT name="Weight"><![CDATA[1]]></ATT>
+                              <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                              <ATT name="status">1970354901745664</ATT>
+                            </ATTRIBUTES>
+                            <DEPENDENCIES>
+                              <LINK relation="Target">
+                                <REFOBJ>
+                                  <ID name="destination" mc="Standard.InputPin" uid="58aca582-1888-47d1-98ac-06b0256470c7"/>
+                                </REFOBJ>
+                              </LINK>
+                            </DEPENDENCIES>
+                          </OBJECT>
+                        </COMP>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
                   <COMP relation="Outgoing">
                     <OBJECT>
                       <ID name="ControlFlow" mc="Standard.ControlFlow" uid="68260e91-06de-4eae-9573-31e281a0bac2"/>
@@ -485,6 +615,23 @@
                   <LINK relation="Called">
                     <ID name="Diagramme activité parcour chemin" mc="Standard.Activity" uid="fe696780-7ac9-46a7-9297-d3ce1c73322b"/>
                   </LINK>
+                  <COMP relation="Input">
+                    <OBJECT>
+                      <ID name="destination" mc="Standard.InputPin" uid="a92af772-4684-48f4-8c7c-19dffe234b55"/>
+                      <ATTRIBUTES>
+                        <ATT name="IsSelf">false</ATT>
+                        <ATT name="IsControl">false</ATT>
+                        <ATT name="IsExpansion">false</ATT>
+                        <ATT name="IsControlType">false</ATT>
+                        <ATT name="Ordering">FIFO</ATT>
+                        <ATT name="SelectionBehavior"></ATT>
+                        <ATT name="UpperBound"><![CDATA[1]]></ATT>
+                        <ATT name="Name"><![CDATA[destination]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
                   <COMP relation="Outgoing">
                     <OBJECT>
                       <ID name="ControlFlow" mc="Standard.ControlFlow" uid="00822192-95dc-4f43-8c28-e70462bd219c"/>
@@ -548,6 +695,23 @@
                   <LINK relation="Called">
                     <ID name="Diagramme activité parcour chemin" mc="Standard.Activity" uid="fe696780-7ac9-46a7-9297-d3ce1c73322b"/>
                   </LINK>
+                  <COMP relation="Input">
+                    <OBJECT>
+                      <ID name="destination" mc="Standard.InputPin" uid="58aca582-1888-47d1-98ac-06b0256470c7"/>
+                      <ATTRIBUTES>
+                        <ATT name="IsSelf">false</ATT>
+                        <ATT name="IsControl">false</ATT>
+                        <ATT name="IsExpansion">false</ATT>
+                        <ATT name="IsControlType">false</ATT>
+                        <ATT name="Ordering">FIFO</ATT>
+                        <ATT name="SelectionBehavior"></ATT>
+                        <ATT name="UpperBound"><![CDATA[1]]></ATT>
+                        <ATT name="Name"><![CDATA[destination]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
                   <COMP relation="Outgoing">
                     <OBJECT>
                       <ID name="ControlFlow" mc="Standard.ControlFlow" uid="cd3d22bb-c70b-43d3-b447-be8f714b97b8"/>
@@ -611,7 +775,7 @@
                     <OBJECT>
                       <ID name="ControlFlow" mc="Standard.ControlFlow" uid="d94f6a26-083d-4a0a-ab72-2e9d5b5e56d6"/>
                       <ATTRIBUTES>
-                        <ATT name="Guard"></ATT>
+                        <ATT name="Guard"><![CDATA[goBack]]></ATT>
                         <ATT name="Weight"><![CDATA[1]]></ATT>
                         <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
@@ -721,7 +885,7 @@
               <OBJECT>
                 <ID name="ControlFlow" mc="Standard.ControlFlow" uid="2fb1fd9e-8549-40c0-af5c-5a9c7e435faa"/>
                 <ATTRIBUTES>
-                  <ATT name="Guard"></ATT>
+                  <ATT name="Guard"><![CDATA[mode=bureau]]></ATT>
                   <ATT name="Weight"><![CDATA[1]]></ATT>
                   <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
@@ -737,7 +901,7 @@
               <OBJECT>
                 <ID name="ControlFlow" mc="Standard.ControlFlow" uid="ea0ae44c-e645-47a3-8b83-019e233ecf57"/>
                 <ATTRIBUTES>
-                  <ATT name="Guard"></ATT>
+                  <ATT name="Guard"><![CDATA[mode=bureau à bureau]]></ATT>
                   <ATT name="Weight"><![CDATA[1]]></ATT>
                   <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
@@ -753,7 +917,7 @@
               <OBJECT>
                 <ID name="ControlFlow" mc="Standard.ControlFlow" uid="b3e763dd-ff50-4802-abff-e3d38179bebe"/>
                 <ATTRIBUTES>
-                  <ATT name="Guard"></ATT>
+                  <ATT name="Guard"><![CDATA[else]]></ATT>
                   <ATT name="Weight"><![CDATA[1]]></ATT>
                   <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
                   <ATT name="status">1970354901745664</ATT>

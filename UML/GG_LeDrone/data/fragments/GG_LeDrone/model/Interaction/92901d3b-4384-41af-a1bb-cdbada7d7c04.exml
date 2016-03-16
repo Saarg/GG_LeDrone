@@ -2,7 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Diagramme de sequence interface" version="4">
   <OBJECT>
     <ID name="Diagramme de sequence interface" mc="Standard.Interaction" uid="92901d3b-4384-41af-a1bb-cdbada7d7c04"/>
-    <PID name="Interface" mc="Standard.Package" uid="e97a41d9-f684-4301-abb5-d244aeb37cc8"/>
+    <PID name="gg_ledrone" mc="Standard.Package" uid="7b27a301-6032-4865-b955-5d2749fe7578"/>
     <ATTRIBUTES>
       <ATT name="IsReentrant">false</ATT>
       <ATT name="Name"><![CDATA[Diagramme de sequence interface]]></ATT>
@@ -213,10 +213,32 @@
               <OBJECT>
                 <ID name="" mc="Standard.InteractionOperand" uid="a6614a07-5c06-47de-b85d-71cb23f80e98"/>
                 <ATTRIBUTES>
-                  <ATT name="Guard"></ATT>
-                  <ATT name="EndLineNumber">400</ATT>
+                  <ATT name="Guard"><![CDATA[mode=manuel]]></ATT>
+                  <ATT name="EndLineNumber">414</ATT>
                   <ATT name="LineNumber">288</ATT>
                   <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="InteractionOperand" mc="Standard.InteractionOperand" uid="34aae6b4-c32d-4999-a32b-7a4c5497516e"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[mode=bureau]]></ATT>
+                  <ATT name="EndLineNumber">545</ATT>
+                  <ATT name="LineNumber">415</ATT>
+                  <ATT name="Name"><![CDATA[InteractionOperand]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="InteractionOperand" mc="Standard.InteractionOperand" uid="d781ea66-5c28-41d8-b8c5-c9bbdc04911c"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[mode=bureau à bureau]]></ATT>
+                  <ATT name="EndLineNumber">689</ATT>
+                  <ATT name="LineNumber">546</ATT>
+                  <ATT name="Name"><![CDATA[InteractionOperand]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES></DEPENDENCIES>
@@ -353,30 +375,6 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="CombinedFragment" mc="Standard.CombinedFragment" uid="73bf3c64-c93b-447e-a557-d5f7c96b74b5"/>
-          <ATTRIBUTES>
-            <ATT name="Operator">AltOp</ATT>
-            <ATT name="LineNumber">428</ATT>
-            <ATT name="Name"><![CDATA[CombinedFragment]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <COMP relation="Operand">
-              <OBJECT>
-                <ID name="" mc="Standard.InteractionOperand" uid="45013cbd-6145-42c7-855d-72378f52bb3c"/>
-                <ATTRIBUTES>
-                  <ATT name="Guard"></ATT>
-                  <ATT name="EndLineNumber">540</ATT>
-                  <ATT name="LineNumber">428</ATT>
-                  <ATT name="Name"></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES></DEPENDENCIES>
-              </OBJECT>
-            </COMP>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
           <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="da05ec99-32a5-4262-ad00-d1ee6558856a"/>
           <ATTRIBUTES>
             <ATT name="LineNumber">461</ATT>
@@ -502,30 +500,6 @@
                 <ID name="Interface" mc="Standard.Lifeline" uid="f0f8c9ac-5f2b-497f-8ae1-852069283f23"/>
               </REFOBJ>
             </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="CombinedFragment" mc="Standard.CombinedFragment" uid="fb887504-a0b1-44f1-9666-12a48599d508"/>
-          <ATTRIBUTES>
-            <ATT name="Operator">AltOp</ATT>
-            <ATT name="LineNumber">568</ATT>
-            <ATT name="Name"><![CDATA[CombinedFragment]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <COMP relation="Operand">
-              <OBJECT>
-                <ID name="" mc="Standard.InteractionOperand" uid="57646b22-d6b0-413d-94fa-a2544b06c275"/>
-                <ATTRIBUTES>
-                  <ATT name="Guard"></ATT>
-                  <ATT name="EndLineNumber">680</ATT>
-                  <ATT name="LineNumber">568</ATT>
-                  <ATT name="Name"></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES></DEPENDENCIES>
-              </OBJECT>
-            </COMP>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
@@ -680,6 +654,8 @@
             </COMP>
           </DEPENDENCIES>
         </OBJECT>
+        <COMPID name="InteractionOperand" mc="Standard.InteractionOperand" uid="34aae6b4-c32d-4999-a32b-7a4c5497516e"/>
+        <COMPID name="InteractionOperand" mc="Standard.InteractionOperand" uid="d781ea66-5c28-41d8-b8c5-c9bbdc04911c"/>
       </COMP>
       <COMP relation="OwnedLine">
         <OBJECT>

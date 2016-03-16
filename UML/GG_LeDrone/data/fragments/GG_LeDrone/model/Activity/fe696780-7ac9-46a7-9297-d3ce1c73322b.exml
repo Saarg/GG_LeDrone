@@ -223,7 +223,7 @@
                   </COMP>
                   <COMP relation="Input">
                     <OBJECT>
-                      <ID name="position" mc="Standard.InputPin" uid="a14a28dc-741a-4963-95ea-f07b01529818"/>
+                      <ID name="depart" mc="Standard.InputPin" uid="a14a28dc-741a-4963-95ea-f07b01529818"/>
                       <ATTRIBUTES>
                         <ATT name="IsSelf">false</ATT>
                         <ATT name="IsControl">false</ATT>
@@ -232,13 +232,13 @@
                         <ATT name="Ordering">FIFO</ATT>
                         <ATT name="SelectionBehavior"></ATT>
                         <ATT name="UpperBound"><![CDATA[1]]></ATT>
-                        <ATT name="Name"><![CDATA[position]]></ATT>
+                        <ATT name="Name"><![CDATA[depart]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
                       </ATTRIBUTES>
                       <DEPENDENCIES></DEPENDENCIES>
                     </OBJECT>
                     <OBJECT>
-                      <ID name="chercheur" mc="Standard.InputPin" uid="4906c16b-3712-4f7b-ad0d-9b50fda1bf24"/>
+                      <ID name="destination" mc="Standard.InputPin" uid="4906c16b-3712-4f7b-ad0d-9b50fda1bf24"/>
                       <ATTRIBUTES>
                         <ATT name="IsSelf">false</ATT>
                         <ATT name="IsControl">false</ATT>
@@ -247,7 +247,7 @@
                         <ATT name="Ordering">FIFO</ATT>
                         <ATT name="SelectionBehavior"></ATT>
                         <ATT name="UpperBound"><![CDATA[1]]></ATT>
-                        <ATT name="Name"><![CDATA[chercheur]]></ATT>
+                        <ATT name="Name"><![CDATA[destination]]></ATT>
                         <ATT name="status">1970354901745664</ATT>
                       </ATTRIBUTES>
                       <DEPENDENCIES></DEPENDENCIES>

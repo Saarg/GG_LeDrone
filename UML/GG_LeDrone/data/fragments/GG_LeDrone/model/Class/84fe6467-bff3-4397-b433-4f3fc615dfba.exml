@@ -78,23 +78,6 @@
             <LINK relation="Extension">
               <FOREIGNID name="create" mc="Standard.Stereotype" uid="00700680-0000-0204-0000-000000000000"/>
             </LINK>
-            <COMP relation="Descriptor">
-              <OBJECT>
-                <ID name="Note" mc="Standard.Note" uid="ab066abc-323c-41c1-af1e-1548160b8433"/>
-                <ATTRIBUTES>
-                  <ATT name="Content"><![CDATA[<p>Les dimension de l&#39;image sont pas impos&eacute;es par le drone ?</p>
-]]></ATT>
-                  <ATT name="MimeType"><![CDATA[text/html]]></ATT>
-                  <ATT name="Name"><![CDATA[Note]]></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES>
-                  <LINK relation="Model">
-                    <FOREIGNID name="description" mc="Standard.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
-                  </LINK>
-                </DEPENDENCIES>
-              </OBJECT>
-            </COMP>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>

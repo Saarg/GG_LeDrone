@@ -13,9 +13,6 @@
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
-      <COMP relation="OwnedBehavior">
-        <COMPID name="Diagramme de sequence interface" mc="Standard.Interaction" uid="92901d3b-4384-41af-a1bb-cdbada7d7c04"/>
-      </COMP>
       <COMP relation="OwnedElement">
         <COMPID name="Mode" mc="Standard.Class" uid="2683ec69-c31d-4b46-b986-ca00ebf00ac8"/>
         <COMPID name="Interface" mc="Standard.Class" uid="9307ddbb-ebef-4c77-b5cf-967941d8a103"/>
