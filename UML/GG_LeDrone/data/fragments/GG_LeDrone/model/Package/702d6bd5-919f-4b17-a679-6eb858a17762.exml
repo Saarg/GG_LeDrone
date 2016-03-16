@@ -17,10 +17,11 @@
         <COMPID name="Déplacer le drone manuelement" mc="Standard.UseCase" uid="585cb8f3-49b0-4646-a889-67ab5d5b12af"/>
         <COMPID name="Aller a un bureau" mc="Standard.UseCase" uid="a43d9bfe-8533-4570-be91-243db5b2e9f3"/>
         <COMPID name="Aller de bureau à bureau" mc="Standard.UseCase" uid="b895de47-31e6-4053-ae80-9ad8a66c53b1"/>
-        <COMPID name="Déplacer le drone automatiquement" mc="Standard.UseCase" uid="94eec81d-b848-499b-a561-55b0d9c3c904"/>
         <COMPID name="Choisir mode" mc="Standard.UseCase" uid="efdb6452-5e5f-4609-819a-067ab80c7899"/>
         <COMPID name="Utilisateur" mc="Standard.Actor" uid="d4aaf53b-c7f6-401e-ac6c-87d24debadc6"/>
         <COMPID name="Parrot sumo" mc="Standard.Actor" uid="c8dd87ca-dff8-4409-9070-5f44a05e4109"/>
+        <COMPID name="Actor" mc="Standard.Actor" uid="8e618be2-25ae-44d4-b778-d887a62f8f0d"/>
+        <COMPID name="Use Case" mc="Standard.UseCase" uid="1d251091-6bcc-42f5-81ed-d7934538210d"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="Diagramme de cas d'utilisation" mc="Standard.UseCaseDiagram" uid="feb4c4c3-1bf1-4ef5-ace9-feae172c402c"/>

@@ -2,7 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Activity" version="4">
   <OBJECT>
     <ID name="Activity" mc="Standard.Activity" uid="68b3a378-5a4a-4dd7-a80d-d8cfcb0af37b"/>
-    <PID name="Diagramme activité modes" mc="Standard.Package" uid="a3d2df09-6941-44a3-8011-e148b0f10f80"/>
+    <PID name="Diagramme activité global" mc="Standard.Package" uid="a3d2df09-6941-44a3-8011-e148b0f10f80"/>
     <ATTRIBUTES>
       <ATT name="IsSingleExecution">false</ATT>
       <ATT name="IsReadOnly">false</ATT>
