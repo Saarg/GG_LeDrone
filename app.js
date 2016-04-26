@@ -5,6 +5,22 @@ var port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/public'));
 
+// API
+require('./app/routes')(app);
+
+// Public routes
+app.get('/mode_manuel', function(req, res) {
+    res.sendFile(__dirname+'/public/html/mode_manuel.html');
+});
+
+app.get('/mode_bureau', function(req, res) {
+    res.sendFile(__dirname+'/public/html/mode_bureau.html');
+});
+
+app.get('/mode_bureau_a_bureau', function(req, res) {
+    res.sendFile(__dirname+'/public/html/mode_bureau_a_bureau.html');
+});
+
 app.get('*', function(req, res) {
     res.sendFile(__dirname+'/public/html/index.html');
 });
