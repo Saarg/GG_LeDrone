@@ -4,8 +4,6 @@ var DroneHandler = function() {
     var base = offices[0];
     var path = [];
     var dest;
-
-    var drone = new Drone(base)
 };
 
 DroneHandler.prototype.droneConnect = function() {

@@ -1,31 +1,50 @@
-var Drone = function(pos) {
-    var speed = 0;
-    var direcetion = 0;
-    var batteryLevel = -1;
+var nodeSumo = require('node-sumo');
 
-    var position = pos;
+var Drone = function(pos) {
+    this.speed = 0;
+    this.direcetion = 0;
+    this.batteryLevel = -1;
+
+    this.position = pos;
+
+    this.drone = nodeSumo.createClient();
 
     // ENUMS
-    var jumps = {hight: 0, long: 1};
-    var direcetions = {forward: 0, backward: 1, left: 2, right: 3};
+    this.jumps = {hight: 0, long: 1};
+    this.directions = {forward: 0, backward: 1, left: 2, right: 3};
 };
 
-Drone.prototype.sumo = require("node-sumo");
-
 Drone.prototype.connect = function () {
-    // body...
+    // Connect
+    this.drone.connect(function() {
+      console.log("Connected...");
+    });
+
+    // Update vars
+    this.drone.on("battery", function(battery) {
+      batteryLevel = battery;
+      console.log("Battery Level: "+batteryLevel);
+    });
 };
 
 Drone.prototype.move = function (dir, speed) {
-    // body...
+    stop();
+    if(dir == directions.forward)
+        this.drone.forward(50);
+    else if(dir == directions.forward)
+        this.drone.backward(50);
+    else if(dir == directions.forward)
+        this.drone.left(50);
+    else if(dir == directions.forward)
+        this.drone.right(50);
 };
 
 Drone.prototype.stop = function () {
-    // body...
+    this.drone.stop();
 };
 
 Drone.prototype.jump = function (type) {
-    // body...
+    this.drone.animationsLongJump();
 };
 
 Drone.prototype.tap = function () {
