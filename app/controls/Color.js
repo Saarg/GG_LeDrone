@@ -1,28 +1,14 @@
-function Color(red,green,blue){
-  this.red=red;
-  this.green=green;
-  this.blue=blue;
-}
+var Color = function(r, g, b) {
+        var r = r;
+        var g = g;
+        var b = b;
+};
 
-Color.prototype.isColor = function(color){
-    var dr = Math.abs(this.red-color.red);
-    var dg = Math.abs(this.green-color.green);
-    var db = Math.abs(this.blue-color.blue);
+Color.prototype.isColor = function (c) {
+    if(c.r == this.r && c.g == this.g && c.b == this.b)
+        return true;
 
-    var delta = dr+dg+db;
+    return false;
+};
 
-    if(delta <= 15) return TRUE; //valeur a remplacer par le seuil de tolerance
-    return FALSE;
-}
-
-
-Color.prototype.isColor = function(r,g,b){
-    var dr = Math.abs(this.red-r);
-    var dg = Math.abs(this.green-g);
-    var db = Math.abs(this.blue-b);
-
-    var delta = dr+dg+db;
-
-    if(delta <= 15) return TRUE; //valeur a remplacer par le seuil de tolerance
-    return FALSE;
-}
+module.exports = Color;
