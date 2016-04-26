@@ -1,35 +1,29 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+*~
+[#]*[#]
+.\#*
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
 *.out
-*.app
+*.pid
+*.gz
 
-out/
-build/
-.repo/
-packages/
-products/
-build.sh
+*.sublime*
+
+pids
+logs
+results
+
+npm-debug.log
+node_modules
+.DS_Store
+
+*.pdf
+*.aux
+*.toc
+*.fls
+*.fdb_latexmk
+.csscomb.json

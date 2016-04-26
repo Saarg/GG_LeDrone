@@ -1,0 +1,29 @@
+{
+  "name": "EntrEmploi",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Saarg/GG_LeDrone.git"
+  },
+  "dependencies": {
+    "node-sumo": "git+https://github.com/forgeByAcision/node-sumo",
+    "express": "latest"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "contributors": [
+    {
+      "name": "Nom Prenom",
+      "email": "bidon@enib.fr",
+      "url": ""
+    },
+    {
+      "name": "Milsonneau Jean",
+      "email": "j3milson@enib.fr",
+      "url": "github.com/Saarg"
+    }
+  ],
+  "license": "MIT"
+}
