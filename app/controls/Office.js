@@ -1,8 +1,5 @@
-var Office = function() {
-    var id = 0;
-    var researcher = "Patate";
-    var distance = 0;
-    var arcs = [];
-};
-
-module.exports = Office;
+function Office(id,researcher,distance){
+  this.idNumber = id;
+  this.researcher = researcher;
+  this.distance = distance;
+}

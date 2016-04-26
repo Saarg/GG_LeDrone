@@ -1,10 +1,6 @@
-var Image = function(w, h) {
-    var width = w;
-    var height = h;
-};
+function Image(width,height){
+  this.width=width;
+  this.height=height;
+}
 
-Image.prototype.imageAnalysis = function (colorGrid) {
-    // body...
-};
-
-module.exports = Image;
+Image.prototype.imageAnalysis = function(){}
