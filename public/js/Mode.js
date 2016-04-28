@@ -1,6 +1,6 @@
 var Mode = function(nom) {
-    var nom = nom || "undefined";
-    var running = false;
+    this.nom = nom || "undefined";
+    this.running = false;
 };
 
 Mode.prototype.run = function() {
