@@ -82,13 +82,13 @@ Drone.prototype.connect = function (callback) {
 Drone.prototype.move = function (dir, speed) {
     this.stop();
     if(dir == this.directions.forward)
-        this.drone.forward(50);
+        this.drone.forward(speed);
     else if(dir == this.directions.backward)
-        this.drone.backward(50);
+        this.drone.backward(speed);
     else if(dir == this.directions.left)
-        this.drone.left(50);
+        this.drone.left(speed);
     else if(dir == this.directions.right)
-        this.drone.right(50);
+        this.drone.right(speed);
 };
 
 Drone.prototype.stop = function () {

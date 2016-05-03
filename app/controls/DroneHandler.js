@@ -105,7 +105,7 @@ DroneHandler.prototype.runPath = function(officeIndex,moveIndex) {
   if(this.drone.connected && this.drone.ready && this.drone.posture==1){
       var moves = this.path[officeIndex].findArk(officeIndex+1).moves;
 
-      this.drone.move(moves[moveIndex]);
+      this.drone.move(moves[moveIndex],50);
 
       setTimeout(function () {
           if (moveIndex == moves.length) {
@@ -116,7 +116,7 @@ DroneHandler.prototype.runPath = function(officeIndex,moveIndex) {
               this.runPath(officeIndex+1,0);
             }
             else this.runPath(officeIndex,moveIndex+1);
-      }, 50);
+      }, 100);
   }
 };
 
