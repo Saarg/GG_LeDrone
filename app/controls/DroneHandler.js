@@ -1,4 +1,7 @@
 'use strict'
+var Drone   = require("./Drone.js");
+var Office  = require("./Office.js");
+var Ark     = require("./Ark.js");
 
 var DroneHandler = function(offices) {
     this.offices=offices;
@@ -7,6 +10,8 @@ var DroneHandler = function(offices) {
     //this.base = this.offices[0];
     this.path = [];
     this.destination;
+
+    this.drone = Drone;
 };
 
 DroneHandler.prototype.droneConnect = function() {
@@ -14,16 +19,16 @@ DroneHandler.prototype.droneConnect = function() {
 };
 
 DroneHandler.prototype.dijkstra	= function(){ //boucle infinie
-	var sumMarks=0;
-  var len = this.offices.length;
-  var marks = [];        //vecteur de marquage
-  var distance = [];     //vecteur distances
-  var incArks = [];      //vecteur arcs entrants
+    var sumMarks=0;
+    var len = this.offices.length;
+    var marks = [];        //vecteur de marquage
+    var distance = [];     //vecteur distances
+    var incArks = [];      //vecteur arcs entrants
 
-  for (let i = 0; i < len; i++) {			/*-------------------------------------------------*/
+    for (var i = 0; i < len; i++) {			/*-------------------------------------------------*/
 		marks[i] = 0;
 		distance[i] = 99999999;				/*Initialisation des sommets*/
-  }
+    }
 
 	var pos = this.offices.indexOf(this.drone.position);		/*Sommet de départ*/
   distance[pos] = 0;
@@ -44,8 +49,8 @@ DroneHandler.prototype.dijkstra	= function(){ //boucle infinie
 		var currOffice = this.offices[officeIndex]; //sommet a traite
 									/*-------------------------------------------------*/
 
-		for(let j in currOffice.arks){  /*Parcours des arcs de ce sommet*/
-			var nextOffice = currOffice.arks[j].getOtherExtremity(currOffice);
+		for(var j in currOffice.arks){  /*Parcours des arcs de ce sommet*/
+			var nextOffice = currOffice.arks[j].getExtremity(currOffice);
 			var nextPos = this.offices.indexOf(nextOffice); 		/*On prends l'extremite de l'arc*/
       if (distance[nextPos]> currOffice.arks[j].length + distance[officeIndex]) {
 				distance[nextPos] = distance[officeIndex] + currOffice.arks[j].length;
@@ -54,10 +59,10 @@ DroneHandler.prototype.dijkstra	= function(){ //boucle infinie
         }
 
         marks[officeIndex] = 1; 	/*on marque le sommet quand on a fini*/
-		for(let l in marks) sumMarks += marks[l]; //on compte le nb de sommets marques
+		for(var l in marks) sumMarks += marks[l]; //on compte le nb de sommets marques
     }
 
-    for (let j in this.offices) {
+    for (var j in this.offices) {
 		this.offices[j].distance = distance[j];
   }	//recopie de la distance dans chaque sommet (utile ?)
 
@@ -73,7 +78,7 @@ DroneHandler.prototype.convertPath = function(arksVec, destination){	/*convertit
 	var posNbr = this.offices.indexOf(destination);
 
 	while (pos != start && arksVec[posNbr]) {
-		pos = arksVec[posNbr].getOtherExtremity(pos);
+		pos = arksVec[posNbr].getExtremity(pos);
     if(pos==start) break;
 		posNbr = this.offices.indexOf(pos);
 		this.path.push(this.offices[posNbr]);		//apres cette boucle, path contient tous les sommets
@@ -98,21 +103,20 @@ DroneHandler.prototype.findPath = function(req, res) {
 
 DroneHandler.prototype.runPath = function(officeIndex,moveIndex) {
   if(this.drone.connected && this.drone.ready && this.drone.posture==1){
-  var moves = this.path[officeIndex].findArk(officeIndex+1).moves;
+      var moves = this.path[officeIndex].findArk(officeIndex+1).moves;
 
-  this.drone.move(moves[moveIndex]);
+      this.drone.move(moves[moveIndex]);
 
-  var run = setTimeout(
-    { if (moveIndex == moves.length) {
-        this.drone.position=this.path[officeIndex+1];
-        if(this.drone.position==this.destination){
-          return 0;
-        }
-        this.runPath(officeIndex+1,0);
-      }
-      else this.runPath(officeIndex,moveIndex+1);
-    }
-    ,50);
+      setTimeout(function () {
+          if (moveIndex == moves.length) {
+              this.drone.position=this.path[officeIndex+1];
+              if(this.drone.position==this.destination){
+                return 0;
+              }
+              this.runPath(officeIndex+1,0);
+            }
+            else this.runPath(officeIndex,moveIndex+1);
+      }, 50);
   }
 };
 

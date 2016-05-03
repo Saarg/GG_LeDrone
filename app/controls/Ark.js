@@ -1,9 +1,9 @@
-function Ark(length, office1, office2){
+var Ark = function(length, office1, office2){
   this.length = length;
   this.office1 = office1;
   this.office2 = office2;
-  office1.arks.push(this); //les arcs s'ajoutent tous ceuls aux bureaux
-  office2.arks.push(this);
+  this.office1.arks.push(this); //les arcs s'ajoutent tous ceuls aux bureaux
+  this.office2.arks.push(this);
 }
 
 
@@ -13,4 +13,4 @@ Ark.prototype.getExtremity = function(office){
   else return false;
 }
 
-module.export = Ark;
+module.exports = Ark;

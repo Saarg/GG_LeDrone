@@ -1,5 +1,25 @@
-function test ()
-{
+var Drone  = require("./../controls/Drone.js");
+var DroneHandler = require("./../controls/DroneHandler.js");
+var Office  = require("./../controls/Office.js");
+var Ark     = require("./../controls/Ark.js");
+
+Drone.connect(function(err, data) {
+    //callback quand le drone se connecte
+    Drone.move(Drone.directions.left);
+    setTimeout(function () {
+        Drone.move(Drone.directions.right);
+        setTimeout(function () {
+            Drone.stop();
+            Drone.getPicture();
+
+			test();
+        }, 500);
+    }, 500);
+
+});
+
+var test = function() {
+	console.log("Instanciation Offices");
 	var officeA = new Office(1, "A");
 	var officeB = new Office(2, "B");
 	var officeC = new Office(3, "C");
@@ -9,6 +29,7 @@ function test ()
 	var officeG = new Office(8, "G");
 	var officeH = new Office(9, "H");
 
+	console.log("Instanciation arcs");
 	var arcAB = new Ark(1, officeA, officeB);
 	var arcAC = new Ark(2, officeA, officeC);
 	var arcAD = new Ark(3, officeA, officeD);
@@ -23,25 +44,26 @@ function test ()
 	var arcEG = new Ark(1, officeE, officeG);
 	var arcEH = new Ark(3, officeE, officeH);
 
+	console.log("Création liste offices");
 	var offices = [officeA,officeB,officeC,officeD,officeE,officeF,officeG,officeH];
 
+	console.log("Assignation des mouvements");
 	arcAB.moves=[0];
 	arcBG.moves=[2,0];
 	arcEG.moves=[2];
 	arcEF.moves=[0];
 
-
-	var offices = [officeA,officeB,officeC,officeD,officeE,officeF,officeG,officeH];
-
-
-	var drone = new Drone(officeA);
+	console.log("Création du DroneHandler");
 	var handler = new DroneHandler(offices);
-	handler.drone = drone;
 
+	console.log("Appel Djikstra");
 	var arkVec = handler.dijkstra();
-	console.log(arkVec)
+	console.log("sortie dijkstra: "+arkVec)
 	//for(var i in arkVec) console.log("arks path : "+arkVec[i].office1.researcher + " "+arkVec[i].office2.researcher);
+	console.log("Convertion chemin");
 	handler.convertPath(arkVec, officeF);
+	console.log("Liste des sommets:");
 	for(var i in handler.path) console.log(handler.path[i].researcher);
+	console.log("RunPath");
 	handler.runPath();
-}
+};

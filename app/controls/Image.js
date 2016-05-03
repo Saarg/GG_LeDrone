@@ -1,4 +1,4 @@
-var Color    = require("./../controls/Color.js");
+var Color    = require("./Color.js");
 
 var Image = function(w, h) {
     this.width = w | 640;
