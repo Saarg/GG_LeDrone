@@ -5,4 +5,10 @@ var Office = function() {
     var arcs = [];
 };
 
+Office.prototype.findArk=function(office){
+  for(var i in this.arks){
+    if(this.arks[i].getOtherExtremity(this)==office)
+      return this.arks[i];
+  }
+}
 module.exports = Office;

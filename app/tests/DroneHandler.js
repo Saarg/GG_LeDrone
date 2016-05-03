@@ -25,6 +25,14 @@ function test ()
 
 	var offices = [officeA,officeB,officeC,officeD,officeE,officeF,officeG,officeH];
 
+	arcAB.moves=[0];
+	arcBG.moves=[2,0];
+	arcEG.moves=[2];
+	arcEF.moves=[0];
+
+
+	var offices = [officeA,officeB,officeC,officeD,officeE,officeF,officeG,officeH];
+
 
 	var drone = new Drone(officeA);
 	var handler = new DroneHandler(offices);
@@ -35,4 +43,5 @@ function test ()
 	//for(var i in arkVec) console.log("arks path : "+arkVec[i].office1.researcher + " "+arkVec[i].office2.researcher);
 	handler.convertPath(arkVec, officeF);
 	for(var i in handler.path) console.log(handler.path[i].researcher);
+	handler.runPath();
 }

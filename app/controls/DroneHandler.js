@@ -88,17 +88,32 @@ DroneHandler.prototype.convertPath = function(arksVec, destination){	/*convertit
 
 
 DroneHandler.prototype.findPath = function(req, res) {
-  //req : destinaton req : path ?
-
-  this.dijkstra();
-  return res = this.convertPath(req);
+  arks=this.dijkstra();
+  this.path=this.convertPath(arks,req);
+  res.json({ success: true, message: "patate"})
 
 };
 
 
 
-DroneHandler.prototype.runPath = function(req, res) {
+DroneHandler.prototype.runPath = function(officeIndex,moveIndex) {
+  if(this.drone.connected && this.drone.ready && this.drone.posture==1){
+  var moves = this.path[officeIndex].findArk(officeIndex+1).moves;
 
+  this.drone.move(moves[moveIndex]);
+
+  var run = setTimeout(
+    { if (moveIndex == moves.length) {
+        this.drone.position=this.path[officeIndex+1];
+        if(this.drone.position==this.destination){
+          return 0;
+        }
+        this.runPath(officeIndex+1,0);
+      }
+      else this.runPath(officeIndex,moveIndex+1);
+    }
+    ,50);
+  }
 };
 
 
