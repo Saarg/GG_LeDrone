@@ -27,3 +27,5 @@ node_modules
 *.fls
 *.fdb_latexmk
 .csscomb.json
+
+img

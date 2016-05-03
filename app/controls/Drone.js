@@ -7,6 +7,7 @@
 */
 
 var nodeSumo = require('node-sumo');
+var fs       = require('fs');
 
 var Drone = function(pos) {
     console.log("Création de l'instance");
@@ -22,6 +23,8 @@ var Drone = function(pos) {
 
     this.drone = nodeSumo.createClient();
 
+    this.buf = null;
+
     // ENUMS
     this.jumps = {hight: 0, long: 1};
     this.directions = {forward: 0, backward: 1, left: 2, right: 3};
@@ -35,6 +38,12 @@ Drone.prototype.connect = function (callback) {
         d.connected = true;
         console.log("Connected...");
         callback(null, null);
+    });
+
+    this.video = this.drone.getVideoStream();
+    this.video.on("data", function(data) {
+        var d = Drone.getInstance();
+        d.buf = data;
     });
 
     // Update vars
@@ -95,7 +104,10 @@ Drone.prototype.tap = function () {
 };
 
 Drone.prototype.getPicture = function () {
-    // body...
+    console.log(this.buf);
+    fs.writeFile('img', this.buf,function(err){
+        if(err) throw err;
+    });
 };
 
 Drone.instance = null;

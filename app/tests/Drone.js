@@ -7,6 +7,7 @@ Drone.connect(function(err, data) {
         Drone.move(Drone.directions.right);
         setTimeout(function () {
             Drone.stop();
+            Drone.getPicture();
             go();
         }, 500);
     }, 500);
