@@ -10,6 +10,7 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,18 +18,23 @@
     <div class="container-fluid">
 
       <header class="row">
+	<div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+	<div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+	<div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
         <div class="page-header">
-          <h1 class="col-sm-8">GG le drone vous aide :</h1>
-	  <div class="col-sm-4"> <img src="images/cerv-facade.jpg" class="img-responsive" alt="Cinque Terre"> </div>
+          <h1 class="col-sm-12 centrage">GG le drone vous aide :</h1>
         </div>
       </header>
+      
+      <div class="row centrage">
+	  <p>Choississez votre mode d'utilisation</p>
+      </div>
 
-
-      <div class="row col-sm-12">
-        <div class="btn-group-vertical" role="group" aria-label="...">
-	<button type="button" class="btn btn-default">mode manuel</button>
-	<button type="button" class="btn btn-default">mode bureau</button>
-	<button type="button" class="btn btn-default">mode bureau à bureau</button>
+      <div class="row">
+	<div class="btn-group-vertical col-sm-4 col-sm-offset-4" role="group" aria-label="...">
+	  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Mode manuel</button>
+	  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Mode bureau</button>
+	  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-user"></span> Mode bureau à bureau</button>
 	</div>
 
       </div>

@@ -1,12 +1,20 @@
 .page-header{
-  padding-bottom :0px;
+  padding-bottom:0px;
 }
 
 body{
   background-color: whitesmoke;
 }
 
-h1{
-   text-align : center;
+.centrage{
+  text-align: center;
 }
 
+.nomarge{
+  margin:0px;
+  padding: 0px;
+}
+
+header{
+  border: 1px solid #EEE;
+}
