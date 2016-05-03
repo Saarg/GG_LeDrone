@@ -1,6 +1,6 @@
 var Interface = function() {
-    var curmode = -1;
-    var modes = [];
+    this.curmode = -1;
+    this.modes = [];
 };
 
 Interface.prototype.selectMode = function() {
