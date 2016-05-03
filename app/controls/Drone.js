@@ -1,6 +1,15 @@
+"use strict"
+
+/*
+*
+* singleton de la classe drone.
+*
+*/
+
 var nodeSumo = require('node-sumo');
 
 var Drone = function(pos) {
+    console.log("Création de l'instance");
     this.speed = 0;
     this.direcetion = 0;
 
@@ -8,6 +17,8 @@ var Drone = function(pos) {
     this.posture = -1;
 
     this.position = pos;
+    this.connected = false;
+    this.ready = false;
 
     this.drone = nodeSumo.createClient();
 
@@ -20,33 +31,40 @@ var Drone = function(pos) {
 Drone.prototype.connect = function (callback) {
     // Connect
     this.drone.connect(function() {
-        this.connected = true;
+        var d = Drone.getInstance();
+        d.connected = true;
         console.log("Connected...");
         callback(null, null);
     });
 
     // Update vars
     this.drone.on("battery", function(battery) {
-        batteryLevel = battery;
+        var d = Drone.getInstance();
+        d.batteryLevel = battery;
     });
     this.drone.on("postureStanding", function(battery) {
-        this.posture = this.postures.postureStanding;
+        var d = Drone.getInstance();
+        d.posture = d.postures.postureStanding;
     });
     this.drone.on("postureJumper", function(battery) {
-        this.posture = this.postures.postureJumper;
+        var d = Drone.getInstance();
+        d.posture = d.postures.postureJumper;
     });
     this.drone.on("postureKicker", function(battery) {
-        this.posture = this.postures.postureKicker;
+        var d = Drone.getInstance();
+        d.posture = d.postures.postureKicker;
     });
     this.drone.on("postureStuck", function(battery) {
-        this.posture = this.postures.postureStuck;
+        var d = Drone.getInstance();
+        d.posture = d.postures.postureStuck;
     });
     this.drone.on("postureStuck", function(battery) {
-        this.posture = this.postures.postureStuck;
+        var d = Drone.getInstance();
+        d.posture = d.postures.postureStuck;
     });
-    this.drone.on("ready", function(battery) {
-        this.ready = true;
-
+    this.drone.on("ready", function() {
+        var d = Drone.getInstance();
+        d.ready = true;
     });
 
 };
@@ -55,11 +73,11 @@ Drone.prototype.move = function (dir, speed) {
     this.stop();
     if(dir == this.directions.forward)
         this.drone.forward(50);
-    else if(dir == this.directions.forward)
+    else if(dir == this.directions.backward)
         this.drone.backward(50);
-    else if(dir == this.directions.forward)
+    else if(dir == this.directions.left)
         this.drone.left(50);
-    else if(dir == this.directions.forward)
+    else if(dir == this.directions.right)
         this.drone.right(50);
 };
 
@@ -68,7 +86,8 @@ Drone.prototype.stop = function () {
 };
 
 Drone.prototype.jump = function (type) {
-    this.drone.animationsLongJump();
+    console.error("les sauts ne sont pas disponible GG est en panne");
+    //this.drone.animationsLongJump();
 };
 
 Drone.prototype.tap = function () {
@@ -79,4 +98,13 @@ Drone.prototype.getPicture = function () {
     // body...
 };
 
-module.exports = Drone;
+Drone.instance = null;
+
+Drone.getInstance = function(){
+    if(this.instance === null){
+        this.instance = new Drone();
+    }
+    return this.instance;
+}
+
+module.exports = Drone.getInstance();
