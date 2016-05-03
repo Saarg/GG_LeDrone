@@ -5,9 +5,10 @@
 * singleton de la classe drone.
 *
 */
-
 var nodeSumo = require('node-sumo');
 var fs       = require('fs');
+
+var Image    = require('./Image.js');
 
 var Drone = function(pos) {
     console.log("Création de l'instance");
@@ -23,7 +24,7 @@ var Drone = function(pos) {
 
     this.drone = nodeSumo.createClient();
 
-    this.buf = null;
+    this.img = new Image();
 
     // ENUMS
     this.jumps = {hight: 0, long: 1};
@@ -43,7 +44,7 @@ Drone.prototype.connect = function (callback) {
     this.video = this.drone.getVideoStream();
     this.video.on("data", function(data) {
         var d = Drone.getInstance();
-        d.buf = data;
+        d.img.setData(data);
     });
 
     // Update vars
@@ -105,7 +106,7 @@ Drone.prototype.tap = function () {
 
 Drone.prototype.getPicture = function () {
     console.log(this.buf);
-    fs.writeFile('img', this.buf,function(err){
+    fs.writeFile('img', this.img.getData(),function(err){
         if(err) throw err;
     });
 };

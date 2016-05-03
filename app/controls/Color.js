@@ -1,7 +1,7 @@
 var Color = function(r, g, b) {
-        var r = r;
-        var g = g;
-        var b = b;
+        this.r = r;
+        this.g = g;
+        this.b = b;
 };
 
 Color.prototype.isColor = function (c) {
@@ -9,6 +9,10 @@ Color.prototype.isColor = function (c) {
         return true;
 
     return false;
+};
+
+Color.prototype.toString = function () {
+    return "R:"+this.r+" G:"+this.g+" B:"+this.b;
 };
 
 module.exports = Color;

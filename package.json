@@ -9,8 +9,7 @@
   "dependencies": {
     "node-sumo": "git+https://github.com/forgeByAcision/node-sumo",
     "express": "latest",
-    "mocha": "latest",
-    "chai": "latest"
+    "jpeg": "latest"
   },
   "scripts": {
     "start": "node app.js"
