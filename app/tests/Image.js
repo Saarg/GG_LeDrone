@@ -15,9 +15,9 @@ var colorGrid = [3];
 for (var i = 0 ; i < 3 ; i++) {
     colorGrid[i] = [3];
 
-    colorGrid[i][0] = new Color(255, 255, 255);
-    colorGrid[i][1] = new Color(255, 255, 255);
-    colorGrid[i][2] = new Color(255, 255, 255);
+    colorGrid[i][0] = Color.red;
+    colorGrid[i][1] = Color.green;
+    colorGrid[i][2] = Color.blue;
 }
 
 console.log("\n\nColorGrid:");
@@ -26,7 +26,7 @@ for (var i = 0 ; i < 3 ; i++) {
 }
 
 
-var moyGrid = img.imageAnalysis(colorGrid, 0.05);
+var moyGrid = img.imageAnalysis(colorGrid, 20);
 
 console.log("\n\ngrille de comparaison:");
 for (var i = 0 ; i < 3 ; i++) {

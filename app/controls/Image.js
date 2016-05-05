@@ -13,7 +13,7 @@ var Image = function(w, h) {
 };
 
 Image.prototype.imageAnalysis = function (colorGrid, precision) {
-    var precision = precision || 0.1;
+    var precision = precision || 10;
 
     // Calcul des couleurs moyennes par zones en fonction de la colorGrid
     var moyGrid = [colorGrid.length];
@@ -39,6 +39,9 @@ Image.prototype.imageAnalysis = function (colorGrid, precision) {
             moyGrid[i][j].r = Math.round(moyGrid[i][j].r/(sizeY*sizeX));
             moyGrid[i][j].g = Math.round(moyGrid[i][j].g/(sizeY*sizeX));
             moyGrid[i][j].b = Math.round(moyGrid[i][j].b/(sizeY*sizeX));
+            console.log(moyGrid[i][j].r);
+            console.log(moyGrid[i][j].g);
+            console.log(moyGrid[i][j].b);
         }
     }
 
@@ -48,9 +51,9 @@ Image.prototype.imageAnalysis = function (colorGrid, precision) {
         retour[i] = [colorGrid[i].length];
 
         for(var j = 0 ; j < colorGrid[i].length ; j++){
-            if( ((colorGrid[i][j].r - (0.1*colorGrid[i][j].r)) <= moyGrid[i][j].r) && (moyGrid[i][j].r <= (colorGrid[i][j].r + (0.1*colorGrid[i][j].r))) &&
-                ((colorGrid[i][j].g - (0.1*colorGrid[i][j].g)) <= moyGrid[i][j].g) && (moyGrid[i][j].g <= (colorGrid[i][j].g + (0.1*colorGrid[i][j].g))) &&
-                ((colorGrid[i][j].b - (0.1*colorGrid[i][j].b)) <= moyGrid[i][j].b) && (moyGrid[i][j].b <= (colorGrid[i][j].b + (0.1*colorGrid[i][j].b))) )
+            if( ((colorGrid[i][j].r - precision) <= moyGrid[i][j].r) && (moyGrid[i][j].r <= (colorGrid[i][j].r + precision)) &&
+                ((colorGrid[i][j].g - precision) <= moyGrid[i][j].g) && (moyGrid[i][j].g <= (colorGrid[i][j].g + precision)) &&
+                ((colorGrid[i][j].b - precision) <= moyGrid[i][j].b) && (moyGrid[i][j].b <= (colorGrid[i][j].b + precision)) )
                 retour[i][j] = true;
             else {
                 retour[i][j] = false;
