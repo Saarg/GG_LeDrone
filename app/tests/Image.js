@@ -1,13 +1,15 @@
-var fs       = require('fs');
+var fs          = require('fs');
 
-var Image    = require("./../controls/Image.js");
-var Color    = require("./../controls/Color.js");
+var Image       = require("./../controls/Image.js");
+var Color       = require("./../controls/Color.js");
+
 
 var img = new Image();
 
-img.setData(fs.readFileSync('img'));
-console.log("\n\nRaw data:");
+img.setData(fs.readFileSync(__dirname+"/img.jpeg"), "image/jpeg");
+console.log("\n\nRaw data: ");
 console.log(img.getData());
+
 
 var colorGrid = [3];
 for (var i = 0 ; i < 3 ; i++) {
@@ -23,11 +25,10 @@ for (var i = 0 ; i < 3 ; i++) {
     console.log("|| "+colorGrid[i][0].toString()+" | "+colorGrid[i][1].toString()+" | "+colorGrid[i][2].toString()+" ||");
 }
 
-/*
-var moyGrid = img.imageAnalysis(colorGrid);
 
-console.log("\n\nMoyGrid:");
+var moyGrid = img.imageAnalysis(colorGrid, 0.05);
+
+console.log("\n\ngrille de comparaison:");
 for (var i = 0 ; i < 3 ; i++) {
     console.log("|| "+moyGrid[i][0].toString()+" | "+moyGrid[i][1].toString()+" | "+moyGrid[i][2].toString()+" ||");
 }
-*/
