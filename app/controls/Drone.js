@@ -5,6 +5,7 @@
  * singleton de la classe drone.
  *
  */
+
 var nodeSumo = require('node-sumo');
 var fs = require('fs');
 
@@ -16,7 +17,8 @@ var Drone = function(pos) {
     this.direcetion = 0;
 
     this.batteryLevel = -1;
-    this.posture = -1;
+    this.posture = Drone.postureUnknown;
+    this.jumpMotorState = Drone.jumpMotorUnknown;
 
     this.position = pos;
     this.connected = false;
@@ -25,6 +27,10 @@ var Drone = function(pos) {
     this.drone = nodeSumo.createClient();
 
     this.img = new Image();
+
+    // Callbacks
+    this.critical = null;
+    this.low = null;
 
     // ENUMS
     this.jumps = {
@@ -44,51 +50,81 @@ var Drone = function(pos) {
         postureKicker: 2,
         postureStuck: 3
     };
+    this.jumpMotorStates = {
+        jumpMotorUnknown: -1,
+        jumpMotorOK: 0,
+        jumpMotorErrorBlocked: 1,
+        jumpMotorErrorOverheated: 2
+    };
+
 };
 
 Drone.prototype.connect = function(callback) {
+    var d = this;
+
     // Connect
     this.drone.connect(function() {
-        var d = Drone.getInstance();
         d.connected = true;
         console.log("Connected...");
         callback(null, null);
     });
 
+    // Gestion des images en provenance de gg
     this.video = this.drone.getVideoStream();
     this.video.on("data", function(data) {
-        var d = Drone.getInstance();
-        d.img.setData(data);
+        d.img.setData(data, "image/jpeg");
     });
 
-    // Update vars
+    // Battery updates
     this.drone.on("battery", function(battery) {
-        var d = Drone.getInstance();
         d.batteryLevel = battery;
     });
-    this.drone.on("postureStanding", function(battery) {
-        var d = Drone.getInstance();
-        d.posture = d.postures.postureStanding;
+    this.drone.on("batteryCritical", function() {
+        if(d.critical)
+            d.critical();
+        else {
+            d.stop();
+        }
     });
-    this.drone.on("postureJumper", function(battery) {
-        var d = Drone.getInstance();
-        d.posture = d.postures.postureJumper;
+    this.drone.on("batteryLow", function() {
+        if(d.low)
+            d.low();
+        else {
+            d.stop();
+        }
     });
-    this.drone.on("postureKicker", function(battery) {
-        var d = Drone.getInstance();
-        d.posture = d.postures.postureKicker;
+
+    // PostureHandlers
+    this.drone.on("postureStanding", function() {
+        d.posture = this.postures.postureStanding;
     });
-    this.drone.on("postureStuck", function(battery) {
-        var d = Drone.getInstance();
-        d.posture = d.postures.postureStuck;
+    this.drone.on("postureJumper", function() {
+        d.posture = this.postures.postureJumper;
     });
-    this.drone.on("postureStuck", function(battery) {
-        var d = Drone.getInstance();
-        d.posture = d.postures.postureStuck;
+    this.drone.on("postureKicker", function() {
+        d.posture = this.postures.postureKicker;
+    });
+    this.drone.on("postureStuck", function() {
+        d.posture = this.postures.postureStuck;
+    });
+    this.drone.on("postureStuck", function() {
+        d.posture = this.postures.postureStuck;
     });
     this.drone.on("ready", function() {
-        var d = Drone.getInstance();
         d.ready = true;
+    });
+
+    // TODO gestion des jumpLoad mais comme le notre est cassé...
+
+    // JumpMotorHandler
+    this.drone.on("jumpMotorOK", function() {
+        d.jumpMotorState = this.jumpMotorStates.jumpMotorOK;
+    });
+    this.drone.on("jumpMotorErrorBlocked", function() {
+        d.jumpMotorState = this.jumpMotorStates.jumpMotorErrorBlocked;
+    });
+    this.drone.on("jumpMotorErrorOverheated", function() {
+        d.jumpMotorState = this.jumpMotorStates.jumpMotorErrorOverheated;
     });
 
 };
@@ -111,6 +147,7 @@ Drone.prototype.stop = function() {
 
 Drone.prototype.jump = function(type) {
     console.error("les sauts ne sont pas disponible GG est en panne");
+    //this.drone.postureJumper();
     //this.drone.animationsLongJump();
 };
 
@@ -125,6 +162,11 @@ Drone.prototype.getPicture = function() {
     });
 };
 
+Drone.prototype.toString = function () {
+    return "Drone connecte: " + this.connected + " ready: " + this.ready + " batterie: " + this.batteryLevel+"%";
+};
+
+// SINGLETON
 Drone.instance = null;
 
 Drone.getInstance = function() {

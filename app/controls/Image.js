@@ -1,5 +1,11 @@
 "use strict"
 
+/*
+ *
+ * Image permet d'interpreter et de stocker une image a partir d'un buffer et de l'analyser
+ *
+ */
+
 var getPixels   = require("get-pixels");
 
 var Color    = require("./Color.js");
@@ -86,6 +92,10 @@ Image.prototype.setData = function (data, type) {
 };
 Image.prototype.getData = function () {
     return this.data;
+};
+
+Image.prototype.toString = function () {
+    return "width: " + this.width + " height: " + this.height + " channels: " + this.channels + "\ndata: " + this.data;
 };
 
 module.exports = Image;

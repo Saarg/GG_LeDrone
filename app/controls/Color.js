@@ -1,3 +1,5 @@
+"use strict"
+
 var Color = function(r, g, b) {
         this.r = r;
         this.g = g;

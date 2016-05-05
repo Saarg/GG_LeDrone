@@ -1,5 +1,13 @@
 var Drone  = require("./../controls/Drone.js");
 
+Drone.low = function() {
+    console.log("niveau de batterie faible!");
+};
+
+Drone.critical = function() {
+    console.log("niveau de batterie critique!!!");
+};
+
 Drone.connect(function(err, data) {
     //callback quand le drone se connecte
     Drone.move(Drone.directions.left);
@@ -21,9 +29,7 @@ var go = function() {
     else if(!Drone.ready) {
         console.error("Le drone n'est pas pret");
     } else {
-        console.log("Batterie: " + Drone.batteryLevel +"%");
-        console.log("Posture: " + Drone.posture);
-        console.log("Succes!");
+        console.log(Drone.toString());
     }
 
 }
