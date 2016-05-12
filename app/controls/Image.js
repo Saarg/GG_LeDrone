@@ -6,7 +6,7 @@
  *
  */
 
-var getPixels   = require("get-pixels");
+//var getPixels   = require("get-pixels");
 
 var Color    = require("./Color.js");
 
@@ -72,7 +72,7 @@ Image.prototype.imageAnalysis = function (colorGrid, precision) {
 Image.prototype.setData = function (data, type) {
     if(type) {
         var img = this;
-        getPixels(data, type, function(err, pixels) {
+        /*getPixels(data, type, function(err, pixels) {
           if(err) {
             console.error(err);
             return;
@@ -81,7 +81,7 @@ Image.prototype.setData = function (data, type) {
           img.height = pixels.shape[1];
           img.channels = pixels.shape[2];
           img.data = pixels.data;
-        })
+      })*/
     } else {
         if(data.length == this.width*this.height*this.channel) {
             this.data = data;

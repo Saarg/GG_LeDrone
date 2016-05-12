@@ -8,6 +8,10 @@ app.use(express.static(__dirname + '/public'));
 // API
 require('./app/routes')(app);
 
+app.get('/test', function(req, res) {
+    res.json({ succes: true, message: "patate"});
+});
+
 // Public routes
 app.get('/mode_manuel', function(req, res) {
     res.sendFile(__dirname+'/public/html/mode_manuel.html');

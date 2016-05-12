@@ -2,16 +2,16 @@
 <html>
 <head>
   <meta charset ="utf-8"/>
-  <title>interface</title> 
-  
+  <title>interface</title>
+
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
@@ -25,16 +25,16 @@
           <h1 class="col-sm-12 centrage">GG le drone vous aide :</h1>
         </div>
       </header>
-      
+
       <div class="row centrage">
 	  <p>Choississez votre mode d'utilisation</p>
       </div>
 
       <div class="row">
 	<div class="btn-group-vertical col-sm-4 col-sm-offset-4" role="group" aria-label="...">
-	  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Mode manuel</button>
-	  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Mode bureau</button>
-	  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-user"></span> Mode bureau à bureau</button>
+	  <a type="button" class="btn btn-default" href="/mode_manuel"><span class="glyphicon glyphicon-edit"></span> Mode manuel</a>
+	  <a type="button" class="btn btn-default" href="/mode_bureau"><span class="glyphicon glyphicon-user"></span> Mode bureau</a>
+	  <a type="button" class="btn btn-default" href="/mode_bureau_a_bureau"><span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-user"></span> Mode bureau à bureau</a>
 	</div>
 
       </div>
@@ -51,5 +51,6 @@
 
   </body>
 
+  <script src="js/Interface.js"></script>
 
-</html> 
+</html>
