@@ -1,56 +1,55 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset ="utf-8"/>
-  <title>interface</title>
+<html ng-app="GG_LeDrone" ng-controller="mainCtrl">
+    <head>
+        <meta charset ="utf-8"/>
+        <title>interface</title>
 
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles/style.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Angular -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
-    <link rel="stylesheet" href="styles/style.css">
-</head>
+        <script src="js/Mode.js"></script>
+        <script src="js/Interface.js"></script>
+        <script src="js/ModeManuel.js"></script>
+        <script src="js/ModeBureau.js"></script>
+        <script src="js/ModeBureauABureau.js"></script>
+        <script src="js/Controllers.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
 
-<body>
-    <div class="container-fluid">
+            <header class="row">
+                <div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+	            <div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+	            <div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+                <div class="page-header">
+                    <h1 class="col-sm-12 centrage">GG le drone vous aide :</h1>
+                </div>
+            </header>
 
-      <header class="row">
-	<div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
-	<div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
-	<div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
-        <div class="page-header">
-          <h1 class="col-sm-12 centrage">GG le drone vous aide :</h1>
+            <div class="row centrage">
+	            <p>Choississez votre mode d'utilisation</p>
+            </div>
+
+            <div class="row">
+    	        <div class="btn-group-vertical col-sm-4 col-sm-offset-4" role="group" aria-label="...">
+    	            <a type="button" class="btn btn-default" href="/mode_manuel"><span class="glyphicon glyphicon-edit"></span> Mode manuel</a>
+    	            <a type="button" class="btn btn-default" href="/mode_bureau"><span class="glyphicon glyphicon-user"></span> Mode bureau</a>
+                    <a type="button" class="btn btn-default" href="/mode_bureau_a_bureau"><span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-user"></span> Mode bureau à bureau</a>
+                </div>
+            </div>
+
+            <footer class="row col-sm-12">
+                <div class="panel panel-body">
+                    <p>Tous droits réservés par moi...</p>
+                </div>
+            </footer>
         </div>
-      </header>
-
-      <div class="row centrage">
-	  <p>Choississez votre mode d'utilisation</p>
-      </div>
-
-      <div class="row">
-	<div class="btn-group-vertical col-sm-4 col-sm-offset-4" role="group" aria-label="...">
-	  <a type="button" class="btn btn-default" href="/mode_manuel"><span class="glyphicon glyphicon-edit"></span> Mode manuel</a>
-	  <a type="button" class="btn btn-default" href="/mode_bureau"><span class="glyphicon glyphicon-user"></span> Mode bureau</a>
-	  <a type="button" class="btn btn-default" href="/mode_bureau_a_bureau"><span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-user"></span> Mode bureau à bureau</a>
-	</div>
-
-      </div>
-
-
-
-      <footer class="row col-sm-12">
-        <div class="panel panel-body">
-          <p>Tous droits réservés par moi...</p>
-        </div>
-      </footer>
-
-    </div>
-
-  </body>
-
-  <script src="js/Interface.js"></script>
-
+    </body>
 </html>
