@@ -42,3 +42,17 @@ app.controller('bureauCtrl', function($scope, $http) {
     });
 
 });
+
+// BUREAU BUREAU================================================================
+app.controller('bureauBureauCtrl', function($scope, $http) {
+    var modeBureau = new ModeBureau();
+
+    $http.get('/api/test').then(function(res) {
+        console.log(res.data);
+    });
+
+    $http.post('/api/test', { data: "is_this_data" }).then(function(res) {
+        console.log(res.data);
+    });
+
+});
