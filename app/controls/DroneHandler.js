@@ -2,7 +2,7 @@
 var Drone = require("./Drone.js");
 var Office = require("./Office.js");
 var Ark = require("./Ark.js");
-
+var fs = require('fs');
 var DroneHandler = function(offices) {
     this.offices = offices;
     //this.offices.prototype=new Office() //c'est fait en mode crassou : lors de l'instanciation d'un office, il s'ajoute au handler A CHANGER
@@ -104,9 +104,7 @@ DroneHandler.prototype.findPath = function(req, res) {
 
 };
 
-
-
-DroneHandler.prototype.runPath = function(req, res, officeIndex, moveIndex) {
+DroneHandler.prototype.runPath = function(req, res, officeIndex, moveIndex, callback) {
     if (this.drone.connected && this.drone.posture == 1) {
 
         console.log("\nentering runPath");
@@ -115,41 +113,49 @@ DroneHandler.prototype.runPath = function(req, res, officeIndex, moveIndex) {
 
         var thisHandler = this; //this pas accessible dans le setTimeout;
 
+        if (this.drone.position == this.destination) {
+            console.log("end");
+            callback = function() {
+                thisHandler.endPath(req, res)
+            }
+
+        }
+
         if (this.drone.position != this.destination) {
             var moves = this.path[officeIndex].findArk(this.path[officeIndex + 1]).moves;
-            this.drone.move(moves[moveIndex], 50);
-            setTimeout(function() {
-                thisHandler.pathRecursion(officeIndex, moveIndex, moves);
-            }, 500);
+            this.drone.move(moves[0][moveIndex], 50);
+            callback = function() {
+                setTimeout(function() {
+                    thisHandler.pathRecursion(officeIndex, moveIndex, moves);
+                    console.log("temp move : "+moves[0][moveIndex]+" => "+moves[1][moveIndex]);
+                }, moves[1][moveIndex]||500);
+                return;
+            }
         }
-        if (this.drone.position == this.destination) {
-            setTimeout(function() {
-                console.log("end")
-                thisHandler.endPath(req, res);
-            }, 500);
-        }
+
+        console.log("end recursion");
+
+        callback();
     }
 }
 
 
-
-
 DroneHandler.prototype.endPath = function(req, res) {
     console.log("entering endPath");
-    //json.res();
-    process.exit(); ////////////////////////////////////on peut faire comme ça ?
+    //json.res(); //TODO
+    return;
 };
 
-DroneHandler.prototype.pathRecursion = function(officeIndex, moveIndex, moves) {
-    console.log("move :" + moves[moveIndex])
+DroneHandler.prototype.pathRecursion = function(officeIndex, moveIndex, moves, cb) {
     if (moveIndex == moves.length - 1) {
         this.drone.position = this.path[officeIndex + 1];
-        this.runPath(0, 0, officeIndex + 1, 0);
+        return this.runPath(0, 0, officeIndex + 1, 0, cb);
     } else {
-        this.runPath(0, 0, officeIndex, moveIndex + 1);
+        return this.runPath(0, 0, officeIndex, moveIndex + 1, cb);
     }
-    console.log("end recursion");
 };
+
+
 
 DroneHandler.prototype.goHome = function(req, res) {
 
@@ -158,5 +164,19 @@ DroneHandler.prototype.goHome = function(req, res) {
 DroneHandler.prototype.getResearshers = function(req, res) {
 
 };
+
+DroneHandler.prototype.readOfficeTxt=function(file){
+  fs.readFile(file, 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  var lines = data.split(';');
+  for(var i in lines){
+    var args = lines[i].split(',');
+    this.offices.push(new Office(args[1],args[0]));
+  }
+});
+
+}
 
 module.exports = DroneHandler;

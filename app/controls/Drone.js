@@ -99,7 +99,8 @@ Drone.prototype.connect = function(callback) {
         d.posture = this.postures.postureStanding;
     });
     this.drone.on("postureJumper", function() {
-        d.posture = this.postures.postureJumper;
+        // d.posture = this.postures.postureJumper;
+        d.posture = d.postures.postureJumper; //marche pas avec this ...
     });
     this.drone.on("postureKicker", function() {
         d.posture = this.postures.postureKicker;

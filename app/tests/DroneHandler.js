@@ -10,7 +10,7 @@ Drone.connect(function(err, data) {
         Drone.move(Drone.directions.right);
         setTimeout(function() {
             Drone.stop();
-            Drone.getPicture();
+            //    Drone.getPicture();
 
             test();
         }, 500);
@@ -45,21 +45,41 @@ var test = function() {
     var arcEH = new Ark(3, officeE, officeH);
 
     console.log("Création liste offices");
-    var offices = [officeA, officeB, officeC, officeD, officeE, officeF, officeG, officeH];
 
     console.log("Assignation des mouvements");
-    arcAB.moves = [0];
-    arcBG.moves = [2, 0];
-    arcEG.moves = [3];
-    arcEF.moves = [0];
+    arcAB.moves = [
+        [Drone.directions.forward],
+        [500]
+    ];
+    arcBG.moves = [
+        [
+            Drone.directions.left,
+            Drone.directions.right
+
+        ],
+        [
+            500,
+            500
+        ]
+    ];
+    arcEG.moves = [
+        [Drone.directions.forward],
+        [2000]
+    ];
+    arcEF.moves = [
+        [Drone.directions.backward],
+        [2000]
+    ];
+    var offices = [officeA, officeB, officeC, officeD, officeE, officeF, officeG, officeH];
 
     console.log("Création du DroneHandler");
     var handler = new DroneHandler(offices);
-    Drone.position=officeA;
-    handler.drone=Drone;
-    handler.destination=officeF;
-    console.log("offices : "+handler.offices);
-    handler.offices=offices;
+    Drone.position = officeA;
+    handler.drone = Drone;
+    handler.destination = officeF;
+    handler.offices = offices;
+    console.log("offices : " + handler.offices.researcher);
+
     console.log("Appel Djikstra");
     var arkVec = handler.dijkstra();
     console.log("sortie dijkstra: " + arkVec);
@@ -68,8 +88,7 @@ var test = function() {
     console.log("Liste des sommets:");
     for (var i in handler.path) console.log(handler.path[i].researcher);
     console.log("RunPath");
-
-    handler.runPath("req","res",0,0);
-
+    handler.runPath(0, 0, 0, 0, null);
+    //  handler.readOfficeTxt("offices.txt");
     return;
 };
