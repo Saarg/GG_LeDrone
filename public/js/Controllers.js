@@ -20,6 +20,7 @@ app.controller('manuCtrl', function($scope, $http) {
     var modeManuel = new ModeManuel();
 
     $scope.speed = 50;
+    $scope.img = null;
 
     $scope.stop = function() {
         modeManuel.interupt($http);
@@ -37,6 +38,19 @@ app.controller('manuCtrl', function($scope, $http) {
     $scope.right = function() {
         modeManuel.move($http, 3, $scope.speed);
     }
+
+    var getPicture = function() {
+        $http.get('/api/picture').then(function(res) {
+            $scope.img = res.data.img;
+            console.log($scope.img);
+        });
+
+        setTimeout(function () {
+            getPicture();
+        }, 500);
+    }
+
+    getPicture();
 
 });
 

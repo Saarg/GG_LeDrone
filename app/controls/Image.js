@@ -15,6 +15,7 @@ var Image = function(w, h) {
     this.height = h | 480;
     this.channels = 3;
 
+    this.rawData = null;
     this.data = new Buffer(this.width*this.height*this.channel);
 };
 
@@ -72,7 +73,8 @@ Image.prototype.imageAnalysis = function (colorGrid, precision) {
 Image.prototype.setData = function (data, type) {
     if(type) {
         var img = this;
-        /*getPixels(data, type, function(err, pixels) {
+        img.rawData = data;
+        getPixels(data, type, function(err, pixels) {
           if(err) {
             console.error(err);
             return;
@@ -81,7 +83,7 @@ Image.prototype.setData = function (data, type) {
           img.height = pixels.shape[1];
           img.channels = pixels.shape[2];
           img.data = pixels.data;
-      })*/
+      })
     } else {
         if(data.length == this.width*this.height*this.channel) {
             this.data = data;

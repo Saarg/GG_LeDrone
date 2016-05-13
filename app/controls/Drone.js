@@ -156,10 +156,11 @@ Drone.prototype.tap = function() {
 };
 
 Drone.prototype.getPicture = function() {
-    console.log(this.buf);
+    /*console.log(this.buf);
     fs.writeFile('img', this.img.getData(), function(err) {
         if (err) throw err;
-    });
+    });*/
+    return this.img;
 };
 
 Drone.prototype.toString = function () {
