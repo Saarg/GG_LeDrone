@@ -9,19 +9,31 @@ var Drone = require ('./controls/Drone.js');
 module.exports = function(app) {
     var DH = new DroneHandler();
 
+    /*Drone.connect(function(err, data) {
+        console.log("GG est on");
+    });*/
+
     // DroneHandler
-    app.post('api/findPath', function(req, res){ DH.findPath(req, res); });
-    app.post('api/runPath', function(req, res){ DH.runPath(req, res) });
-    app.post('api/goHome', function(req, res){ DH.goHome(req, res) });
-    app.post('api/getResearshers', function(req, res){ DH.getResearshers(req, res) });
+    app.post('/api/findPath', function(req, res){ DH.findPath(req, res); });
+    app.post('/api/runPath', function(req, res){ DH.runPath(req, res) });
+    app.post('/api/goHome', function(req, res){ DH.goHome(req, res) });
+    app.post('/api/getResearshers', function(req, res){ DH.getResearshers(req, res) });
 
     // Drone
-    app.get('api/stop', function(req, res) { Drone.stop() });
-    app.post('api/move', function(req, res) {
-        console.log(res.data);
-        Drone.move(req.data.dir, req.data.speed);
-        res.json({succes: true, message: "ca bouge!"});
+    app.get('/api/stop', function(req, res) {
+        Drone.stop();
+        res.json({success: true, message: "stop!"});
     });
-    app.post('api/jump', function(req, res) { Drone.jump(req, res); });
-    app.post('api/tap', function(req, res) { Drone.tap(req, res); });
+    app.post('/api/move', function(req, res) {
+        Drone.move(req.body.dir, req.body.speed);
+        res.json({success: true, message: "ca bouge!"});
+    });
+    app.post('/api/jump', function(req, res) {
+        Drone.jump(req.data.jumpType);
+        res.json({success: true, message: "ca saute!"});
+    });
+    app.get('/api/tap', function(req, res) {
+        Drone.tap();
+        res.json({succes: true, message: "tap tap!"});
+    });
 };

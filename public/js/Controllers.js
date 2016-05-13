@@ -19,13 +19,22 @@ app.controller('mainCtrl', function($scope, $http) {
 app.controller('manuCtrl', function($scope, $http) {
     var modeManuel = new ModeManuel();
 
-    $http.get('/api/test').then(function(res) {
-        console.log(res.data);
-    });
+    $scope.stop = function() {
+        modeManuel.interupt($http);
+    }
 
-    $http.post('/api/test', { data: "is_this_data" }).then(function(res) {
-        console.log(res.data);
-    });
+    $scope.forward = function() {
+        modeManuel.move($http, 0, 50);
+    }
+    $scope.backward = function() {
+        modeManuel.move($http, 1, 50);
+    }
+    $scope.left = function() {
+        modeManuel.move($http, 2, 50);
+    }
+    $scope.right = function() {
+        modeManuel.move($http, 3, 50);
+    }
 
 });
 
