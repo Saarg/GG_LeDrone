@@ -72,7 +72,7 @@ Drone.prototype.connect = function(callback) {
     // Gestion des images en provenance de gg
     this.video = this.drone.getVideoStream();
     this.video.on("data", function(data) {
-        d.img.setData(data, "image/jpeg");
+        d.img.setData(data/*, "image/jpeg"*/);
     });
 
     // Battery updates
@@ -156,11 +156,7 @@ Drone.prototype.tap = function() {
 };
 
 Drone.prototype.getPicture = function() {
-    /*console.log(this.buf);
-    fs.writeFile('img', this.img.getData(), function(err) {
-        if (err) throw err;
-    });*/
-    return this.img;
+    return this.img.getData();
 };
 
 Drone.prototype.toString = function () {

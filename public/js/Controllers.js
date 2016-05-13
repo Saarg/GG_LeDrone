@@ -39,15 +39,24 @@ app.controller('manuCtrl', function($scope, $http) {
         modeManuel.move($http, 3, $scope.speed);
     }
 
+    $scope.arrayBufferToBase64 = function( buffer ) {
+        var binary = '';
+        var bytes = new Uint8Array( buffer );
+        var len = bytes.byteLength;
+        for (var i = 0; i < len; i++) {
+            binary += String.fromCharCode( bytes[ i ] );
+        }
+        return window.btoa( binary );
+    }
+
     var getPicture = function() {
         $http.get('/api/picture').then(function(res) {
             $scope.img = res.data.img;
-            console.log($scope.img);
         });
 
         setTimeout(function () {
             getPicture();
-        }, 500);
+        }, 100);
     }
 
     getPicture();

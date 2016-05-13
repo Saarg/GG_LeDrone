@@ -9,9 +9,9 @@ var Drone = require ('./controls/Drone.js');
 module.exports = function(app) {
     var DH = new DroneHandler();
 
-    /*Drone.connect(function(err, data) {
+    Drone.connect(function(err, data) {
         console.log("GG est on");
-    });*/
+    });
 
     // DroneHandler
     app.post('/api/findPath', function(req, res){ DH.findPath(req, res); });
@@ -38,6 +38,6 @@ module.exports = function(app) {
     });
     app.get('/api/picture', function(req, res) {
         var img = Drone.getPicture();
-        res.json({succes: true, img: img.rawData});
+        res.json({succes: true, img: img});
     });
 };
