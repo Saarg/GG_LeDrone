@@ -80,14 +80,14 @@ Drone.prototype.connect = function(callback) {
         d.batteryLevel = battery;
     });
     this.drone.on("batteryCritical", function() {
-        if(d.critical)
+        if (d.critical)
             d.critical();
         else {
             d.stop();
         }
     });
     this.drone.on("batteryLow", function() {
-        if(d.low)
+        if (d.low)
             d.low();
         else {
             d.stop();
@@ -96,20 +96,19 @@ Drone.prototype.connect = function(callback) {
 
     // PostureHandlers
     this.drone.on("postureStanding", function() {
-        d.posture = this.postures.postureStanding;
+        d.posture = d.postures.postureStanding;
     });
     this.drone.on("postureJumper", function() {
-        // d.posture = this.postures.postureJumper;
-        d.posture = d.postures.postureJumper; //marche pas avec this ...
+        d.posture = d.postures.postureJumper;
     });
     this.drone.on("postureKicker", function() {
-        d.posture = this.postures.postureKicker;
+        d.posture = d.postures.postureKicker;
     });
     this.drone.on("postureStuck", function() {
-        d.posture = this.postures.postureStuck;
+        d.posture = d.postures.postureStuck;
     });
     this.drone.on("postureStuck", function() {
-        d.posture = this.postures.postureStuck;
+        d.posture = d.postures.postureStuck;
     });
     this.drone.on("ready", function() {
         d.ready = true;
@@ -119,13 +118,13 @@ Drone.prototype.connect = function(callback) {
 
     // JumpMotorHandler
     this.drone.on("jumpMotorOK", function() {
-        d.jumpMotorState = this.jumpMotorStates.jumpMotorOK;
+        d.jumpMotorState = d.jumpMotorStates.jumpMotorOK;
     });
     this.drone.on("jumpMotorErrorBlocked", function() {
-        d.jumpMotorState = this.jumpMotorStates.jumpMotorErrorBlocked;
+        d.jumpMotorState = d.jumpMotorStates.jumpMotorErrorBlocked;
     });
     this.drone.on("jumpMotorErrorOverheated", function() {
-        d.jumpMotorState = this.jumpMotorStates.jumpMotorErrorOverheated;
+        d.jumpMotorState = d.jumpMotorStates.jumpMotorErrorOverheated;
     });
 
 };
@@ -163,8 +162,8 @@ Drone.prototype.getPicture = function() {
     });
 };
 
-Drone.prototype.toString = function () {
-    return "Drone connecte: " + this.connected + " ready: " + this.ready + " batterie: " + this.batteryLevel+"%";
+Drone.prototype.toString = function() {
+    return "Drone connecte: " + this.connected + " ready: " + this.ready + " batterie: " + this.batteryLevel + "%";
 };
 
 // SINGLETON

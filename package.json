@@ -9,6 +9,7 @@
   "dependencies": {
     "node-sumo": "git+https://github.com/forgeByAcision/node-sumo",
     "express": "latest",
+    "body-parser": "latest",
     "get-pixels": "latest"
   },
   "scripts": {

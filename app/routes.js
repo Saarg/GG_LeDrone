@@ -16,8 +16,12 @@ module.exports = function(app) {
     app.post('api/getResearshers', function(req, res){ DH.getResearshers(req, res) });
 
     // Drone
-    app.get('api/stop', function(req, res) { Drone.stop() })
-    app.post('api/move', function(req, res) { Drone.move(req, res); });
+    app.get('api/stop', function(req, res) { Drone.stop() });
+    app.post('api/move', function(req, res) {
+        console.log(res.data);
+        Drone.move(req.data.dir, req.data.speed);
+        res.json({succes: true, message: "ca bouge!"});
+    });
     app.post('api/jump', function(req, res) { Drone.jump(req, res); });
     app.post('api/tap', function(req, res) { Drone.tap(req, res); });
 };

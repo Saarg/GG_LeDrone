@@ -1,121 +1,84 @@
 <!DOCTYPE HTML>
+<html ng-app="GG_LeDrone" ng-controller="manuCtrl">
+    <head>
+        <meta charset="utf-8">
+        <title>Manuel</title>
 
-<html>
-<head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <meta charset="utf-8">
-    <title>Manuel</title>
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles/mode-manuel.css">
 
+        <style type="text/css">
+          [class*="col"] { margin-bottom: 20px; }
+          img { width: 100%; }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <header class="page-header">
+                <h1>Mode Manuel</h1>
+            </header>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+            <section class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p>
+                    Vous voici en mode manuel. Vous pouvez déplacer le drone directement
+                    avec les flèches affichées.
+                    </p>
+                </div>
+            </section>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+            <div class="container-fluid">
+                <div class="row">
+	                <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 controls">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="mode-manuel.css">
-  </head>
+                        <div class="row">
+                            <div class ="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
+                                <button type="button" class="btn btn-default" aria-label="Left Align" onclick="httpPost('/api/move', '{ dir: 1, speed: 50 }')">
+                                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
 
+                        <div class ="row">
+                            <div class ="col-md-offset-1 col-md-1 col-xs-offset-1 col-xs-1 col-sm-offset-1 col-sm-1 col-lg-offset-1 col-lg-1">
+                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-5 col-lg-1">
+                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                    <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
 
-    <style type="text/css">
-      [class*="col"] { margin-bottom: 20px; }
-      img { width: 100%; }
-    </style>
-  </head>
-  <body>
+                        <div class ="row">
+                            <div class ="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
+                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
 
-    <div class="container-fluid">
+                        <div class ="col-md-offset-2 col-md-1 col-xs-offset-2 col-xs-1 col-sm-offset-2 col-sm-1 col-md-offset-2 col-md-1 control2">
+                            <a href="index.html">
+                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Menu Principal
+                                </button>
+                            </a>
+                        </div>
 
-      <header class="page-header">
-        <h1>Mode Manuel</h1>
-      </header>
+                    </div>
 
-      <section class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <p>
-            Vous voici en mode manuel. Vous pouvez déplacer le drone directement
-            avec les flèches affichées.
-          </p>
+                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                        <img src="images/i1.jpg">
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
-
-
-
-
-
-
-
-
-  <div class="container-fluid">
-  <div class="row">
-	<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 controls">
-
-
-  <div class="row">
-    <div class ="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
-      <button type="button" class="btn btn-default" aria-label="Left Align">
-        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-      </button>
-    </div>
-  </div>
-
-
-  <div class ="row">
-    <div class ="col-md-offset-1 col-md-1 col-xs-offset-1 col-xs-1 col-sm-offset-1 col-sm-1 col-lg-offset-1 col-lg-1">
-      <button type="button" class="btn btn-default" aria-label="Left Align">
-        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-      </button>
-    </div>
-    <div class="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-5 col-lg-1">
-      <button type="button" class="btn btn-default" aria-label="Left Align">
-        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-      </button>
-    </div>
-  </div>
-
-  <div class ="row">
-    <div class ="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
-      <button type="button" class="btn btn-default" aria-label="Left Align">
-
-        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-      </button>
-    </div>
-  </div>
-
-  <div class ="col-md-offset-2 col-md-1 col-xs-offset-2 col-xs-1 col-sm-offset-2 col-sm-1 col-md-offset-2 col-md-1 control2">
-    <a href="index.html">
-    <button type="button" class="btn btn-default" aria-label="Left Align">
-
-      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Menu Principal
-
-    </button>
-    </a>
-  </div>
-
-
-
-
-
-  </div>
-
-
-
-  <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-      <img src="i1.jpg">
-  </div>
-
-
-
-
-
-
-
-
-
-
-    </div>
-  </body>
+    </body>
 </html>
