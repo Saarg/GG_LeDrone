@@ -13,18 +13,24 @@ ModeManuel.prototype.display = function() {
 
 };
 
-ModeManuel.prototype.interupt = function () {
-
+ModeManuel.prototype.interupt = function ($http) {
+    $http.get('/api/stop').then(function(res) {
+        console.log(res.data);
+    });
 };
 
-ModeManuel.prototype.move = function (dir, speed) {
-
+ModeManuel.prototype.move = function ($http, dir, speed) {
+    $http.post('/api/move', { speed: speed, dir: dir }).then(function(res) {
+        // Intruction a en fct de la rep du serv
+    });
 };
 
-ModeManuel.prototype.jump = function (jumpType) {
-
+ModeManuel.prototype.jump = function ($http, jumpType) {
+    console.log("GG est cassé");
 };
 
-ModeManuel.prototype.animation = function (animationType) {
-
+ModeManuel.prototype.animation = function ($http, animationType) {
+    $http.get('/api/tap').then(function(res) {
+        // Intruction a en fct de la rep du serv
+    });
 };
