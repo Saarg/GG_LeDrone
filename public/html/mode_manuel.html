@@ -15,6 +15,16 @@
           [class*="col"] { margin-bottom: 20px; }
           img { width: 100%; }
         </style>
+
+        <!-- Angular -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+        <script src="js/Mode.js"></script>
+        <script src="js/Interface.js"></script>
+        <script src="js/ModeManuel.js"></script>
+        <script src="js/ModeBureau.js"></script>
+        <script src="js/ModeBureauABureau.js"></script>
+        <script src="js/Controllers.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -35,9 +45,14 @@
                 <div class="row">
 	                <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 controls">
 
+                        <div class="form-group row">
+                            <label class="col-xs-3" for="speed">Speed:</label>
+                            <input class="col-xs-9" ng-model="speed" type="text" name="speed" id="speed">
+                        </div>
+
                         <div class="row">
                             <div class ="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
-                                <button type="button" class="btn btn-default" aria-label="Left Align" onclick="httpPost('/api/move', '{ dir: 1, speed: 50 }')">
+                                <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="forward()" ng-mouseup="stop()">
                                     <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
                                 </button>
                             </div>
@@ -45,12 +60,12 @@
 
                         <div class ="row">
                             <div class ="col-md-offset-1 col-md-1 col-xs-offset-1 col-xs-1 col-sm-offset-1 col-sm-1 col-lg-offset-1 col-lg-1">
-                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="left()" ng-mouseup="stop()">
                                     <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
                                 </button>
                             </div>
                             <div class="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-5 col-lg-1">
-                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="right()" ng-mouseup="stop()">
                                     <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                                 </button>
                             </div>
@@ -58,7 +73,7 @@
 
                         <div class ="row">
                             <div class ="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
-                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                <button type="button" class="btn btn-default" aria-label="Left Align"  ng-mousedown="backward()" ng-mouseup="stop()">
                                     <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
                                 </button>
                             </div>
@@ -75,7 +90,7 @@
                     </div>
 
                     <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-                        <img src="images/i1.jpg">
+                        <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img.data)}}">
                     </div>
                 </div>
             </div>
