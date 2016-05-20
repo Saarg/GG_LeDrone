@@ -15,61 +15,46 @@ var Image = function(w, h) {
     this.height = h | 480;
     this.channels = 3;
 
+    this.raw = null;
     this.data = new Buffer(this.width*this.height*this.channel);
 };
 
+/*
+ *
+ * Prend un array de json type {r: 255, g: 0, b: 0, x: 0, y: 0, w: 10, h: 10} et rend un array de boolean
+ * pour un json n le resultat n vaut true si la couleur moyenne dans le rectangle definis par x y w et h
+ * est dans l'intervale de precision de la couleur rgb
+ *
+*/
 Image.prototype.imageAnalysis = function (colorGrid, precision) {
     var precision = precision || 10;
 
-    // Calcul des couleurs moyennes par zones en fonction de la colorGrid
-    var moyGrid = [colorGrid.length];
-    for(var i = 0 ; i < colorGrid.length ; i++){
-        moyGrid[i] = [colorGrid[i].length];
-
-        for(var j = 0 ; j < colorGrid[i].length ; j++){
-            // definition de la zone
-            var sizeY = Math.round(this.height/colorGrid.length);
-            var sizeX = Math.round(this.width/colorGrid[i].length);
-
-            // somme des pixels
-            moyGrid[i][j] = new Color(0, 0, 0);
-            for(var y = i*sizeY ; y < (i+1)*sizeY ; y++){
-
-                for(var x = j*sizeX ; x < (j+1)*sizeX ; x++){
-                    moyGrid[i][j].r += this.data[y*this.width*this.channels + x*this.channels];
-                    moyGrid[i][j].g += this.data[y*this.width*this.channels + x*this.channels + 1];
-                    moyGrid[i][j].b += this.data[y*this.width*this.channels + x*this.channels + 2];
-                }
-            }
-            // calcul de la moyenne
-            moyGrid[i][j].r = Math.round(moyGrid[i][j].r/(sizeY*sizeX));
-            moyGrid[i][j].g = Math.round(moyGrid[i][j].g/(sizeY*sizeX));
-            moyGrid[i][j].b = Math.round(moyGrid[i][j].b/(sizeY*sizeX));
-            console.log(moyGrid[i][j].r);
-            console.log(moyGrid[i][j].g);
-            console.log(moyGrid[i][j].b);
-        }
-    }
-
-    // comparaison des moyennes avec les resultats demandé
     var retour = [colorGrid.length];
-    for(var i = 0 ; i < colorGrid.length ; i++){
-        retour[i] = [colorGrid[i].length];
-
-        for(var j = 0 ; j < colorGrid[i].length ; j++){
-            if( ((colorGrid[i][j].r - precision) <= moyGrid[i][j].r) && (moyGrid[i][j].r <= (colorGrid[i][j].r + precision)) &&
-                ((colorGrid[i][j].g - precision) <= moyGrid[i][j].g) && (moyGrid[i][j].g <= (colorGrid[i][j].g + precision)) &&
-                ((colorGrid[i][j].b - precision) <= moyGrid[i][j].b) && (moyGrid[i][j].b <= (colorGrid[i][j].b + precision)) )
-                retour[i][j] = true;
-            else {
-                retour[i][j] = false;
+    for(var r in colorGrid){
+        var moyColor = new Color(0, 0, 0);
+        for(var x = colorGrid[r].x ; x < colorGrid[r].x+colorGrid[r].w ; x++) {
+            for(var y = colorGrid[r].y ; y < colorGrid[r].y+colorGrid[r].h ; y++) {
+                //console.log(this.data[y*this.width*this.channels + x*this.channels]);
+                moyColor.r += this.data[y*this.width*this.channels + x*this.channels];
+                moyColor.g += this.data[y*this.width*this.channels + x*this.channels + 1];
+                moyColor.b += this.data[y*this.width*this.channels + x*this.channels + 2];
             }
         }
+        moyColor.r = Math.round(moyColor.r/(colorGrid[r].w*colorGrid[r].h));
+        moyColor.g = Math.round(moyColor.g/(colorGrid[r].w*colorGrid[r].h));
+        moyColor.b = Math.round(moyColor.b/(colorGrid[r].w*colorGrid[r].h));
+
+        retour[r] =(((colorGrid[r].r - precision) <= moyColor.r) && (moyColor.r <= (colorGrid[r].r + precision)) &&
+                    ((colorGrid[r].g - precision) <= moyColor.g) && (moyColor.g <= (colorGrid[r].g + precision)) &&
+                    ((colorGrid[r].b - precision) <= moyColor.b) && (moyColor.b <= (colorGrid[r].b + precision)) );
     }
+
     return retour;
 };
 
 Image.prototype.setData = function (data, type) {
+    //console.log(data);
+    this.raw = data;
     if(type) {
         var img = this;
         getPixels(data, type, function(err, pixels) {

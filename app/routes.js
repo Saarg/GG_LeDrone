@@ -72,6 +72,6 @@ module.exports = function(app) {
     // Image ===================================================================
     app.get('/api/picture', function(req, res) {
         var img = Drone.getPicture();
-        res.json({succes: true, img: img});
+        res.json({succes: true, img: img.raw});
     });
 };

@@ -8,27 +8,20 @@ var img = new Image();
 
 img.setData(fs.readFileSync(__dirname+"/img.jpeg"), "image/jpeg");
 console.log("\n\nRaw data: ");
+console.log(img.raw);
+console.log("\n\ndata: ");
 console.log(img.getData());
 
+var colorGrid = [
+    {r: 255, g: 0, b: 0, x: 0, y: 0, w: 10, h: 10},
+    {r: 255, g: 200, b: 0, x: 0, y: 0, w: 10, h: 10},
+    {r: 255, g: 200, b: 0, x: 0, y: 0, w: 10, h: 10},
+];// R G B X Y W H
 
-var colorGrid = [3];
-for (var i = 0 ; i < 3 ; i++) {
-    colorGrid[i] = [3];
+console.log("\n\nColorGrid: ");
+console.log(colorGrid);
 
-    colorGrid[i][0] = Color.red;
-    colorGrid[i][1] = Color.green;
-    colorGrid[i][2] = Color.blue;
-}
+var retour = img.imageAnalysis(colorGrid, 20);
 
-console.log("\n\nColorGrid:");
-for (var i = 0 ; i < 3 ; i++) {
-    console.log("|| "+colorGrid[i][0].toString()+" | "+colorGrid[i][1].toString()+" | "+colorGrid[i][2].toString()+" ||");
-}
-
-
-var moyGrid = img.imageAnalysis(colorGrid, 20);
-
-console.log("\n\ngrille de comparaison:");
-for (var i = 0 ; i < 3 ; i++) {
-    console.log("|| "+moyGrid[i][0].toString()+" | "+moyGrid[i][1].toString()+" | "+moyGrid[i][2].toString()+" ||");
-}
+console.log("\n\nRetour: ");
+console.log(retour);
