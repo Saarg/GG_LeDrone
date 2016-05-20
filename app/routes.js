@@ -5,6 +5,7 @@
 */
 var DroneHandler = require ('./controls/DroneHandler.js');
 var Drone = require ('./controls/Drone.js');
+var CERV = require ('./../config/CERV.js')
 
 module.exports = function(app) {
     var DH = new DroneHandler();
@@ -15,7 +16,7 @@ module.exports = function(app) {
 
     app.get('/api/chercheurs', function(req, res) {
         // chercheurs
-        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: ["machin", "chose", "bidule"]});
+        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: CERV.chercheurs});
     });
 
     // DroneHandler
@@ -24,7 +25,7 @@ module.exports = function(app) {
     app.post('/api/goHome', function(req, res){ DH.goHome(req, res) });
     app.post('/api/getResearshers', function(req, res){ DH.getResearshers(req, res) });
 
-    // Drone
+    // Drone movement
     app.get('/api/stop', function(req, res) {
         // none
         Drone.stop();
@@ -45,6 +46,19 @@ module.exports = function(app) {
         Drone.tap();
         res.json({succes: true, message: "tap tap!"});
     });
+
+    // Animation
+    app.get('/api/animations', function(req, res) {
+        // animations
+        res.json({succes: true, message: "liste des animations dispo", animations: Drone.animations});
+    });
+    app.post('/api/animation', function(req, res) {
+        // none || animations
+        Drone.animation(req.body.animation);
+        res.json({succes: true, message: "je fais l'animation"});
+    });
+
+    // Image
     app.get('/api/picture', function(req, res) {
         var img = Drone.getPicture();
         res.json({succes: true, img: img});

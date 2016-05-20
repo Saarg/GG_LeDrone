@@ -56,6 +56,18 @@ var Drone = function(pos) {
         jumpMotorErrorBlocked: 1,
         jumpMotorErrorOverheated: 2
     };
+    this.animations = {
+        stop: 0,
+        spin: 1,
+        tap: 2,
+        slowShake: 3,
+        metronome: 4,
+        ondulation: 5,
+        spinJump: 6,
+        spinToPosture: 7,
+        spiral: 8,
+        slalom: 9
+    };
 
 };
 
@@ -155,6 +167,42 @@ Drone.prototype.jump = function(type) {
 
 Drone.prototype.tap = function() {
     this.drone.animationsTap();
+};
+
+Drone.prototype.animation = function(a) {
+    this.drone.stop();
+    switch(a) {
+        case 0:
+            this.drone.animationsStop();
+            break;
+        case 1:
+            this.drone.animationsSpin();
+            break;
+        case 2:
+            this.drone.animationsTap();
+            break;
+        case 3:
+            this.drone.animationsSlowShake();
+            break;
+        case 4:
+            this.drone.animationsMetronome();
+            break;
+        case 5:
+            this.drone.animationOndulation();
+            break;
+        case 6:
+            this.drone.animationSpinJump();
+            break;
+        case 7:
+            this.drone.animationSpinToPosture();
+            break;
+        case 8:
+            this.drone.animationSpiral();
+            break;
+        case 9:
+            this.drone.animationSlalom();
+            break;
+    }
 };
 
 Drone.prototype.getPicture = function() {
