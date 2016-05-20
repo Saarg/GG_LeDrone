@@ -10,7 +10,7 @@ Drone.connect(function(err, data) {
         Drone.move(Drone.directions.right);
         setTimeout(function() {
             Drone.stop();
-            //    Drone.getPicture();
+            Drone.getPicture();
 
             test();
         }, 500);
@@ -52,15 +52,8 @@ var test = function() {
         [500]
     ];
     arcBG.moves = [
-        [
-            Drone.directions.left,
-            Drone.directions.right
-
-        ],
-        [
-            500,
-            500
-        ]
+        [Drone.directions.left,Drone.directions.right],
+        [240,480]
     ];
     arcEG.moves = [
         [Drone.directions.forward],
@@ -90,5 +83,7 @@ var test = function() {
     console.log("RunPath");
     handler.runPath(0, 0, 0, 0, null);
     //  handler.readOfficeTxt("offices.txt");
+  //console.log("coming back home");
+ //  handler.goHome();
     return;
 };

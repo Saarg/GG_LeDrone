@@ -23,7 +23,7 @@ var Drone = function(pos) {
     this.position = pos;
     this.connected = false;
     this.ready = false;
-
+    this.moving=false;
     this.drone = nodeSumo.createClient();
 
     this.img = new Image();
@@ -131,6 +131,7 @@ Drone.prototype.connect = function(callback) {
 
 Drone.prototype.move = function(dir, speed) {
     this.stop();
+    this.moving=true;
     if (dir == this.directions.forward)
         this.drone.forward(speed);
     else if (dir == this.directions.backward)
@@ -143,6 +144,7 @@ Drone.prototype.move = function(dir, speed) {
 
 Drone.prototype.stop = function() {
     this.drone.stop();
+    this.moving=false;
 };
 
 Drone.prototype.jump = function(type) {
