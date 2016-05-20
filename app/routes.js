@@ -14,7 +14,12 @@ module.exports = function(app) {
     });*/
 
     app.get('/api/chercheurs', function(req, res) {
-        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: ["machin", "chose", "bidule"]});
+        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: ["Mr Querrec", "Mr Redou", "Mr Gaubert","Mr Nedelec","Mr Buche","Mr Kubicki","Mr Maisel","Mr Parenthoen"]});
+    });
+
+//FAIT PAR YOANN VOIR SI CA FONCTIONNE BIEN 
+    app.get('/api/animations', function(req, res) {
+        res.json({success: true, message: "liste des animations", animations: ["tap", "SlowShake", "Ondulation"]});
     });
 
     // DroneHandler
