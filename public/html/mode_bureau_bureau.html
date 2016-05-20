@@ -51,11 +51,11 @@
                     <button type="button" class="btn btn-default">Mr Nedelec</button>
                     <button type="button" class="btn btn-default">Mr Parenthoen</button>
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
-                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur(c)" ng-class="{active : c === selected}">{{ c }}</button>
+                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{active : c === selected}">{{ c }}</button>
                 </div>
                 <div class ="col-sm-8">
-                    <img src="images/i1.jpg" ng-if="!img.data">
-                    <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img.data)}}" ng-if="img.data">
+                    <img src="images/i1.jpg" ng-if="!img.length">
+                    <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
                 </div>
                 <div class="btn-group-vertical col-sm-2" role="group" aria-label="...">
                     <!--<button type="button" class="btn btn-default">Mr Kubicki</button>
@@ -66,7 +66,15 @@
                     <button type="button" class="btn btn-default">Mr Nedelec</button>
                     <button type="button" class="btn btn-default">Mr Parenthoen</button>
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
-                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur(c)">{{ c }}</button>
+                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur2(c)">{{ c }}</button>
+                </div>
+            </section>
+
+            <section class ="row">
+                <div class="col-sm-offset-5 col-sm-2">
+                    <button type="button" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-play"></span>
+                    </button>
                 </div>
             </section>
 

@@ -4,6 +4,8 @@ var Ark = function(length, office1, office2){
   this.office2 = office2;
   this.office1.arks.push(this); //les arcs s'ajoutent tous ceuls aux bureaux
   this.office2.arks.push(this);
+  this.moves = [[],[]];//[[directions],[time]]
+  console.log("fin ark")
 }
 
 

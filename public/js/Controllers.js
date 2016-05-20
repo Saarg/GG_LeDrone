@@ -73,7 +73,8 @@ app.controller('manuCtrl', function($scope, $http) {
 app.controller('bureauCtrl', function($scope, $http) {
     var modeBureau = new ModeBureau();
 
-    $scope.selected = null;
+    $scope.selected1 = null;
+    $scope.selected2 = null;
     $scope.chercheurs = [];
     $http.get('/api/chercheurs').then(function(res) {
         if(res.data.success) {
@@ -83,9 +84,13 @@ app.controller('bureauCtrl', function($scope, $http) {
         }
     });
 
-    $scope.selectChercheur = function(c){
-        console.log(c);
-        selected = c;
+    $scope.selectChercheur1 = function(c){
+        $scope.selected1 = c;
+        console.log($scope.selected1 + " et " + $scope.selected2);
+    };
+    $scope.selectChercheur2 = function(c){
+        $scope.selected2 = c;
+        console.log($scope.selected1 + " et " + $scope.selected2);
     };
 
     $http.get('/api/test').then(function(res) {
@@ -96,6 +101,7 @@ app.controller('bureauCtrl', function($scope, $http) {
         console.log(res.data);
     });
 
+    // Image
     $scope.arrayBufferToBase64 = function( buffer ) {
         var binary = '';
         var bytes = new Uint8Array( buffer );

@@ -14,12 +14,17 @@ module.exports = function(app) {
     });*/
 
     app.get('/api/chercheurs', function(req, res) {
+<<<<<<< HEAD
         res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: ["Mr Querrec", "Mr Redou", "Mr Gaubert","Mr Nedelec","Mr Buche","Mr Kubicki","Mr Maisel","Mr Parenthoen"]});
     });
 
 //FAIT PAR YOANN VOIR SI CA FONCTIONNE BIEN 
     app.get('/api/animations', function(req, res) {
         res.json({success: true, message: "liste des animations", animations: ["tap", "SlowShake", "Ondulation"]});
+=======
+        // chercheurs
+        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: ["machin", "chose", "bidule"]});
+>>>>>>> origin/master
     });
 
     // DroneHandler
@@ -30,18 +35,22 @@ module.exports = function(app) {
 
     // Drone
     app.get('/api/stop', function(req, res) {
+        // none
         Drone.stop();
         res.json({success: true, message: "stop!"});
     });
     app.post('/api/move', function(req, res) {
+        // speed dir || none
         Drone.move(req.body.dir, req.body.speed);
         res.json({success: true, message: "ca bouge!"});
     });
     app.post('/api/jump', function(req, res) {
+        // jumpType(0, 1) || none
         Drone.jump(req.data.jumpType);
         res.json({success: true, message: "ca saute!"});
     });
     app.get('/api/tap', function(req, res) {
+        // none
         Drone.tap();
         res.json({succes: true, message: "tap tap!"});
     });
