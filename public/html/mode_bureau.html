@@ -52,11 +52,11 @@
                     <button type="button" class="btn btn-default">Mr Nedelec</button>
                     <button type="button" class="btn btn-default">Mr Parenthoen</button>
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
-                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur(c)">{{ c }}</button>
+                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)">{{ c }}</button>
                 </div>
                 <div class ="col-xs-offset-2 col-xs-6 col-sm-offset-2 col-sm-6 col-md-offset-2 col-md-6 col-lg-offset-2 col-lg-6">
-                    <img src="images/i1.jpg" ng-if="!img.data">
-                    <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img.data)}}" ng-if="img.data">
+                    <img src="images/i1.jpg" ng-if="!img.length">
+                    <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
                 </div>
             </section>
 
