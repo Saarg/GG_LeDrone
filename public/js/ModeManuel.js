@@ -9,7 +9,7 @@ ModeManuel.prototype.run = function() {
 
 };
 
-ModeManuel.prototype.display = function() {
+ModeManuel.prototype.display = function($http) {
 
 };
 

@@ -36,4 +36,8 @@ module.exports = function(app) {
         Drone.tap();
         res.json({succes: true, message: "tap tap!"});
     });
+    app.get('/api/picture', function(req, res) {
+        var img = Drone.getPicture();
+        res.json({succes: true, img: img});
+    });
 };

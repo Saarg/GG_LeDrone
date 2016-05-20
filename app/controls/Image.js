@@ -70,25 +70,21 @@ Image.prototype.imageAnalysis = function (colorGrid, precision) {
 };
 
 Image.prototype.setData = function (data, type) {
-    if(type) {
+    /*if(type) {
         var img = this;
-        /*getPixels(data, type, function(err, pixels) {
-          if(err) {
-            console.error(err);
-            return;
-          }
-          img.width = pixels.shape[0];
-          img.height = pixels.shape[1];
-          img.channels = pixels.shape[2];
-          img.data = pixels.data;
-      })*/
+        getPixels(data, type, function(err, pixels) {
+            if(err) {
+                console.error(err);
+                return;
+            }
+            img.width = pixels.shape[0];
+            img.height = pixels.shape[1];
+            img.channels = pixels.shape[2];
+            img.data = pixels.data;
+      })
     } else {
-        if(data.length == this.width*this.height*this.channel) {
-            this.data = data;
-        } else {
-            console.error("taille du buffer != de la taille correspondant au dimensions de l'image!");
-        }
-    }
+        this.data = data;
+    }*/
 };
 Image.prototype.getData = function () {
     return this.data;
