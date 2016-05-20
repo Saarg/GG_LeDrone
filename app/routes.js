@@ -27,7 +27,6 @@ module.exports = function(app) {
 
     // Infos CERV ==============================================================
     app.get('/api/chercheurs', function(req, res) {
-        // chercheurs
         res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: CERV.chercheurs});
     });
 
@@ -60,9 +59,9 @@ module.exports = function(app) {
     });
 
     // Animations ==============================================================
+    //FAIT PAR YOANN VOIR SI CA FONCTIONNE BIEN
     app.get('/api/animations', function(req, res) {
-        // animations
-        res.json({succes: true, message: "liste des animations dispo", animations: Drone.animations});
+        res.json({success: true, message: "liste des animations", animations: Drone.animations});
     });
     app.post('/api/animation', function(req, res) {
         // none || animations

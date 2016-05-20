@@ -23,6 +23,11 @@ app.controller('manuCtrl', function($scope, $http) {
 
     $scope.speed = 50;
     $scope.img = null;
+//FAIT PAR YOANN, VERIFIER SI C4EST BON
+    $scope.executeAnimation = function(s){
+        console.log(s);
+        selected = s;
+    };
 
     $scope.stop = function() {
         modeManuel.interupt($http);

@@ -94,10 +94,8 @@
                         <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
                     </div>
 
-                    <div class="col-md-2">
-                        <ul>
-                            <li ng-repeat="a in anim">{{ a }}</li>
-                        </ul>
+                    <div class="btn-group-vertical col-md-2" role="group" aria-label="...">
+                        <button ng-repeat="a in anim" type="button" class="btn btn-default" ng-click="executeAnimation(a)">{{ a }}</button>
                     </div>
                 </div>
             </div>
