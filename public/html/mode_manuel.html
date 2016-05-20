@@ -90,7 +90,8 @@
                     </div>
 
                     <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
-                        <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img.data)}}">
+                        <img src="images/i1.jpg" ng-if="!img.data">
+                        <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img.data)}}" ng-if="img.data">
                     </div>
 
                     <div class="col-md-2">
