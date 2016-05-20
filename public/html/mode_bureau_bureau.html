@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="styles/mode-bureau-bureau.css">
 
         <!-- Angular -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
 
         <script src="js/Mode.js"></script>
         <script src="js/Interface.js"></script>
@@ -51,7 +51,7 @@
                     <button type="button" class="btn btn-default">Mr Nedelec</button>
                     <button type="button" class="btn btn-default">Mr Parenthoen</button>
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
-                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{active : c === selected}">{{ c }}</button>
+                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c }}</button>
                 </div>
                 <div class ="col-sm-8">
                     <img src="images/i1.jpg" ng-if="!img.length">
@@ -66,7 +66,7 @@
                     <button type="button" class="btn btn-default">Mr Nedelec</button>
                     <button type="button" class="btn btn-default">Mr Parenthoen</button>
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
-                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur2(c)">{{ c }}</button>
+                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur2(c)" ng-class="{'btn-success' : c == selected2}">{{ c }}</button>
                 </div>
             </section>
 
