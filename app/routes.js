@@ -13,6 +13,10 @@ module.exports = function(app) {
         console.log("GG est on");
     });*/
 
+    app.get('/api/chercheurs', function(req, res) {
+        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: ["machin", "chose", "bidule"]});
+    });
+
     // DroneHandler
     app.post('/api/findPath', function(req, res){ DH.findPath(req, res); });
     app.post('/api/runPath', function(req, res){ DH.runPath(req, res) });

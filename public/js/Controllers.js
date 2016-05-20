@@ -60,7 +60,6 @@ app.controller('manuCtrl', function($scope, $http) {
             getPicture();
         }, 100);
     }
-
     getPicture();
 
 });
@@ -69,10 +68,18 @@ app.controller('manuCtrl', function($scope, $http) {
 app.controller('bureauCtrl', function($scope, $http) {
     var modeBureau = new ModeBureau();
 
-    var selected = null;
+    $scope.selected = null;
     $scope.chercheurs = [];
+    $http.get('/api/chercheurs').then(function(res) {
+        if(res.data.success) {
+            $scope.chercheurs = res.data.chercheurs;
+        } else {
+            console.error("Impossible de charger la liste des chercheurs");
+        }
+    });
 
     $scope.selectChercheur = function(c){
+        console.log(c);
         selected = c;
     };
 
@@ -84,18 +91,25 @@ app.controller('bureauCtrl', function($scope, $http) {
         console.log(res.data);
     });
 
-});
+    $scope.arrayBufferToBase64 = function( buffer ) {
+        var binary = '';
+        var bytes = new Uint8Array( buffer );
+        var len = bytes.byteLength;
+        for (var i = 0; i < len; i++) {
+            binary += String.fromCharCode( bytes[ i ] );
+        }
+        return window.btoa( binary );
+    }
 
-// BUREAU BUREAU================================================================
-app.controller('bureauBureauCtrl', function($scope, $http) {
-    var modeBureau = new ModeBureau();
+    $scope.img = null;
+    var getPicture = function() {
+        $http.get('/api/picture').then(function(res) {
+            $scope.img = res.data.img;
+        });
 
-    $http.get('/api/test').then(function(res) {
-        console.log(res.data);
-    });
-
-    $http.post('/api/test', { data: "is_this_data" }).then(function(res) {
-        console.log(res.data);
-    });
-
+        setTimeout(function () {
+            getPicture();
+        }, 100);
+    }
+    getPicture();
 });
