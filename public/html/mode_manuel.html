@@ -89,8 +89,14 @@
 
                     </div>
 
-                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
                         <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img.data)}}">
+                    </div>
+
+                    <div class="col-md-2">
+                        <ul>
+                            <li ng-repeat="a in anim">{{ a }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>

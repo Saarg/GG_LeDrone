@@ -19,6 +19,8 @@ app.controller('mainCtrl', function($scope, $http) {
 app.controller('manuCtrl', function($scope, $http) {
     var modeManuel = new ModeManuel();
 
+    $scope.anim = ["tap", "SlowShake", "Ondulation"];
+
     $scope.speed = 50;
     $scope.img = null;
 
@@ -66,6 +68,13 @@ app.controller('manuCtrl', function($scope, $http) {
 // BUREAU ======================================================================
 app.controller('bureauCtrl', function($scope, $http) {
     var modeBureau = new ModeBureau();
+
+    var selected = null;
+    $scope.chercheurs = [];
+
+    $scope.selectChercheur = function(c){
+        selected = c;
+    };
 
     $http.get('/api/test').then(function(res) {
         console.log(res.data);
