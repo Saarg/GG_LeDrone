@@ -1,16 +1,25 @@
-var Mode = function(nom) {
-    this.nom = nom || "undefined";
-    this.running = false;
-};
+/**
+ *  @author jean milsonneau
+ *  @overview mode
+ */
 
-Mode.prototype.run = function() {
+class Mode {
+    constructor(nom) {
+        this.nom = nom || "undefined";
+        this.running = false;
 
-};
+        console.log(this.nom);
+    }
 
-Mode.prototype.display = function() {
+    run() {
+        
+    }
 
-};
+    display() {
 
-Mode.prototype.interupt = function () {
+    }
 
-};
+    interupt() {
+
+    }
+}

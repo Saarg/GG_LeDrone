@@ -1,3 +1,10 @@
+/**
+ *  @author marine le mezo
+ *  @author yoann fouillard
+ *  @author jean milsonneau
+ *  @overview controller angular
+ */
+
 // Angular
 var app = angular.module('GG_LeDrone', []);
 
@@ -18,6 +25,7 @@ app.controller('mainCtrl', function($scope, $http) {
 // MANUEL ======================================================================
 app.controller('manuCtrl', function($scope, $http) {
     var modeManuel = new ModeManuel();
+    modeManuel.run($scope);
 
     $scope.anim = ["tap", "SlowShake", "Ondulation"];
 
@@ -56,6 +64,8 @@ app.controller('manuCtrl', function($scope, $http) {
         return window.btoa( binary );
     }
 
+    // TODO a mettre dans run
+    $scope.img = null;
     var getPicture = function() {
         $http.get('/api/picture').then(function(res) {
             $scope.img = res.data.img;
@@ -72,6 +82,7 @@ app.controller('manuCtrl', function($scope, $http) {
 // BUREAU ======================================================================
 app.controller('bureauCtrl', function($scope, $http) {
     var modeBureau = new ModeBureau();
+    modeBureau.run();
 
     $scope.selected1 = null;
     $scope.selected2 = null;
@@ -112,6 +123,7 @@ app.controller('bureauCtrl', function($scope, $http) {
         return window.btoa( binary );
     }
 
+    // TODO a mettre dans run
     $scope.img = null;
     var getPicture = function() {
         $http.get('/api/picture').then(function(res) {

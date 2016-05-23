@@ -1,12 +1,19 @@
-var Interface = function() {
-    this.curmode = -1;
-    this.modes = [];
-};
+/**
+ *  @author jean milsonneau
+ *  @overview mode bureau
+ */
 
-Interface.prototype.selectMode = function() {
+class Interface {
+    constructor() {
+        this.curmode = -1;
+        this.modes = [];
+    }
 
-};
+    selectMode() {
 
-Interface.prototype.interuptMode = function() {
+    }
 
-};
+    interuptMode() {
+
+    }
+}

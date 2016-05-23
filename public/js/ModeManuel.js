@@ -1,36 +1,32 @@
-var ModeManuel = function() {
-    Mode.call("mode manuel");
-};
+/**
+ *  @author jean milsonneau
+ *  @overview mode manuel
+ */
 
-ModeManuel.prototype = new Mode;
-ModeManuel.prototype.constructor = ModeManuel;
+class ModeManuel extends Mode{
+    constructor() {
+        super("mode manuel");
+    }
 
-ModeManuel.prototype.run = function() {
+    interupt($http) {
+        $http.get('/api/stop').then(function(res) {
+            console.log(res.data);
+        });
+    }
 
-};
+    move($http, dir, speed) {
+        $http.post('/api/move', { speed: speed, dir: dir }).then(function(res) {
+            // Intruction a en fct de la rep du serv
+        });
+    }
 
-ModeManuel.prototype.display = function($http) {
+    jump($http, jumpType) {
+        console.log("GG est cassé");
+    }
 
-};
-
-ModeManuel.prototype.interupt = function ($http) {
-    $http.get('/api/stop').then(function(res) {
-        console.log(res.data);
-    });
-};
-
-ModeManuel.prototype.move = function ($http, dir, speed) {
-    $http.post('/api/move', { speed: speed, dir: dir }).then(function(res) {
-        // Intruction a en fct de la rep du serv
-    });
-};
-
-ModeManuel.prototype.jump = function ($http, jumpType) {
-    console.log("GG est cassé");
-};
-
-ModeManuel.prototype.animation = function ($http, animationType) {
-    $http.get('/api/tap').then(function(res) {
-        // Intruction a en fct de la rep du serv
-    });
-};
+    animation($http, animationType) {
+        $http.get('/api/tap').then(function(res) {
+            // Intruction a en fct de la rep du serv
+        });
+    }
+}

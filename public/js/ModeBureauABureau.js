@@ -1,18 +1,22 @@
-var ModeBureauABureau = function() {
-    Mode.call("mode bureau à bureau");
-};
+/**
+ *  @author jean milsonneau
+ *  @overview mode bureau a bureau
+ */
 
-ModeBureauABureau.prototype = new Mode;
-ModeBureauABureau.prototype.constructor = ModeBureauABureau;
+class ModeBureauABureau extends Mode{
+    constructor() {
+        super("mode bureau à bureau");
+    }
 
-ModeBureauABureau.prototype.run = function() {
+    run() {
 
-};
+    }
 
-ModeBureauABureau.prototype.display = function() {
+    display() {
 
-};
+    }
 
-ModeBureauABureau.prototype.interupt = function () {
+    interupt() {
 
-};
+    }
+}

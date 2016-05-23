@@ -1,11 +1,9 @@
-/*
-*
-*   Toute les commandes possible du client vers le drone
-*
-*/
+/**
+ * @author jean milsonneau
+ * @overview Toute les commandes possible du client vers le drone
+ */
 var DroneHandler = require ('./controls/DroneHandler.js');
 var Drone = require ('./controls/Drone.js');
-var CERV = require ('./../config/CERV.js')
 
 module.exports = function(app) {
     // Initialisation du DroneHandler ==========================================
@@ -27,7 +25,7 @@ module.exports = function(app) {
 
     // Infos CERV ==============================================================
     app.get('/api/chercheurs', function(req, res) {
-        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: CERV.chercheurs});
+        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: DH.getResearshers()});
     });
 
     // DroneHandler ============================================================
@@ -72,6 +70,6 @@ module.exports = function(app) {
     // Image ===================================================================
     app.get('/api/picture', function(req, res) {
         var img = Drone.getPicture();
-        res.json({succes: true, img: img.raw});
+        res.json({succes: true, img: img.getRawData()});
     });
 };
