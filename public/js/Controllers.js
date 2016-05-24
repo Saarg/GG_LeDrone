@@ -1,138 +1,50 @@
 /**
- *  @author marine le mezo
- *  @author yoann fouillard
+ *  @author Marine Le Mezo
+ *  @author Yoann Fouillard
  *  @author jean milsonneau
  *  @overview controller angular
  */
 
 // Angular
 var app = angular.module('GG_LeDrone', []);
+var inter = new Interface();
 
 // INTERFACE ===================================================================
-app.controller('mainCtrl', function($scope, $http) {
-    var interface = new Interface();
+app.controller('mainCtrl', function($scope, $http, $window) {
 
-    $http.get('/api/test').then(function(res) {
-        console.log(res.data);
-    });
+    $scope.mode_manuel = function() {
+        inter.selectMode(0, $window);
+    }
+    $scope.mode_bureau = function() {
+        inter.selectMode(1, $window);
+    }
+    $scope.mode_bureau_a_bureau = function() {
+        inter.selectMode(2, $window);
+    }
 
-    $http.post('/api/test', { data: "is_this_data" }).then(function(res) {
-        console.log(res.data);
-    });
 
 });
 
 // MANUEL ======================================================================
-app.controller('manuCtrl', function($scope, $http) {
+app.controller('manuCtrl', function($scope, $http, $window) {
     var modeManuel = new ModeManuel();
-    modeManuel.run($scope);
+    modeManuel.display($scope, $http);
 
-    $scope.anim = ["tap", "SlowShake", "Ondulation"];
-
-    $scope.speed = 50;
-    $scope.img = null;
-//FAIT PAR YOANN, VERIFIER SI C4EST BON
-    $scope.executeAnimation = function(s){
-        console.log(s);
-        selected = s;
-    };
-
-    $scope.stop = function() {
-        modeManuel.interupt($http);
-    }
-
-    $scope.forward = function() {
-        modeManuel.move($http, 0, $scope.speed);
-    }
-    $scope.backward = function() {
-        modeManuel.move($http, 1, $scope.speed);
-    }
-    $scope.left = function() {
-        modeManuel.move($http, 2, $scope.speed);
-    }
-    $scope.right = function() {
-        modeManuel.move($http, 3, $scope.speed);
-    }
-
-    $scope.arrayBufferToBase64 = function( buffer ) {
-        var binary = '';
-        var bytes = new Uint8Array( buffer );
-        var len = bytes.byteLength;
-        for (var i = 0; i < len; i++) {
-            binary += String.fromCharCode( bytes[ i ] );
-        }
-        return window.btoa( binary );
-    }
-
-    // TODO a mettre dans run
-    $scope.img = null;
-    var getPicture = function() {
-        $http.get('/api/picture').then(function(res) {
-            $scope.img = res.data.img;
-        });
-
-        setTimeout(function () {
-            getPicture();
-        }, 100);
-    }
-    getPicture();
-
+    modeManuel.run(inter, $scope, $http, $window);
 });
 
 // BUREAU ======================================================================
-app.controller('bureauCtrl', function($scope, $http) {
+app.controller('bureauCtrl', function($scope, $http, $window) {
     var modeBureau = new ModeBureau();
-    modeBureau.run();
+    modeBureau.display($scope, $http);
 
-    $scope.selected1 = null;
-    $scope.selected2 = null;
-    $scope.chercheurs = [];
-    $http.get('/api/chercheurs').then(function(res) {
-        if(res.data.success) {
-            $scope.chercheurs = res.data.chercheurs;
-        } else {
-            console.error("Impossible de charger la liste des chercheurs");
-        }
-    });
+    modeBureau.run(inter, $scope, $http, $window);
+});
 
-    $scope.selectChercheur1 = function(c){
-        $scope.selected1 = c;
-        console.log($scope.selected1 + " et " + $scope.selected2);
-    };
-    $scope.selectChercheur2 = function(c){
-        $scope.selected2 = c;
-        console.log($scope.selected1 + " et " + $scope.selected2);
-    };
+// BUREAU A Bureau =============================================================
+app.controller('bureauABureauCtrl', function($scope, $http, $window) {
+    var modeBureauABureau = new ModeBureauABureau();
+    modeBureauABureau.display($scope, $http);
 
-    $http.get('/api/test').then(function(res) {
-        console.log(res.data);
-    });
-
-    $http.post('/api/test', { data: "is_this_data" }).then(function(res) {
-        console.log(res.data);
-    });
-
-    // Image
-    $scope.arrayBufferToBase64 = function( buffer ) {
-        var binary = '';
-        var bytes = new Uint8Array( buffer );
-        var len = bytes.byteLength;
-        for (var i = 0; i < len; i++) {
-            binary += String.fromCharCode( bytes[ i ] );
-        }
-        return window.btoa( binary );
-    }
-
-    // TODO a mettre dans run
-    $scope.img = null;
-    var getPicture = function() {
-        $http.get('/api/picture').then(function(res) {
-            $scope.img = res.data.img;
-        });
-
-        setTimeout(function () {
-            getPicture();
-        }, 100);
-    }
-    getPicture();
+    modeBureauABureau.run(inter, $scope, $http, $window);
 });

@@ -5,15 +5,14 @@
 
 class Interface {
     constructor() {
-        this.curmode = -1;
-        this.modes = [];
+        this.modes = ["/mode_manuel", "/mode_bureau", "/mode_bureau_a_bureau"];
     }
 
-    selectMode() {
-
+    selectMode(mode, $window) {
+        $window.location = this.modes[mode];
     }
 
-    interuptMode() {
-
+    interuptMode($window) {
+        $window.location = "/";
     }
 }

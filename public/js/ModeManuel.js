@@ -6,6 +6,40 @@
 class ModeManuel extends Mode{
     constructor() {
         super("mode manuel");
+        this.url = "/mode_manuel";
+    }
+
+    run(inter, $scope, $http, $window) {
+        $scope.anim = ["tap", "SlowShake", "Ondulation"];
+
+        $scope.speed = 50;
+        $scope.img = null;
+        //FAIT PAR YOANN, VERIFIER SI C4EST BON
+        $scope.executeAnimation = function(s){
+            console.log(s);
+            selected = s;
+        }
+
+        $scope.stop = function() {
+            this.interupt($http);
+        }
+
+        $scope.forward = function() {
+            this.move($http, 0, $scope.speed);
+        }
+        $scope.backward = function() {
+            this.move($http, 1, $scope.speed);
+        }
+        $scope.left = function() {
+            this.move($http, 2, $scope.speed);
+        }
+        $scope.right = function() {
+            this.move($http, 3, $scope.speed);
+        }
+
+        $scope.interupt = function() {
+            inter.interuptMode($window);
+        }
     }
 
     interupt($http) {
