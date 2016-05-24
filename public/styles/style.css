@@ -21,9 +21,17 @@ header{
 }
 
 footer {
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: 0px;
     height: 100px;
     width: 100%;
+}
+
+.border{
+
+  border-left: 1px solid black;
+
+.centrage-droite{
+  text-align: right;
 }

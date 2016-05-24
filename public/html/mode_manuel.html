@@ -1,7 +1,4 @@
-
-<header class="page-header">
-    <h1>Mode Manuel</h1>
-</header>
+<h2>Mode Manuel</h2>
 <section class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <p>
@@ -9,10 +6,9 @@
         </p>
     </div>
 </section>
-
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 controls">
+        <div class="col-sm-3 controls">
             <div class="form-group row">
                 <label class="col-xs-3" for="speed">Speed:</label>
                 <input class="col-xs-9" ng-model="speed" type="text" name="speed" id="speed">
@@ -43,20 +39,15 @@
                     </button>
                 </div>
             </div>
-            <div class="col-md-offset-2 col-md-1 col-xs-offset-2 col-xs-1 col-sm-offset-2 col-sm-1 col-md-offset-2 col-md-1 control2">
-                <a href="index.html">
-                    <button type="button" class="btn btn-default" aria-label="Left Align">
-                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Menu Principal
-                    </button>
-                </a>
-            </div>
         </div>
-        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+        <div class="col-sm-7">
             <img src="images/i1.jpg" ng-if="!img.length">
             <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
         </div>
-        <div class="btn-group-vertical col-md-2" role="group" aria-label="...">
-            <button ng-repeat="a in anim" type="button" class="btn btn-default" ng-click="executeAnimation(a)">{{ a }}</button>
+        <div class="col-sm-2">
+            <div class="btn-group-vertical" role="group" aria-label="...">
+                <button ng-repeat="a in anim" type="button" class="btn btn-default" ng-click="executeAnimation(a)">{{ a }}</button>
+            </div>
         </div>
     </div>
 </div>
