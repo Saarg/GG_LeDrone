@@ -1,50 +1,16 @@
-<!DOCTYPE HTML>
-<html ng-app="GG_LeDrone" ng-controller="bureauCtrl">
-    <head>
-        <meta charset="utf-8">
-        <title>Bureau</title>
-
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-        <link rel="stylesheet" href="styles/mode-bureau.css">
-
-        <style type="text/css">
-          [class*="col"] { margin-bottom: 20px; }
-          img { width: 100%; }
-        </style>
-
-        <!-- Angular -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
-        <script src="js/Mode.js"></script>
-        <script src="js/Interface.js"></script>
-        <script src="js/ModeManuel.js"></script>
-        <script src="js/ModeBureau.js"></script>
-        <script src="js/ModeBureauABureau.js"></script>
-        <script src="js/Controllers.js"></script>
-    </head>
-    <body>
-        <div class="container-fluid">
-            <header class="page-header">
-                <h1>Mode Bureau</h1>
-            </header>
-
-            <section class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <p>
-                    Vous voici en mode bureau. Sélectionnez un chercheur dans la
-                    liste ci-dessous. Le drone vous conduiras directement à son bureau.
-                    </p>
-                </div>
-            </section>
-
-            <section class="row">
-
-                <div class="btn-group-vertical col-xs-offset-1 col-xs-2 col-sm-offset-1 col-sm-2 col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-2" role="group" aria-label="...">
-                    <!--<button type="button" class="btn btn-default">Mr Kubicki</button>
+<header class="page-header">
+    <h1>Mode Bureau</h1>
+</header>
+<section class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p>
+            Vous voici en mode bureau. Sélectionnez un chercheur dans la liste ci-dessous. Le drone vous conduiras directement à son bureau.
+        </p>
+    </div>
+</section>
+<section class="row">
+    <div class="btn-group-vertical col-xs-offset-1 col-xs-2 col-sm-offset-1 col-sm-2 col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-2" role="group" aria-label="...">
+        <!--<button type="button" class="btn btn-default">Mr Kubicki</button>
                     <button type="button" class="btn btn-default">Mr Querrec</button>
                     <button type="button" class="btn btn-default">Mr Gaubert</button>
                     <button type="button" class="btn btn-default">Mr Redou</button>
@@ -52,23 +18,19 @@
                     <button type="button" class="btn btn-default">Mr Nedelec</button>
                     <button type="button" class="btn btn-default">Mr Parenthoen</button>
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
-                    <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c }}</button>
-                </div>
-                <div class ="col-xs-offset-2 col-xs-6 col-sm-offset-2 col-sm-6 col-md-offset-2 col-md-6 col-lg-offset-2 col-lg-6">
-                    <img src="images/i1.jpg" ng-if="!img.length">
-                    <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
-                </div>
-            </section>
-
-            <section class="row">
-                <div class ="col-xs-offset-1 col-xs-2 col-sm-offset-1 col-sm-2 col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-2">
-                    <a href="/">
-                        <button type="button" class="btn btn-default" aria-label="Left Align">
-                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Menu Principal
-                        </button>
-                    </a>
-                </div>
-            </section>
-        </div>
-    </body>
-</html>
+        <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c }}</button>
+    </div>
+    <div class="col-xs-offset-2 col-xs-6 col-sm-offset-2 col-sm-6 col-md-offset-2 col-md-6 col-lg-offset-2 col-lg-6">
+        <img src="images/i1.jpg" ng-if="!img.length">
+        <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
+    </div>
+</section>
+<section class="row">
+    <div class="col-xs-offset-1 col-xs-2 col-sm-offset-1 col-sm-2 col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-2">
+        <a href="/">
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Menu Principal
+            </button>
+        </a>
+    </div>
+</section>

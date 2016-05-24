@@ -1,5 +1,42 @@
 // Angular
-var app = angular.module('GG_LeDrone', []);
+var app = angular.module('GG_LeDrone', ['ui.router']);
+
+// ROUTE =======================================================================
+app.config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/accueil');
+
+    // Accueil STATES AND NESTED VIEWS ========================================
+    $stateProvider.state('accueil', {
+        url: '/accueil',
+        templateUrl: 'html/accueil.html',
+        controller:'mainCtrl'
+    })
+
+    $stateProvider.state('bureaubase', {
+        url: '/bureaubase',
+        templateUrl: 'html/mode_bureau.html',
+        controller:'bureauCtrl'
+    })
+
+    $stateProvider.state('bureaubureau', {
+        url: '/bureaubureau',
+        templateUrl: 'html/mode_bureau_bureau.html',
+        controller:'bureauCtrl'
+    })
+
+    $stateProvider.state('manuel', {
+        url: '/manuel',
+        templateUrl: 'html/mode_manuel.html',
+        controller:'manuCtrl'
+    })
+
+
+    /*    // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+        $stateProvider.state('about', {
+            // we'll get to this in a bit       
+        });*/
+
+});
 
 // INTERFACE ===================================================================
 app.controller('mainCtrl', function($scope, $http) {
@@ -23,8 +60,8 @@ app.controller('manuCtrl', function($scope, $http) {
 
     $scope.speed = 50;
     $scope.img = null;
-//FAIT PAR YOANN, VERIFIER SI C4EST BON
-    $scope.executeAnimation = function(s){
+    //FAIT PAR YOANN, VERIFIER SI C4EST BON
+    $scope.executeAnimation = function(s) {
         console.log(s);
         selected = s;
     };
@@ -46,14 +83,14 @@ app.controller('manuCtrl', function($scope, $http) {
         modeManuel.move($http, 3, $scope.speed);
     }
 
-    $scope.arrayBufferToBase64 = function( buffer ) {
+    $scope.arrayBufferToBase64 = function(buffer) {
         var binary = '';
-        var bytes = new Uint8Array( buffer );
+        var bytes = new Uint8Array(buffer);
         var len = bytes.byteLength;
         for (var i = 0; i < len; i++) {
-            binary += String.fromCharCode( bytes[ i ] );
+            binary += String.fromCharCode(bytes[i]);
         }
-        return window.btoa( binary );
+        return window.btoa(binary);
     }
 
     var getPicture = function() {
@@ -61,7 +98,7 @@ app.controller('manuCtrl', function($scope, $http) {
             $scope.img = res.data.img;
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
             getPicture();
         }, 100);
     }
@@ -77,18 +114,18 @@ app.controller('bureauCtrl', function($scope, $http) {
     $scope.selected2 = null;
     $scope.chercheurs = [];
     $http.get('/api/chercheurs').then(function(res) {
-        if(res.data.success) {
+        if (res.data.success) {
             $scope.chercheurs = res.data.chercheurs;
         } else {
             console.error("Impossible de charger la liste des chercheurs");
         }
     });
 
-    $scope.selectChercheur1 = function(c){
+    $scope.selectChercheur1 = function(c) {
         $scope.selected1 = c;
         console.log($scope.selected1 + " et " + $scope.selected2);
     };
-    $scope.selectChercheur2 = function(c){
+    $scope.selectChercheur2 = function(c) {
         $scope.selected2 = c;
         console.log($scope.selected1 + " et " + $scope.selected2);
     };
@@ -102,14 +139,14 @@ app.controller('bureauCtrl', function($scope, $http) {
     });
 
     // Image
-    $scope.arrayBufferToBase64 = function( buffer ) {
+    $scope.arrayBufferToBase64 = function(buffer) {
         var binary = '';
-        var bytes = new Uint8Array( buffer );
+        var bytes = new Uint8Array(buffer);
         var len = bytes.byteLength;
         for (var i = 0; i < len; i++) {
-            binary += String.fromCharCode( bytes[ i ] );
+            binary += String.fromCharCode(bytes[i]);
         }
-        return window.btoa( binary );
+        return window.btoa(binary);
     }
 
     $scope.img = null;
@@ -118,7 +155,7 @@ app.controller('bureauCtrl', function($scope, $http) {
             $scope.img = res.data.img;
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
             getPicture();
         }, 100);
     }
