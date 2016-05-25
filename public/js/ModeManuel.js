@@ -10,7 +10,7 @@ class ModeManuel extends Mode{
     }
 
     run(inter, $scope, $http, $window) {
-
+        var m = this;
         $http.get('/api/animations').then(function(res) {
             if(res.data.success) {
                 $scope.anim = Object.keys(res.data.animations);
@@ -24,28 +24,28 @@ class ModeManuel extends Mode{
         //FAIT PAR YOANN, VERIFIER SI C4EST BON
         $scope.executeAnimation = function(s){
             console.log(s);
-            selected = s;
+            $scope.selected = s;
         }
 
         $scope.stop = function() {
-            this.interupt($http);
+            m.interupt($http);
         }
 
         $scope.forward = function() {
-            this.move($http, 0, $scope.speed);
+            m.move($http, 0, $scope.speed);
         }
         $scope.backward = function() {
-            this.move($http, 1, $scope.speed);
+            m.move($http, 1, $scope.speed);
         }
         $scope.left = function() {
-            this.move($http, 2, $scope.speed);
+            m.move($http, 2, $scope.speed);
         }
         $scope.right = function() {
-            this.move($http, 3, $scope.speed);
+            m.move($http, 3, $scope.speed);
         }
 
         $scope.interupt = function() {
-            inter.interuptMode($window);
+            m.interuptMode($window);
         }
     }
 
