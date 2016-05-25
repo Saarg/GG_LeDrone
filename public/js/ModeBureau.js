@@ -30,7 +30,7 @@ class ModeBureau extends Mode{
         }
     }
 
-    interupt() {
+    interupt($http) {
         $http.get('/api/stop').then(function(res) {
             console.log(res.data);
         });

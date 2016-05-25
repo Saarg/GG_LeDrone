@@ -1,6 +1,6 @@
-<header class="page-header">
-    <h1>Mode Bureau à bureau</h1>
-</header>
+
+<h2>Mode Bureau à bureau</h2>
+
 <section class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <p>
@@ -20,7 +20,7 @@
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
         <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c }}</button>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-7">
         <img src="images/i1.jpg" ng-if="!img.length">
         <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
     </div>
@@ -43,12 +43,4 @@
         </button>
     </div>
 </section>
-<section class="row">
-    <div class="col-sm-2">
-        <a href="/">
-            <button type="button" class="btn btn-default" aria-label="Left Align">
-                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Menu Principal
-            </button>
-        </a>
-    </div>
-</section>
+

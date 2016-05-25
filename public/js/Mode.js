@@ -41,7 +41,7 @@ class Mode {
         getPicture();
     }
 
-    interupt() {
+    interupt($http) {
 
     }
 }

@@ -10,7 +10,14 @@ class ModeManuel extends Mode{
     }
 
     run(inter, $scope, $http, $window) {
-        $scope.anim = ["tap", "SlowShake", "Ondulation"];
+
+        $http.get('/api/animations').then(function(res) {
+            if(res.data.success) {
+                $scope.anim = Object.keys(res.data.animations);
+            } else {
+                console.error("Impossible de charger la liste des chercheurs");
+            }
+        });
 
         $scope.speed = 50;
         $scope.img = null;

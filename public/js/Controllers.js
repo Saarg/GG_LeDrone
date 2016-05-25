@@ -23,19 +23,28 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('bureaubase', {
         url: '/bureaubase',
         templateUrl: 'html/mode_bureau.html',
-        controller:'bureauCtrl'
+        controller:'bureauCtrl',
+        onEnter: function() {
+            inter.selectMode(1)
+        }
     })
 
     $stateProvider.state('bureaubureau', {
         url: '/bureaubureau',
         templateUrl: 'html/mode_bureau_bureau.html',
-        controller:'bureauABureauCtrl'
+        controller:'bureauABureauCtrl',
+        onEnter: function() {
+            inter.selectMode(2)
+        }
     })
 
     $stateProvider.state('manuel', {
         url: '/manuel',
         templateUrl: 'html/mode_manuel.html',
-        controller:'manuCtrl'
+        controller:'manuCtrl',
+        onEnter: function() {
+            inter.selectMode(0)
+        }
     })
 
 
@@ -62,7 +71,7 @@ app.controller('mainCtrl', function($scope, $http, $window) {
 
 // MANUEL ======================================================================
 app.controller('manuCtrl', function($scope, $http, $window) {
-    var modeManuel = new ModeManuel();
+    var modeManuel = inter.getMode(0);
     modeManuel.display($scope, $http);
 
     modeManuel.run(inter, $scope, $http, $window);
@@ -70,7 +79,7 @@ app.controller('manuCtrl', function($scope, $http, $window) {
 
 // BUREAU ======================================================================
 app.controller('bureauCtrl', function($scope, $http, $window) {
-    var modeBureau = new ModeBureau();
+    var modeBureau = inter.getMode(1);
     modeBureau.display($scope, $http);
 
     modeBureau.run(inter, $scope, $http, $window);
@@ -78,7 +87,7 @@ app.controller('bureauCtrl', function($scope, $http, $window) {
 
 // BUREAU A Bureau =============================================================
 app.controller('bureauABureauCtrl', function($scope, $http, $window) {
-    var modeBureauABureau = new ModeBureauABureau();
+    var modeBureauABureau = inter.getMode(2);
     modeBureauABureau.display($scope, $http);
 
     modeBureauABureau.run(inter, $scope, $http, $window);

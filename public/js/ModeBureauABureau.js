@@ -19,7 +19,7 @@ class ModeBureauABureau extends ModeBureau{
         };
     }
 
-    interupt() {
+    interupt($http) {
 
     }
 }

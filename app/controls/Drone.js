@@ -87,7 +87,7 @@ class Drone {
         // Gestion des images en provenance de gg
         this.video = this.drone.getVideoStream();
         this.video.on("data", function(data) {
-            d.img.setData(data/*, "image/jpeg"*/);
+            d.img.setData(data, "image/jpeg");
         });
 
         // Battery updates
