@@ -19,9 +19,18 @@ module.exports = function(app) {
     };
 
     // Connect =================================================================
-    /*Drone.connect(function(err, data) {
-        console.log("GG est on");
-    });*/
+    app.get('/api/connect', function(req, res) {
+        if(!Drone.connected || Drone.connecting) {
+            Drone.connect(function(err, data) {
+                console.log("GG est on");
+            });
+            res.json({success: true, message: "tentative de connection verifiez /api/droneStatus", connected: Drone.isConnected()});
+        } else if(Drone.connecting && !Drone.ready) {
+            res.json({success: true, message: "attendez suelques secondes puis verifiez /api/droneStatus", connected: Drone.isConnected()});
+        } else {
+            res.json({success: true, message: "GG est déjà connecté", connected: Drone.isConnected()});
+        }
+    });
 
     // Infos CERV ==============================================================
     app.get('/api/chercheurs', function(req, res) {
@@ -33,6 +42,11 @@ module.exports = function(app) {
     app.post('/api/runPath', function(req, res){ DH.runPath(req, res) });
     app.post('/api/goHome', function(req, res){ DH.goHome(req, res) });
     app.post('/api/getResearshers', function(req, res){ DH.getResearshers(req, res) });
+
+    // Drone status ============================================================
+    app.get('/api/droneStatus', function(req, res) {
+        res.json({success: true, message: "status du drone", connected: Drone.isConnected(), ready: Drone.isReady(), moving: Drone.isMoving(), batteryLevel: Drone.getBatteryLevel()});
+    });
 
     // Drone movement ==========================================================
     app.get('/api/stop', function(req, res) {

@@ -21,6 +21,7 @@ class Drone {
 
         this.position = pos || -1;
         this.connected = false;
+        this.connecting = false;
         this.ready = false;
         this.moving=false;
         this.drone = nodeSumo.createClient();
@@ -76,9 +77,11 @@ class Drone {
      */
     connect(callback) {
         var d = this;
+        d.connecting = true;
 
         // Connect
         this.drone.connect(function() {
+            d.connecting = false;
             d.connected = true;
             console.log("Connected...");
             callback(null, null);
@@ -236,6 +239,38 @@ class Drone {
      */
     getPicture() {
         return this.img;
+    }
+
+    /**
+     * getBatteryLevel
+     * @return {int} batterie en %
+     */
+    getBatteryLevel() {
+        return this.batteryLevel;
+    }
+
+    /**
+     * isReady
+     * @return {boolean}
+     */
+    isReady() {
+        return this.ready;
+    }
+
+    /**
+     * isConnected
+     * @return {boolean}
+     */
+    isConnected() {
+        return this.connected;
+    }
+
+    /**
+     * isMoving
+     * @return {boolean}
+     */
+    isMoving() {
+        return this.moving;
     }
 
     /**

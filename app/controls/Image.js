@@ -87,7 +87,7 @@ class Image {
      * @return {buffer} image
      */
     getRawData() {
-        return this.data;
+        return this.raw;
     }
 
     /**
