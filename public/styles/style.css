@@ -20,10 +20,10 @@ header{
   border: 1px solid #EEE;
 }
 
-footer {
+#footer {
     position: absolute;
     left: 0;
-    bottom: 0px;
+    bottom: 0;
     height: 100px;
     width: 100%;
 }
@@ -35,6 +35,13 @@ footer {
 .centrage-droite{
   text-align: right;
 }
+
+#contents{
+  padding-bottom: 100px;
+  position: relative;
+  height: 100%;
+}
+
 
 /* make sidebar nav vertical */ 
 @media (min-width: 768px) {
