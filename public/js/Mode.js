@@ -7,7 +7,6 @@ class Mode {
     constructor(nom) {
         this.nom = nom || "undefined";
         this.running = false;
-        this.url = null;
 
         console.log(this.nom);
     }
@@ -17,7 +16,10 @@ class Mode {
     }
 
     display($scope, $http) {
-        // Image
+        var m = this;
+        m.running = true;
+
+        // Image ===============================================================
         $scope.arrayBufferToBase64 = function( buffer ) {
             var binary = '';
             var bytes = new Uint8Array( buffer );
@@ -35,13 +37,36 @@ class Mode {
             });
 
             setTimeout(function () {
-                getPicture();
+                if(m.running) {
+                    refreshDroneStatus();
+                }
             }, 100);
         }
         getPicture();
+
+        // Status ==============================================================
+        $scope.connected = false;
+        $scope.ready = false;
+        $scope.moving = false;
+        $scope.batteryLevel = -1;
+        var refreshDroneStatus = function() {
+            $http.get('/api/droneStatus').then(function(res) {
+                $scope.connected = res.data.connected;
+                $scope.ready = res.data.ready;
+                $scope.moving = res.data.moving;
+                $scope.batteryLevel = res.data.batteryLevel;
+            });
+
+            setTimeout(function () {
+                if(m.running) {
+                    refreshDroneStatus();
+                }
+            }, 1000);
+        }
+        refreshDroneStatus()
     }
 
-    interupt($http) {
-
+    interupt() {
+        this.running = false;
     }
 }

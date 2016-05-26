@@ -13,9 +13,8 @@ class Interface {
         this.curMode = mode;
     }
 
-    interuptMode($http) {
-        //this.modes[this.curMode].interupt($http);
-
+    interuptMode() {
+        this.modes[this.curMode].interupt();
         this.curMode = -1;
     }
 

@@ -1,4 +1,6 @@
 /**
+ *  @author Marine Le Mezo
+ *  @author Yoann Fouillard
  *  @author jean milsonneau
  *  @overview mode bureau a bureau
  */
@@ -19,7 +21,7 @@ class ModeBureauABureau extends ModeBureau{
         };
     }
 
-    interupt($http) {
-
+    interupt() {
+        super.interupt();
     }
 }

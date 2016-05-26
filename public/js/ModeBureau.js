@@ -1,4 +1,6 @@
 /**
+ *  @author Marine Le Mezo
+ *  @author Yoann Fouillard
  *  @author jean milsonneau
  *  @overview mode bureau
  */
@@ -30,9 +32,7 @@ class ModeBureau extends Mode{
         }
     }
 
-    interupt($http) {
-        $http.get('/api/stop').then(function(res) {
-            console.log(res.data);
-        });
+    interupt() {
+        super.interupt();
     }
 }

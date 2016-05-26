@@ -1,4 +1,6 @@
 /**
+ *  @author Marine Le Mezo
+ *  @author Yoann Fouillard
  *  @author jean milsonneau
  *  @overview mode manuel
  */
@@ -28,7 +30,7 @@ class ModeManuel extends Mode{
         }
 
         $scope.stop = function() {
-            m.interupt($http);
+            m.stop($http);
         }
 
         $scope.forward = function() {
@@ -49,9 +51,13 @@ class ModeManuel extends Mode{
         }
     }
 
-    interupt($http) {
+    interupt() {
+        super.interupt();
+    }
+
+    stop($http) {
         $http.get('/api/stop').then(function(res) {
-            console.log(res.data);
+            //console.log(res.data);
         });
     }
 

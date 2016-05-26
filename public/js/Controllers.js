@@ -26,6 +26,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller:'bureauCtrl',
         onEnter: function() {
             inter.selectMode(1)
+        },
+        onExit: function() {
+            inter.interuptMode()
         }
     })
 
@@ -35,6 +38,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller:'bureauABureauCtrl',
         onEnter: function() {
             inter.selectMode(2)
+        },
+        onExit: function() {
+            inter.interuptMode()
         }
     })
 
@@ -44,6 +50,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller:'manuCtrl',
         onEnter: function() {
             inter.selectMode(0)
+        },
+        onExit: function() {
+            inter.interuptMode()
         }
     })
 
@@ -57,6 +66,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 // INTERFACE ===================================================================
 app.controller('mainCtrl', function($scope, $http, $window) {
+    // Demande de connection au drone
+    /*$http.get('/api/connect').then(function(res) {
+        console.log(res.data);
+    });*/
+
     $scope.mode_manuel = function() {
         inter.selectMode(0, $window);
     }
