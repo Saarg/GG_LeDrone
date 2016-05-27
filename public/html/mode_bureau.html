@@ -21,8 +21,8 @@
         <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c }}</button>
     </div>
     <div class="col-xs-offset-2 col-xs-6 col-sm-offset-2 col-sm-6 col-md-offset-2 col-md-6 col-lg-offset-2 col-lg-6">
-        <img src="images/i1.jpg" ng-if="!img.length">
-        <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
+        <img src="images/i1.jpg" ng-if="!img">
+        <img ng-src="data:image/JPEG;base64,{{img}}" ng-if="img">
     </div>
 </section>
 <section class="row">

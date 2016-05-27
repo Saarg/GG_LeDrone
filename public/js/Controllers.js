@@ -94,7 +94,7 @@ app.controller('mainCtrl', function($scope, $http, $window) {
             $scope.moving = res.data.moving;
             $scope.batteryLevel = res.data.batteryLevel;
         });
-        console.log($scope.batteryLevel);
+        
         setTimeout(function () {
             refreshDroneStatus();
         }, 1000);

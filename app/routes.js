@@ -5,6 +5,9 @@
 var DroneHandler = require ('./controls/DroneHandler.js');
 var Drone = require ('./controls/Drone.js');
 
+var Image = require ('./controls/Image.js');
+var fs = require('fs');
+
 module.exports = function(app) {
     // Initialisation du DroneHandler ==========================================
     var DH = new DroneHandler();
@@ -84,6 +87,10 @@ module.exports = function(app) {
     // Image ===================================================================
     app.get('/api/picture', function(req, res) {
         var img = Drone.getPicture();
-        res.json({succes: true, img: img.getRawData()});
+        if(img.getRawData())
+            res.json({succes: true, img: img.getRawData().toString('base64')});
+        else {
+            res.json({succes: true, img: null});
+        }
     });
 };

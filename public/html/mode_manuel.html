@@ -41,8 +41,8 @@
             </div>
         </div>
         <div class="col-sm-7">
-            <img src="images/i1.jpg" ng-if="!img.length">
-            <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
+            <img src="images/i1.jpg" ng-if="!img">
+            <img ng-src="data:image/JPEG;base64,{{img}}" ng-if="img">
         </div>
         <div class="col-sm-2">
             <div class="btn-group-vertical" role="group" aria-label="...">

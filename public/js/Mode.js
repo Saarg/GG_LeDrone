@@ -20,16 +20,6 @@ class Mode {
         m.running = true;
 
         // Image ===============================================================
-        $scope.arrayBufferToBase64 = function( buffer ) {
-            var binary = '';
-            var bytes = new Uint8Array( buffer );
-            var len = bytes.byteLength;
-            for (var i = 0; i < len; i++) {
-                binary += String.fromCharCode( bytes[ i ] );
-            }
-            return window.btoa( binary );
-        }
-
         $scope.img = null;
         var getPicture = function() {
             $http.get('/api/picture').then(function(res) {
