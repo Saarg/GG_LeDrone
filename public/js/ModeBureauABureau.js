@@ -11,8 +11,15 @@ class ModeBureauABureau extends ModeBureau{
         this.url = "/mode_bureau_a_bureau";
     }
 
-    run(inter, $scope, $http, $window) {
-        super.run(inter, $scope, $http, $window);
+    /**
+     * Variables et fonction du mode
+     * @param  {$scope}
+     * @param  {$http}
+     * @param  {$window}
+     * @return {undefined} pas de retour
+     */
+    run($scope, $http, $window) {
+        super.run($scope, $http, $window);
 
         $scope.selected2 = null;
         $scope.selectChercheur2 = function(c){
@@ -26,6 +33,10 @@ class ModeBureauABureau extends ModeBureau{
         };
     }
 
+    /**
+     * interuption du mode
+     * @return {undefined} pas de retour
+     */
     interupt() {
         super.interupt();
     }

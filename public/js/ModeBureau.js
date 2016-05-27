@@ -11,7 +11,14 @@ class ModeBureau extends Mode{
         this.url = "/mode_bureau";
     }
 
-    run(inter, $scope, $http, $window) {
+    /**
+     * Variables et fonction du mode
+     * @param  {$scope}
+     * @param  {$http}
+     * @param  {$window}
+     * @return {undefined} pas de retour
+     */
+    run($scope, $http, $window) {
         $scope.chercheurs = [];
         $http.get('/api/chercheurs').then(function(res) {
             if(res.data.success) {
@@ -33,6 +40,10 @@ class ModeBureau extends Mode{
         };
     }
 
+    /**
+     * interuption du mode
+     * @return {undefined} pas de retour
+     */
     interupt() {
         super.interupt();
     }

@@ -94,7 +94,7 @@ app.controller('mainCtrl', function($scope, $http, $window) {
             $scope.moving = res.data.moving;
             $scope.batteryLevel = res.data.batteryLevel;
         });
-        
+
         setTimeout(function () {
             refreshDroneStatus();
         }, 1000);
@@ -108,7 +108,7 @@ app.controller('manuCtrl', function($scope, $http, $window) {
     var modeManuel = inter.getMode(0);
     modeManuel.display($scope, $http);
 
-    modeManuel.run(inter, $scope, $http, $window);
+    modeManuel.run($scope, $http, $window);
 });
 
 // BUREAU ======================================================================
@@ -116,7 +116,7 @@ app.controller('bureauCtrl', function($scope, $http, $window) {
     var modeBureau = inter.getMode(1);
     modeBureau.display($scope, $http);
 
-    modeBureau.run(inter, $scope, $http, $window);
+    modeBureau.run($scope, $http, $window);
 });
 
 // BUREAU A Bureau =============================================================
@@ -124,5 +124,5 @@ app.controller('bureauABureauCtrl', function($scope, $http, $window) {
     var modeBureauABureau = inter.getMode(2);
     modeBureauABureau.display($scope, $http);
 
-    modeBureauABureau.run(inter, $scope, $http, $window);
+    modeBureauABureau.run($scope, $http, $window);
 });

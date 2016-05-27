@@ -11,11 +11,25 @@ class Mode {
         console.log(this.nom);
     }
 
-    run() {
+    /**
+     * Variables et fonction du mode
+     * @param  {$scope}
+     * @param  {$http}
+     * @param  {$window}
+     * @return {undefined} pas de retour
+     */
+    run($scope, $http, $window) {
 
     }
 
-    display($scope, $http) {
+    /**
+     * gestion des choses a afficher
+     * @param  {$scope}
+     * @param  {$http}
+     * @param  {$window}
+     * @return {undefined} pas de retour
+     */
+    display($scope, $http, $window) {
         var m = this;
         m.running = true;
 
@@ -35,6 +49,10 @@ class Mode {
         getPicture();
     }
 
+    /**
+     * interuption du mode
+     * @return {undefined} pas de retour
+     */
     interupt() {
         this.running = false;
     }

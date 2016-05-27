@@ -11,7 +11,14 @@ class ModeManuel extends Mode{
         this.url = "/mode_manuel";
     }
 
-    run(inter, $scope, $http, $window) {
+    /**
+     * Variables et fonction du mode
+     * @param  {$scope}
+     * @param  {$http}
+     * @param  {$window}
+     * @return {undefined} pas de retour
+     */
+    run($scope, $http, $window) {
         var m = this;
         $http.get('/api/animations').then(function(res) {
             if(res.data.success) {
@@ -51,26 +58,54 @@ class ModeManuel extends Mode{
         }
     }
 
+    /**
+     * interuption du mode
+     * @return {undefined} pas de retour
+     */
     interupt() {
         super.interupt();
     }
 
+    /**
+     * stop le drone
+     * @param  {$http}
+     * @return {undefined} pas de retour
+     */
     stop($http) {
         $http.get('/api/stop').then(function(res) {
             //console.log(res.data);
         });
     }
 
+    /**
+     * deplace le drone dans une direction donné a une vitesse
+     * @param  {$http}
+     * @param  {dir}
+     * @param  {speed}
+     * @return {undefined} pas de retour
+     */
     move($http, dir, speed) {
         $http.post('/api/move', { speed: speed, dir: dir }).then(function(res) {
             // Intruction a en fct de la rep du serv
         });
     }
 
+    /**
+     * fait sauter le drone HS
+     * @param  {$http}
+     * @param  {jumpType}
+     * @return {undefined} pas de retour
+     */
     jump($http, jumpType) {
         console.log("GG est cassé");
     }
 
+    /**
+     * execute une animation
+     * @param  {$http}
+     * @param  {animationType}
+     * @return {undefined} pas de retour
+     */
     animation($http, animationType) {
         $http.get('/api/tap').then(function(res) {
             // Intruction a en fct de la rep du serv
