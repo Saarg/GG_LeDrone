@@ -38,6 +38,16 @@ class ModeBureau extends Mode{
                 console.log($scope.selected1 + " et " + $scope.selected2);
             }
         };
+
+        $scope.run = function() {
+            $http.post('/api/runPath', {chercheur1: $scope.selected1, chercheur2: $scope.selected2}).then(function(res) {
+                if(res.data.success) {
+                    $scope.chercheurs = res.data.chercheurs;
+                } else {
+                    console.error("error");
+                }
+            });
+        }
     }
 
     /**

@@ -41,10 +41,20 @@ module.exports = function(app) {
     });
 
     // DroneHandler ============================================================
-    app.post('/api/findPath', function(req, res){ DH.findPath(req, res); });
-    app.post('/api/runPath', function(req, res){ DH.runPath(req, res) });
-    app.post('/api/goHome', function(req, res){ DH.goHome(req, res) });
-    app.post('/api/getResearshers', function(req, res){ DH.getResearshers(req, res) });
+    app.post('/api/runPath', function(req, res){
+        res.json({success: true, message: "Parcour du chemin"});
+        DH.findPath(req.body.chercheur1);
+        DH.runPath(0, 0, function() {
+            if(req.body.chercheur2) {
+                DH.findPath(req.body.chercheur2);
+                DH.runPath(0, 0, function() {
+                    DH.goHome();
+                });
+            } else {
+                DH.goHome();
+            }
+        });
+    });
 
     // Drone status ============================================================
     app.get('/api/droneStatus', function(req, res) {
