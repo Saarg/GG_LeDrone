@@ -38,32 +38,11 @@ class Mode {
 
             setTimeout(function () {
                 if(m.running) {
-                    refreshDroneStatus();
-                }
-            }, 100);
-        }
-        getPicture();
-
-        // Status ==============================================================
-        $scope.connected = false;
-        $scope.ready = false;
-        $scope.moving = false;
-        $scope.batteryLevel = -1;
-        var refreshDroneStatus = function() {
-            $http.get('/api/droneStatus').then(function(res) {
-                $scope.connected = res.data.connected;
-                $scope.ready = res.data.ready;
-                $scope.moving = res.data.moving;
-                $scope.batteryLevel = res.data.batteryLevel;
-            });
-
-            setTimeout(function () {
-                if(m.running) {
-                    refreshDroneStatus();
+                    getPicture();
                 }
             }, 1000);
         }
-        refreshDroneStatus()
+        getPicture();
     }
 
     interupt() {

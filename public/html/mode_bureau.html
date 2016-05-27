@@ -25,3 +25,10 @@
         <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img)}}" ng-if="img.length">
     </div>
 </section>
+<section class="row">
+    <div class="col-sm-offset-5 col-sm-2" ng-if="selected1 != null">
+        <button type="button" class="btn btn-danger">
+            <span class="glyphicon glyphicon-play"></span>
+        </button>
+    </div>
+</section>

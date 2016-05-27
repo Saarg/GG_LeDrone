@@ -16,8 +16,13 @@ class ModeBureauABureau extends ModeBureau{
 
         $scope.selected2 = null;
         $scope.selectChercheur2 = function(c){
-            $scope.selected2 = c;
-            console.log($scope.selected1 + " et " + $scope.selected2);
+            if($scope.selected2 != c) {
+                $scope.selected2 = c;
+                console.log($scope.selected1 + " et " + $scope.selected2);
+            } else {
+                $scope.selected2 = null;
+                console.log($scope.selected1 + " et " + $scope.selected2);
+            }
         };
     }
 

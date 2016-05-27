@@ -16,8 +16,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     // Accueil STATES AND NESTED VIEWS ========================================
     $stateProvider.state('accueil', {
         url: '/accueil',
-        templateUrl: 'html/accueil.html',
-        controller:'mainCtrl'
+        templateUrl: 'html/accueil.html'
     })
 
     $stateProvider.state('bureaubase', {
@@ -71,6 +70,7 @@ app.controller('mainCtrl', function($scope, $http, $window) {
         console.log(res.data);
     });*/
 
+
     $scope.mode_manuel = function() {
         inter.selectMode(0, $window);
     }
@@ -80,6 +80,26 @@ app.controller('mainCtrl', function($scope, $http, $window) {
     $scope.mode_bureau_a_bureau = function() {
         inter.selectMode(2, $window);
     }
+
+    // Status ==============================================================
+    $scope.connected = false;
+    $scope.ready = false;
+    $scope.moving = false;
+    $scope.batteryLevel = -1;
+
+    var refreshDroneStatus = function() {
+        $http.get('/api/droneStatus').then(function(res) {
+            $scope.connected = res.data.connected;
+            $scope.ready = res.data.ready;
+            $scope.moving = res.data.moving;
+            $scope.batteryLevel = res.data.batteryLevel;
+        });
+        console.log($scope.batteryLevel);
+        setTimeout(function () {
+            refreshDroneStatus();
+        }, 1000);
+    }
+    refreshDroneStatus()
 
 });
 

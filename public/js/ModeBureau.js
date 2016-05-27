@@ -23,13 +23,14 @@ class ModeBureau extends Mode{
 
         $scope.selected1 = null;
         $scope.selectChercheur1 = function(c){
-            $scope.selected1 = c;
-            console.log($scope.selected1 + " et " + $scope.selected2);
+            if($scope.selected1 != c) {
+                $scope.selected1 = c;
+                console.log($scope.selected1 + " et " + $scope.selected2);
+            } else {
+                $scope.selected1 = null;
+                console.log($scope.selected1 + " et " + $scope.selected2);
+            }
         };
-
-        $scope.interupt = function() {
-            inter.interuptMode($window);
-        }
     }
 
     interupt() {
