@@ -29,3 +29,7 @@ node_modules
 .csscomb.json
 
 img
+public/bootstrap
+public/angular
+public/angular-ui-router
+public/jquery

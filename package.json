@@ -8,12 +8,18 @@
   },
   "dependencies": {
     "node-sumo": "git+https://github.com/forgeByAcision/node-sumo",
-    "express": "latest",
-    "body-parser": "latest",
-    "get-pixels": "latest"
+    "express": "4.13.4",
+    "body-parser": "1.15.1",
+    "get-pixels": "3.3.0",
+    "bootstrap": "3.3.6",
+    "angular": "1.4.8",
+    "angular-ui-router": "0.3.0",
+    "jquery": "1.12.4"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "cp -r node_modules/bootstrap/dist/ public/bootstrap/ && cp -r node_modules/angular/ public/angular/ && cp -r node_modules/angular-ui-router/release/ public/angular-ui-router/ && cp -r node_modules/jquery/dist/ public/jquery/",
+    "clean": "rm -r node_modules && rm -r public/bootstrap && rm -r public/angular && rm -r public/angular-ui-router && rm -r public/jquery"
   },
   "contributors": [
     {
