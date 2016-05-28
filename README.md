@@ -1,11 +1,11 @@
 # GG_LeDrone
 Projet de guidage par drone des visiteurs du CERV
+![Alt text](/public/images/i1.jpg?raw=true "Parrot sumo")
 
-# Drone utilisé
-Parrot sumo
-![alt tag](http://www.parrot.com/static/images/theme/catalog/jumping_sumo/details.jpg)
+# Utilisation
+Pour faire fonctionner GG_LeDrone installez [Node.js](https://nodejs.org/en/) 
 
-# Compilation du Projet (UNIX)
-1. Installer les dependances ```npm install```
-2. Démarer l'application ```npm start```
-3. Accéder a l'application a l'adresse [localhost:8080](http://localhost:8080/)
+1. Installer les dependances du projet ```npm install```
+2. Connectez vous en wi-fi avec un sumo de chez parrot
+3. Démarer l'application ```npm start```
+4. Accéder a l'application a l'adresse [localhost:8080](http://localhost:8080/)
