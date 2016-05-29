@@ -25,14 +25,15 @@ var test = function() {
 
     Drone.position = handler.offices[6];
     handler.destination = handler.offices[0];
-	handler.findPath();
+	handler.findPath();								//Dijkstra and convertPath() confirmed working.
 	
 	var ark = handler.offices[0].arks[0];
 	console.log(ark.name);
 	ark.getMoves(ark.getExtremity(handler.offices[0]));
 	
 	console.log(handler.getResearchers());
-    //handler.runPath(0, 0, 0, 0, null);
+
+    handler.runPath(0, 0, null);
 	//console.log("coming back home");
 	//handler.goHome();
     return;

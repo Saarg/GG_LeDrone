@@ -55,6 +55,21 @@ class Office {
 		Ark.getArksFromData(data.arks, data.arkMoves, offices);							//Instantiating new Arks
         return offices;
     };
+	
+	
+	
+	/**
+     * Given a researcher and a list of Office, returns the researcher's office if found, null otherwise.
+	 * @parameter {Office} Array of offices.
+	 * @parameter {string} Researcher whose office we're looking for.
+     * @return {Office} Return offices read from file.
+     */
+	static findOfficeFromResearcher(offices, researcher){
+		for (var i in offices) {
+			if (researcher == offices[i].researcher) return offices[i];
+		}
+		return null;
+	};
 };
 
 module.exports = Office;

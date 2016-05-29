@@ -111,77 +111,92 @@ class DroneHandler {
 		for (var z in this.path) {
 			console.log("Office : " + this.path[z].researcher);
 		};
-		console.log("\nExiting convertPath() function");
-    };
+		console.log(this.path);
+		console.log("\nExiting convertPath() function ...\n");
+	};
 
-    /**
-     * Finds shortest path, essentially calls dijkstra() followed by convertPath() functions.
+	/**
+	 * Finds shortest path, essentially calls dijkstra() followed by convertPath() functions.
 	 * @parameter {Office} Destination, may be used as parameter for dijkstra(), must be used for convertPath.
-     * @return {undefined} No return.
-     */
-    findPath() {
-        var incArks = this.dijkstra(this.destination);
-        this.path = this.convertPath(incArks, this.destination);
+	 * @return {undefined} No return.
+	 */
+	findPath() {
+		var incArks = this.dijkstra(this.destination);
+		this.convertPath(incArks, this.destination);
+	};
+
+	/**
+	 * Send the drone to its destination.
+	 * @param  {number} officeIndex corresponds to the current Ark 
+	 * @param  {number} moveIndex corresponds to current move in current Ark
+	 * @param  {function} callback TODO definir la valeur
+	 * @return {undefined} No return.
+	 */
+	runPath(officeIndex, moveIndex, callback) {
+		if (!officeIndex && !moveIndex) console.log("\n\nEntering runPath function() ...\n\nGG is going toward " + this.destination.researcher + "'s office." );
+		console.log("\nDrone is currently at " + Drone.position.researcher + "'s office.\n");
+		Drone.stop();
+		var handler = this; 						//this not accessible in setTimeout;
+
+		if (Drone.position == this.destination) { 	//Drone arrived to destination
+			console.log("Drone arrived at destination : " + this.destination.researcher + "'s office.\nExiting runPath() ...");
+			return;
+		};
+
+		if (Drone.position != this.destination) {
+			var moves = handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).moves;
+			var dirStr = "Drone is ";
+			switch(moves[0][moveIndex]) {
+				case 0:
+					dirStr += "going forward for ";
+					break;
+				case 1:
+					dirStr += "going backward for ";
+					break;
+				case 2:
+					dirStr += "turning left for ";
+					break;
+				case 3:
+					dirStr += "turning right for ";
+					break;
+				default:
+					dirStr += "going nowhere for ";	
+			};
+			console.log(dirStr + moves[1][moveIndex] + " milliseconds.");
+			
+			Drone.move(moves[0][moveIndex], 50);
+			callback = function() {
+				setTimeout(function() {
+					if (moveIndex == moves.length - 1) {
+						moveIndex=0;
+						officeIndex++;
+						Drone.position = handler.path[officeIndex];
+					} 
+					else {
+						moveIndex++;
+					};
+					handler.runPath(officeIndex, moveIndex, null);
+				}, moves[1][moveIndex] || 500);
+				return;
+			}
+		}
+		console.log("end recursion");
+		if (callback) callback();
     };
 
     /**
-     * parcour du chemin
-     * @param  {Ark} officeIndex TODO definir la valeur
-     * @param  {undefined} moveIndex TODO definir la valeur
-     * @param  {function} callback TODO definir la valeur
-     * @return {undefined} pas de retour
-     */
-    runPath(officeIndex, moveIndex, callback) {
-            console.log("\Entering runPath");
-            console.log("position : "+Drone.position.researcher);
-            Drone.stop();
-
-            var thisHandler = this; //this pas accessible dans le setTimeout;
-
-            if (Drone.position == this.destination) {
-                console.log("end");
-                return;
-            };
-
-            if (Drone.position != this.destination) {
-                var moves = thisHandler.path[officeIndex].findArk(thisHandler.path[officeIndex + 1]).moves;
-                console.log("moving "+moves);
-                console.log("temp move : " + moves[0][moveIndex] + " => " + moves[1][moveIndex]);
-
-                Drone.move(moves[0][moveIndex], 50);
-                callback = function() {
-                    setTimeout(function() {
-                      if (moveIndex == moves.length - 1) {
-                          moveIndex=0;
-                          officeIndex++;
-                          thisHandler.drone.position=thisHandler.path[officeIndex];
-                        //  thisHandler.runPath(req,res, 0, officeIndex + 1, 0, callback);
-                      } else {
-                          //thisHandler.runPath(req,res, officeIndex, moveIndex + 1, callback);
-                          moveIndex++;
-                      }
-                      thisHandler.runPath(req, res, officeIndex, moveIndex, null)
-                    }, moves[1][moveIndex] || 500);
-                    return;
-                }
-            }
-            console.log("end recursion");
-            if (callback) callback();
-
-    }
-
-    /**
-     * Sends the drone back to his place.
+     * Sends the drone back to his place, can be used while the drone is running.
      * @return {undefined} No return.
      */
     goHome() {
         if (Drone.moving) {	//We need to wait for the drone to get to the next Office if he isn't done with his previous order.
             this.path.splice(this.path.indexOf(Drone.position)++);	//We stop the drone at the next office
         };
-		while (Drone.moving) {};
-        this.findPath(this.offices[0]);	//We recalculate the path to home.
-        this.runPath();					//We send the drone back.
-    }
+		while (Drone.moving) { };		//Waiting for the drone to stop.
+		this.destination = Office.findOfficeFromResearcher(this.offices, "_Home");
+        this.findPath();		//We recalculate the path to home.
+        this.runPath(0, 0, null);			//We send the drone back.
+    };
 
     /**
      * Returns researchers list in alphabetical order (except for special characters).
