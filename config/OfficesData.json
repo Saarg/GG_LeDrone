@@ -41,134 +41,152 @@
     "arks":[
         {
             "researcher1":"_Home",
-            "researcher2":"Buche"
+            "researcher2":"Buche",
+			"direction1":3,
+			"direction2":1,
+			"moves":[
+				{
+					"move":"forward",
+					"duration":5000
+				}
+			]
         },
         {
-            "researcher1":"Buche",
-            "researcher2":"Gaubert"
+            "researcher1":"_Home",
+            "researcher2":"Gaubert",
+			"direction1":0,
+			"direction2":2,
+			"moves":[
+				{
+					"move":"forward",
+					"duration":4000
+				}
+			]
         },
 		{
-            "researcher1":"Gaubert",
-            "researcher2":"Kubicki"
+            "researcher1":"Buche",
+            "researcher2":"Parenthoen",
+			"direction1":0,
+			"direction2":2,
+			"moves":[
+				{
+					"move":"forward",
+					"duration":8500
+				}
+			]
+        },
+		{
+            "researcher1":"Buche",
+            "researcher2":"Kubicki",
+			"direction1":3,
+			"direction2":1,
+			"moves":[
+				{
+					"move":"forward",
+					"duration":3000
+				}
+			]
         },
 		{
             "researcher1":"Kubicki",
-            "researcher2":"Maisel"
+            "researcher2":"Maisel",
+			"direction1":0,
+			"direction2":2,
+			"moves":[
+				{
+					"move":"forward",
+					"duration":16000
+				}
+			]
+        },
+		{
+            "researcher1":"Gaubert",
+            "researcher2":"Parenthoen",
+			"direction1":0,
+			"direction2":1,
+			"moves":[
+				{
+					"move":"forward",
+					"duration":4500
+				},
+				{	"move":"right",
+					"duration":620
+				},
+				{
+					"move":"forward",
+					"duration":4500
+				}
+			]
         },
 		{
             "researcher1":"Maisel",
-            "researcher2":"Nedelec"
-        },
-		{
-            "researcher1":"Nedelec",
-            "researcher2":"Parenthoen"
+            "researcher2":"Nedelec",
+			"direction1":3,
+			"direction2":1,
+			"moves":[
+				{
+					"move":"forward",
+					"duration":2500
+				}
+			]
         },
 		{
             "researcher1":"Parenthoen",
-            "researcher2":"Querrec"
-        },
-		{
-            "researcher1":"Querrec",
-            "researcher2":"Redou"
-        },
-		{	"researcher1":"Redou",
-			"researcher2":"_Home"
-		}
-    ],
-
-    "arkMoves":[
-        {
-            "ark":"_Home - Buche",
+            "researcher2":"Querrec",
+			"direction1":3,
+			"direction2":2,
 			"moves":[
+				{
+					"move":"forward",
+					"duration":1000
+				},
+				{	
+					"move":"left",
+					"duration":620
+				},
+				{	
+					"move":"forward",
+					"duration":2000
+				}
+			]
+        },
+		{	"researcher1":"Querrec",
+			"researcher2":"Redou",
+			"direction1":0,
+			"direction2":2,
+			"moves":[
+				{
+					"move":"forward",
+					"duration":3500
+				},
 				{
 					"move":"left",
-					"duration":10
+					"duration":620
 				},
 				{
 					"move":"forward",
-					"duration":20
-				},
-				{
-					"move":"backward",
-					"duration":20
+					"duration":2000
 				},
 				{
 					"move":"right",
-					"duration":20
-				}
-			]
-        },
-        {
-            "ark":"Buche - Gaubert",
-			"moves":[
+					"duration":620
+				},
 				{
-					"move":"right",
-					"duration":20
+					"move":"forward",
+					"duration":2000
 				}
 			]
-        },
-		{
-            "ark":"Gaubert - Kubicki",
+		},
+		{	"researcher1":"Maisel",
+			"researcher2":"Redou",
+			"direction1":1,
+			"direction2":3,
 			"moves":[
 				{
 					"move":"forward",
-					"duration":30
+					"duration":4000
 				}
 			]
-        },
-        {
-            "ark":"Kubicki - Maisel",
-			"moves":[
-				{
-					"move":"backward",
-					"duration":15
-				}
-			]
-        },
-		{
-            "ark":"Maisel - Nedelec",
-			"moves":[
-				{
-					"move":"backward",
-					"duration":15
-				}
-			]
-        },
-        {
-            "ark":"Nedelec - Parenthoen",
-			"moves":[
-				{
-					"move":"backward",
-					"duration":15
-				}
-			]
-        },
-		{
-            "ark":"Parenthoen - Querrec",
-			"moves":[
-				{
-					"move":"backward",
-					"duration":15
-				}
-			]
-        },
-        {
-            "ark":"Querrec - Redou",
-			"moves":[
-				{
-					"move":"backward",
-					"duration":15
-				}
-			]
-        },
-		{
-            "ark":"Redou - _Home",
-			"moves":[
-				{
-					"move":"backward",
-					"duration":15
-				}
-			]
-        }
+		}
     ]
 }

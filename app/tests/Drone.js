@@ -19,7 +19,6 @@ Drone.connect(function(err, data) {
             go();
         }, 500);
     }, 500);
-
 });
 
 var go = function() {
@@ -31,5 +30,4 @@ var go = function() {
     } else {
         console.log(Drone.toString());
     }
-
 }

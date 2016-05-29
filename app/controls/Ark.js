@@ -7,14 +7,16 @@
 var Drone = require("./Drone.js");
  
 class Ark {
-    constructor(office1, office2) {
+    constructor(office1, office2, direction1, direction2) {
 		this.length;
         this.office1 = office1;
         this.office2 = office2;
+		this.direction1 = direction1;	//required drone direction when drone is coming from office1
+		this.direction2 = direction2;
 		this.name = office1.researcher + " - " + office2.researcher;
         this.office1.arks.push(this); 	//Arks add themselves to corresponding offices.
         this.office2.arks.push(this);
-        this.moves = [[],[]];			//[[directions],[durations]]
+        this.moves = [[],[]];			//[[directions],[durations]]	//try not to use speed parameter for turns
     };
 
     /**
@@ -35,7 +37,7 @@ class Ark {
 	 * @parameter {Office} List of Offices.
      * @return {undefined} No return.
      */
-	static getArksFromData(dataArks, dataMoves, offices) {
+	static getArksFromData(dataArks, offices) {
 		console.log("\nInstantiating arks ...");
 		var office1, office2;
 		var ark;
@@ -46,31 +48,25 @@ class Ark {
 				if ((!office1) && (dataArks[i].researcher1 == offices[j].researcher)) office1 = offices[j];		//we look for both extremities of Ark
 				else if ((!office2) && (dataArks[i].researcher2 == offices[j].researcher)) office2 = offices[j];
 				if (office1 && office2) {			//when found we instantiate a new Ark
-					ark = new Ark(office1, office2);
+					ark = new Ark(office1, office2, dataArks[i].direction1, dataArks[i].direction2);
 					console.log("\nArk name : " + ark.name);
 					
-					for (var k in dataMoves) {		//we then add its moves
-						if (dataMoves[k].ark == ark.name) {
-							
-							for (var l in dataMoves[k].moves) {
-								var move = dataMoves[k].moves[l].move;
-								if (move == "forward") ark.moves[0].push(Drone.directions.forward);				//forward
-								else if (move == "backward") ark.moves[0].push(Drone.directions.backward);		//backward
-								else if (move == "left") ark.moves[0].push(Drone.directions.left);				//left
-								else ark.moves[0].push(Drone.directions.right);									//right						
-								ark.moves[1].push(dataMoves[k].moves[l].duration);								//duration
-								console.log(move + " for " + dataMoves[k].moves[l].duration);
-							};
-							ark.updateLength();
-							console.log("Ark total duration : " + ark.length);	
-							break;
-						};
+					for (var k in dataArks[i].moves) {		//we then add its moves
+						var move = dataArks[i].moves[k].move;
+						if (move == "forward") ark.moves[0].push(Drone.directions.forward);				//forward
+						else if (move == "backward") ark.moves[0].push(Drone.directions.backward);		//backward
+						else if (move == "left") ark.moves[0].push(Drone.directions.left);				//left
+						else if (move == "right") ark.moves[0].push(Drone.directions.right);			//right						
+						ark.moves[1].push(dataArks[i].moves[k].duration);								//duration
+						console.log(move + " for " + dataArks[i].moves[k].duration);
 					};
-					break;
+					ark.updateLength();
+					console.log("Ark total duration : " + ark.length)
+				break;
 				};
 			};
 		};
-		console.log("\nArks instantiation done ...")
+		console.log("\nArks instantiation done ...");
     };
 	
 	
@@ -80,7 +76,6 @@ class Ark {
      * @return {undefined} No return.
      */
 	getMoves(office) {
-		console.log(this.moves);
 		var moves = JSON.parse(JSON.stringify(this.moves)); //we need to copy the array
 		if (office == this.office2) {
 			moves[0] = moves[0].reverse();	//we reverse all moves
@@ -93,9 +88,8 @@ class Ark {
 					moves[0][i] = Drone.directions.left;
 				};
 			};
-			return moves;
-		}
-		else return this.moves;
+		};
+		return moves;
 	};
 	
 	/**

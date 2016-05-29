@@ -111,7 +111,6 @@ class DroneHandler {
 		for (var z in this.path) {
 			console.log("Office : " + this.path[z].researcher);
 		};
-		console.log(this.path);
 		console.log("\nExiting convertPath() function ...\n");
 	};
 
@@ -144,7 +143,8 @@ class DroneHandler {
 		};
 
 		if (Drone.position != this.destination) {
-			var moves = handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).moves;
+			var moves = handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).getMoves(Drone.position);
+			console.log(moves);
 			var dirStr = "Drone is ";
 			switch(moves[0][moveIndex]) {
 				case 0:
@@ -164,7 +164,7 @@ class DroneHandler {
 			};
 			console.log(dirStr + moves[1][moveIndex] + " milliseconds.");
 			
-			Drone.move(moves[0][moveIndex], 50);
+			Drone.move(moves[0][moveIndex], 20);
 			callback = function() {
 				setTimeout(function() {
 					if (moveIndex == moves[0].length - 1) {

@@ -24,7 +24,7 @@ var test = function() {
 	var handler = new DroneHandler(file);			//Will instantiate the handler, read Offices, Arks and moves from file and instantiate them.
 
     Drone.position = handler.offices[0];
-    handler.destination = handler.offices[2];
+    handler.destination = handler.offices[5];
 	handler.findPath();
 	
 	var ark = handler.offices[0].arks[0];
@@ -38,5 +38,3 @@ var test = function() {
 	//handler.goHome();
     return;
 };
-
-test();

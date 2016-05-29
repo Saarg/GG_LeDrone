@@ -52,7 +52,7 @@ class Office {
 			console.log("Id : " + offices[i].id + "    Researcher : " + offices[i].researcher);
 		};
 		console.log("Offices instantiation done ...");
-		Ark.getArksFromData(data.arks, data.arkMoves, offices);							//Instantiating new Arks
+		Ark.getArksFromData(data.arks, offices);							//Instantiating new Arks
         return offices;
     };
 	
