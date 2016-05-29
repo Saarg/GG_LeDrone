@@ -12,7 +12,6 @@ var fs = require('fs');
 
 class DroneHandler {
     constructor(file) {
-        //TODO chargement de la liste des bureaux
 		file = file || "./../../config/OfficesData.json";
 		this.offices = Office.getOfficesFromJSON(file);
         this.path = [];
@@ -189,48 +188,73 @@ class DroneHandler {
      * @return {array} Researchers list in alphabetical order.
      */
     getResearchers() {
-		var array = CERV.chercheurs;
-		array.sort(alphabetical(a,b)); //Sort using alphabetical order (except for special characters such as é or ç).
-        return array;
+        return DroneHandler.sortAlphabetical(CERV.chercheurs);
     };
 	
 	/**
      * Returns researchers list in Unicode order.
      * @return {number} 1 if a > b, -1 i a < b else 0.
      */
-	static sortingAlphabetical(a, b) {
-		if (a == b) return 0;
-		var c = (a > b) ? a : b;
-		if ((a >= "a") && (a <= "z") && (a-32==b)) return 0;	//Letter case
-		if ((b >= "a") && (b <= "z") && (b-32==a)) return 0;
-		//Specials characters are a pain
-		if (a > b) return 1;
-		else return -1;
+	static sortAlphabetical(array) {
+		array.sort(function (a, b) {
+			if (a == b) return 0;
+			if ((a >= "a") && (a <= "z") && (a-32==b)) return 0;	//Letter case
+			if ((b >= "a") && (b <= "z") && (b-32==a)) return 0;
+			//Specials characters are a pain
+			if (a > b) return 1;
+			else return -1;
+		});
+		return array;
 	};
 	
+	
 	/**
-     * Can be used to sort Offices by id.
-     * @return {number} 1 if a.id > b.id, -1 if a.id < b.id else 0.
+     * Can be used to sort array by increasing or decreasing numbers.
+	 * @parameter {array} Array to be sorted.
+	 * @parameter {number} If 1 decreasing order, else increasing.
+     * @return {number} positive if a.id > b.id, negative if a.id < b.id else 0.
      */
-	static sortingId(a,b) {
-		if (a.id > b.id) return 1;
-		if (a.id < b.id) return -1;
-		return 0;
+
+	static sortNumbers (array, order){
+		array.sort(function(a,b) {
+			if(order) return b - a;
+			else return a - b;
+		});
+		return array;
+	};
+	
+	
+	
+	/**
+     * Can be used to sort Offices by increasing or decreasing id.	 
+	 * @parameter {Office} Array of offices to be sorted.
+	 * @parameter {number} If 1 decreasing order, else increasing.
+     * @return {number} positive if a.id > b.id, negative if a.id < b.id else 0.
+     */
+	static sortById(offices, order) {
+		offices.sort(function(a,b) {
+			if(order) return b.id - a.id;
+			return a.id - b.id;
+		});
+		return offices;
 	};
 	
 	/**
      * Can be used to sort Offices by researcher.
      * @return {number} 1 if a.researcher > b.researcher, -1 if a.researcher < b.researcher else 0.
      */
-	static sortingResearcher(a,b) {
-		a = a.researcher;
-		b = b.researcher;
-		if (a == b) return 0;
-		if ((a >= "a") && (a <= "z") && (a-32==b)) return 0;	//Letter case
-		if ((b >= "a") && (b <= "z") && (b-32==a)) return 0;
-		//Specials characters are a pain
-		if (a > b) return 1;
-		else return -1;
+	static sortByResearcher(offices) {
+		offices.sort(function(a,b) {		
+			a = a.researcher;
+			b = b.researcher;
+			if (a == b) return 0;
+			if ((a >= "a") && (a <= "z") && (a-32==b)) return 0;	//Letter case
+			if ((b >= "a") && (b <= "z") && (b-32==a)) return 0;
+			//Specials characters are a pain
+			if (a > b) return 1;
+			else return -1;
+		});
+		return array;
 	};
 };
 

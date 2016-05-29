@@ -26,6 +26,8 @@ var test = function() {
     Drone.position = handler.offices[0];
     handler.destination = handler.offices[6];
 	handler.findPath();
+	
+	console.log(handler.getResearchers());
     //handler.runPath(0, 0, 0, 0, null);
 	//console.log("coming back home");
 	//handler.goHome();
