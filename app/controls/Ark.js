@@ -75,13 +75,37 @@ class Ark {
 	
 	
 	/**
+     * Computes moves in the opposite way if needed, else do nothing.
+	 * @parameter {office} Extremity of the ark, the drone is coming from.
+     * @return {undefined} No return.
+     */
+	getMoves(office) {
+		console.log(this.moves);
+		var moves = JSON.parse(JSON.stringify(this.moves)); //we need to copy the array
+		if (office == this.office2) {
+			moves[0] = moves[0].reverse();	//we reverse all moves
+			moves[1] = moves[1].reverse();	//we reverse all durations
+			for (var i in moves[0]) {
+				if (moves[0][i] == Drone.directions.left) {
+					moves[0][i] = Drone.directions.right;
+				}
+				else if (moves[0][i] == Drone.directions.right) {
+					moves[0][i] = Drone.directions.left;
+				};
+			};
+			return moves;
+		}
+		else return this.moves;
+	};
+	
+	/**
      * Computes length of ark from durations of move associated with this ark.
      * @return {undefined} No return.
      */
 	updateLength() {
 		this.length = 0;
 		for (var i in this.moves[1]) {
-			this.length += this.moves[1][i]
+			this.length += this.moves[1][i];
 		};
 	};
 };

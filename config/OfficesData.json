@@ -70,7 +70,10 @@
 		{
             "researcher1":"Querrec",
             "researcher2":"Redou"
-        }
+        },
+		{	"researcher1":"Redou",
+			"researcher2":"_Home"
+		}
     ],
 
     "arkMoves":[
@@ -80,6 +83,14 @@
 				{
 					"move":"left",
 					"duration":10
+				},
+				{
+					"move":"forward",
+					"duration":20
+				},
+				{
+					"move":"backward",
+					"duration":20
 				},
 				{
 					"move":"right",
@@ -143,6 +154,15 @@
         },
         {
             "ark":"Querrec - Redou",
+			"moves":[
+				{
+					"move":"backward",
+					"duration":15
+				}
+			]
+        },
+		{
+            "ark":"Redou - _Home",
 			"moves":[
 				{
 					"move":"backward",

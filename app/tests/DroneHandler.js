@@ -20,12 +20,16 @@ Drone.connect(function(err, data) {
 
 var test = function() {
 	console.log("\n\n\n\n\nStarting application, instantiating DroneHandler ...\n");
-	var file = "./../../config/OfficesData.json";
-	var handler = new DroneHandler(file);	//Will instantiate the handler, read Offices, Arks and moves from file and instantiate them.
+	var file = "./../../config/OfficesData.json";	//path to .JSON file
+	var handler = new DroneHandler(file);			//Will instantiate the handler, read Offices, Arks and moves from file and instantiate them.
 
-    Drone.position = handler.offices[0];
-    handler.destination = handler.offices[6];
+    Drone.position = handler.offices[6];
+    handler.destination = handler.offices[0];
 	handler.findPath();
+	
+	var ark = handler.offices[0].arks[0];
+	console.log(ark.name);
+	ark.getMoves(ark.getExtremity(handler.offices[0]));
 	
 	console.log(handler.getResearchers());
     //handler.runPath(0, 0, 0, 0, null);

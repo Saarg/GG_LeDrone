@@ -11,7 +11,7 @@ var Image = require('./Image.js');
 
 class Drone {
     constructor(pos) {
-        console.log("Création de l'instance");
+        console.log("Creating Drone Instance");
         this.speed = 0;
         this.direction = 0;
 
@@ -34,7 +34,7 @@ class Drone {
 
         // ENUMS
         this.jumps = {
-            hight: 0,
+            height: 0,
             long: 1
         };
         this.directions = {
