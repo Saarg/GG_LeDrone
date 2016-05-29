@@ -13,7 +13,7 @@ class Drone {
     constructor(pos) {
         console.log("Création de l'instance");
         this.speed = 0;
-        this.direcetion = 0;
+        this.direction = 0;
 
         this.batteryLevel = -1;
         this.posture = Drone.postureUnknown;

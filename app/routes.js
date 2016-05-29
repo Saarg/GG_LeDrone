@@ -1,6 +1,6 @@
 /**
  * @author jean milsonneau
- * @overview Toute les commandes possible du client vers le drone
+ * @overview Toutes les commandes possible du client vers le drone
  */
 var DroneHandler = require ('./controls/DroneHandler.js');
 var Drone = require ('./controls/Drone.js');
