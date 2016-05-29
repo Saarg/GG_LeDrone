@@ -144,7 +144,6 @@ class DroneHandler {
 
 		if (Drone.position != this.destination) {
 			var moves = handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).getMoves(Drone.position);
-			console.log(moves);
 			var dirStr = "Drone is ";
 			switch(moves[0][moveIndex]) {
 				case 0:
@@ -162,9 +161,9 @@ class DroneHandler {
 				default:
 					dirStr += "going nowhere for ";	
 			};
-			console.log(dirStr + moves[1][moveIndex] + " milliseconds.");
+			console.log(dirStr + moves[1][moveIndex] + " milliseconds at speed " + moves[2][moveIndex] + ".");
 			
-			Drone.move(moves[0][moveIndex], 20);
+			Drone.move(moves[0][moveIndex], moves[2][moveIndex]);
 			callback = function() {
 				setTimeout(function() {
 					if (moveIndex == moves[0].length - 1) {

@@ -47,7 +47,8 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":5000
+					"duration":5000,
+					"speed":50
 				}
 			]
         },
@@ -59,7 +60,8 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":4000
+					"duration":4000,
+					"speed":50
 				}
 			]
         },
@@ -71,7 +73,8 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":8500
+					"duration":8500,
+					"speed":50
 				}
 			]
         },
@@ -83,7 +86,8 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":3000
+					"duration":3000,
+					"speed":50
 				}
 			]
         },
@@ -95,7 +99,8 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":16000
+					"duration":16000,
+					"speed":50
 				}
 			]
         },
@@ -107,14 +112,17 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":4500
+					"duration":4500,
+					"speed":50
 				},
 				{	"move":"right",
-					"duration":620
+					"duration":620,
+					"speed":20
 				},
 				{
 					"move":"forward",
-					"duration":4500
+					"duration":4500,
+					"speed":50
 				}
 			]
         },
@@ -126,7 +134,8 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":2500
+					"duration":2500,
+					"speed":50
 				}
 			]
         },
@@ -138,15 +147,18 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":1000
+					"duration":1000,
+					"speed":50
 				},
 				{	
 					"move":"left",
-					"duration":620
+					"duration":620,
+					"speed":20
 				},
 				{	
 					"move":"forward",
-					"duration":2000
+					"duration":2000,
+					"speed":50
 				}
 			]
         },
@@ -157,23 +169,28 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":3500
+					"duration":3500,
+					"speed":50
 				},
 				{
 					"move":"left",
-					"duration":620
+					"duration":620,
+					"speed":20
 				},
 				{
 					"move":"forward",
-					"duration":2000
+					"duration":2000,
+					"speed":50
 				},
 				{
 					"move":"right",
-					"duration":620
+					"duration":620,
+					"speed":20
 				},
 				{
 					"move":"forward",
-					"duration":2000
+					"duration":2000,
+					"speed":50
 				}
 			]
 		},
@@ -184,7 +201,8 @@
 			"moves":[
 				{
 					"move":"forward",
-					"duration":4000
+					"duration":4000,
+					"speed":50
 				}
 			]
 		}

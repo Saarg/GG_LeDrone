@@ -16,7 +16,7 @@ class Ark {
 		this.name = office1.researcher + " - " + office2.researcher;
         this.office1.arks.push(this); 	//Arks add themselves to corresponding offices.
         this.office2.arks.push(this);
-        this.moves = [[],[]];			//[[directions],[durations]]	//try not to use speed parameter for turns
+        this.moves = [[],[],[]];			//[[directions],[durations],[speed]]	//try not to use speed parameter for turns
     };
 
     /**
@@ -58,10 +58,11 @@ class Ark {
 						else if (move == "left") ark.moves[0].push(Drone.directions.left);				//left
 						else if (move == "right") ark.moves[0].push(Drone.directions.right);			//right						
 						ark.moves[1].push(dataArks[i].moves[k].duration);								//duration
+						ark.moves[2].push(dataArks[i].moves[k].speed);
 						console.log(move + " for " + dataArks[i].moves[k].duration);
 					};
 					ark.updateLength();
-					console.log("Ark total duration : " + ark.length)
+					console.log("Ark total duration : " + ark.length);
 				break;
 				};
 			};
