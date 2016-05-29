@@ -143,7 +143,33 @@ class DroneHandler {
 		};
 
 		if (Drone.position != this.destination) {
-			var moves = handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).getMoves(Drone.position);
+			var moves = handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).getMoves(Drone.position);	//can probably be optimized
+			moves = JSON.parse(JSON.stringify(moves));	//we'll copy the moves there to be safe
+			var arkDirection = Drone.position.findArk(handler.path[officeIndex+1]).getDirection(Drone.position);
+			if ((Drone.direction - arkDirection == 1) || ((Drone.direction == 0) && (arkDirection == 3))){
+				moves[0].unshift(Drone.directions.right);
+				moves[1].unshift(620);
+				moves[2].unshift(20);
+			}
+			else if ((Drone.direction - arkDirection == -1) || ((Drone.direction == 3 ) && (arkDirection == 0))){
+				moves[0].unshift(Drone.directions.left);
+				moves[1].unshift(620);
+				moves[2].unshift(20);
+			}
+			else if (Math.abs(Drone.direction - arkDirection) == 2) {	//180° turn WILL NOT WORK
+				moves[0].unshift(Drone.directions.left);
+				moves[1].unshift(620);
+				moves[2].unshift(20);
+				moves[0].unshift(Drone.directions.left);
+				moves[1].unshift(620);
+				moves[2].unshift(20);
+			}
+			else {							//this is a dummy so that the length doesn't change
+				moves[0].unshift(0);
+				moves[1].unshift(1);
+				moves[2].unshift(1);
+			}
+			console.log(moves);
 			var dirStr = "Drone is ";
 			switch(moves[0][moveIndex]) {
 				case 0:

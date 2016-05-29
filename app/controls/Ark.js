@@ -103,6 +103,17 @@ class Ark {
 			this.length += this.moves[1][i];
 		};
 	};
+	
+	/**
+     * Returns ark direction corresponding to the office passed in parameter
+	 * @parameter {Office} Office we want to know which direction we need to go to turn.
+     * @return {number} Ark direction.
+     */
+	getDirection(office) {
+		if(office == this.office1) return this.direction1;
+		if(office == this.office2) return this.direction2;
+		return null;
+	}
 };
 
 module.exports = Ark;

@@ -23,7 +23,7 @@ var test = function() {
 	var file = "./../../config/OfficesData.json";	//path to .JSON file
 	var handler = new DroneHandler(file);			//Will instantiate the handler, read Offices, Arks and moves from file and instantiate them.
 
-    Drone.position = handler.offices[0];
+    Drone.position = handler.offices[8];
     handler.destination = handler.offices[7];
 	handler.findPath();
 	
@@ -38,3 +38,5 @@ var test = function() {
 	//handler.goHome();
     return;
 };
+
+test();
