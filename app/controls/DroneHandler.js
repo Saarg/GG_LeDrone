@@ -28,6 +28,7 @@ class DroneHandler {
     };
 
     /**
+     * Computes shortest paths from Drone's current position to all other Offices (unless destination parameter is used). 
 	 * @parameter {Office} Destination, allows the function to end sooner. If used, will not allow convertPath to induce path for unmarked Offices.
      * @return {Ark} Incoming arks vector for all (if destination is not given) or some (including all needed to induce path for destination) Offices.
      */
@@ -87,6 +88,7 @@ class DroneHandler {
     };
 
     /**
+     * Induces path from incoming arks vector produced by dijkstra() function.
      * @param  {Ark} Incoming arks vector for required Offices.
      * @param  {Office} Destination.
      * @return {undefined} No return.
@@ -114,6 +116,7 @@ class DroneHandler {
     };
 
     /**
+     * Finds shortest path, essentially calls dijkstra() followed by convertPath() functions.
 	 * @parameter {Office} Destination, may be used as parameter for dijkstra(), must be used for convertPath.
      * @return {undefined} No return.
      */
@@ -169,6 +172,7 @@ class DroneHandler {
     }
 
     /**
+     * Sends the drone back to his place.
      * @return {undefined} No return.
      */
     goHome() {
