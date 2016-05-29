@@ -1,6 +1,6 @@
 "use strict"
 /**
- * @author jean milsonneau
+ * @author MILSONNEAU Jean
  * @overview Image permet d'interpreter et de stocker une image a partir d'un buffer et de l'analyser
  */
 var getPixels   = require("get-pixels");
@@ -8,13 +8,13 @@ var Color    = require("./Color.js");
 
 class Image {
     constructor(w, h) {
-        this.width = w | 640;
-        this.height = h | 480;
+        this.width = w || 640;
+        this.height = h || 480;
         this.channels = 3;
 
         this.raw = null;
         this.data = new Buffer(this.width*this.height*this.channel);
-    }
+    };
 
     /**
      * Recherche des couleurs dans des zones passée en parametre
@@ -43,10 +43,10 @@ class Image {
             retour[r] =(((colorGrid[r].r - precision) <= moyColor.r) && (moyColor.r <= (colorGrid[r].r + precision)) &&
                         ((colorGrid[r].g - precision) <= moyColor.g) && (moyColor.g <= (colorGrid[r].g + precision)) &&
                         ((colorGrid[r].b - precision) <= moyColor.b) && (moyColor.b <= (colorGrid[r].b + precision)) );
-        }
+        };
 
         return retour;
-    }
+    };
 
     /**
      * set image data

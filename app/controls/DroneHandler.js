@@ -1,8 +1,9 @@
 'use strict'
 /**
- * @author yohann creach piguel jeremy
- * @overview Gestion des déplacements du drone dans s'espace definis
+ * @author CREACH Yohann PIGUEL Jeremy
+ * @overview Define DroneHandler which is responsible for operating the drone.
  */
+ 
 var Drone = require("./Drone.js");
 var Office = require("./Office.js");
 var Ark = require("./Ark.js");
@@ -10,14 +11,13 @@ var CERV = require ('./../../config/CERV.js');
 var fs = require('fs');
 
 class DroneHandler {
-    constructor(offices) {
-        this.offices = offices;
-        //this.offices.prototype=new Office() //c'est fait en mode crassou : lors de l'instanciation d'un office, il s'ajoute au handler A CHANGER
+    constructor(file) {
         //TODO chargement de la liste des bureaux
-        //this.base = this.offices[0];
+		file = file || "./../../config/OfficesData.json";
+		this.offices = Office.getOfficesFromJSON(file);
         this.path = [];
         this.destination;
-    }
+    };
 
     /**
      * connection au sumo
@@ -25,100 +25,105 @@ class DroneHandler {
      */
     droneConnect() {
         Drone.connect();
-    }
+    };
 
     /**
-     * calcul du chemin
-     * @return {Ark} TODO definir la valeur de retour
+     * Computes shortest paths from Drone's current position to all other Offices (unless destination parameter is used). 
+	 * @parameter {Office} Destination, allows the function to end sooner. If used, will not allow convertPath to induce path for unmarked Offices.
+     * @return {Ark} Incoming arks vector for all (if destination is not given) or some (including all needed to induce path for destination) Offices.
      */
-    dijkstra() {
+    dijkstra(destination) {
+		console.log("\nEntering dijkstra() function ...");
         var sumMarks = 0;
         var len = this.offices.length;
-        var marks = []; //vecteur de marquage
-        var distance = []; //vecteur distances
-        var incArks = []; //vecteur arcs entrants
+        var marks = []; 	//Marks vector
+        var distance = []; 	//Lengths vector
+        var incArks = []; 	//Incoming Arks vector
+		var destIndex = this.offices.indexOf(destination);
 
-        for (var i = 0; i < len; i++) { /*-------------------------------------------------*/
+        for (var i = 0; i < len; i++) { 	//Initialisation
             marks[i] = 0;
-            distance[i] = 99999999; /*Initialisation des sommets*/
-        }
+            distance[i] = 99999999;
+        };
 
-        var pos = this.offices.indexOf(Drone.position); /*Sommet de départ*/
-        //  var pos = 0; //à remplacer par la ligne, test drone batterie à plat
-
+        var pos = this.offices.indexOf(Drone.position); //Dijkstra is calculated from the drone's current position.
         distance[pos] = 0;
-        /*-------------------------------------------------*/
 
-        while (sumMarks < len) { /*tant que tous les sommets ne sont pas traités*/
+        while (sumMarks < len) { 	//We wait for all Offices to be marked or the destination to be marked
             sumMarks = 0;
             var officeIndex;
             var min = 9999999999;
-            /*-------------------------------------------------*/
-            for (var i in this.offices) {
+			
+            for (var i in this.offices) {	//We look for the closest unmarked Office.
                 if ((marks[i] == 0) && (distance[i] < min)) {
                     min = distance[i];
-                    officeIndex = i; /*Recherche du sommet non marqué le plus proche*/
+                    officeIndex = i;
                 }
             }
-            var currOffice = this.offices[officeIndex]; //sommet a traite
+            var currOffice = this.offices[officeIndex]; 	//Current office being worked on
 
             /*-------------------------------------------------*/
 
-            for (var j in currOffice.arks) { /*Parcours des arcs de ce sommet*/
-                var nextOffice = currOffice.arks[j].getExtremity(currOffice);
-                var nextPos = this.offices.indexOf(nextOffice); /*On prends l'extremite de l'arc*/
-                if (distance[nextPos] > currOffice.arks[j].length + distance[officeIndex]) {
+            for (var j in currOffice.arks) { 	//We go through every ark
+                var nextOffice = currOffice.arks[j].getExtremity(currOffice);	//Looking for other extremity
+                var nextPos = this.offices.indexOf(nextOffice);
+                if ((!marks[nextPos]) && (distance[nextPos] > currOffice.arks[j].length + distance[officeIndex])) {
                     distance[nextPos] = distance[officeIndex] + currOffice.arks[j].length;
-                    incArks[nextPos] = currOffice.arks[j]; //on stocke l'arc entrant dans un vecteur
-                }
-            }
+                    incArks[nextPos] = currOffice.arks[j]; 	//Incoming ark is stored into the vector
+                };
+            };
 
-            marks[officeIndex] = 1; /*on marque le sommet quand on a fini*/
-            for (var l in marks) sumMarks += marks[l]; //on compte le nb de sommets marques
-        }
+            marks[officeIndex] = 1; //Marking Office when done
+			if ((destIndex != -1) && (marks[destIndex])) sumMarks = len;
+            for (var l in marks) sumMarks += marks[l]; //Checking whether all Offices are marked.
+        };
 
-        for (var j in this.offices) {
-            this.offices[j].distance = distance[j];
-        } //recopie de la distance dans chaque sommet (utile ?)
-        return incArks; //CECI N'EST PAS LE PATH
-        // res.json({success: true, message: "chemins trouvés"});
-    }
+        for (var j in this.offices) this.offices[j].distance = distance[j]; //Length is stored into the Office
+		console.log("\n\nIncoming Arks vector :\n");
+		for (var z in incArks) {
+			console.log("Ark : " + incArks[z].name + "   Length : " + incArks[z].length);
+		};
+		console.log("\nExiting Dijkstra function ...");
+        return incArks; //Incoming arks vector
+    };
 
     /**
-     * convertit le vecteur d'arc en sortie de dijkstra
-     * @param  {Ark} TODO definir la valeur
-     * @param  {Office} destination
-     * @return {undefined} pas de retour
+     * Induces path from incoming arks vector produced by dijkstra() function.
+     * @param  {Ark} Incoming arks vector for required Offices.
+     * @param  {Office} Destination.
+     * @return {undefined} No return.
      */
     convertPath(arksVec, destination) {
+		console.log("\nEntering convertPath() function ...");
         var pos = destination;
-        var start = Drone.position; /*renvoie le chemin à parcourir*/
-        this.path = [];
-        this.path.push(destination); //path contient l'arrivee
+        var start = Drone.position;
+        this.path = [];	//We'll store the path there in reverse order (from end to beginning).
+        this.path.push(destination); //We start by storing the destination
         var posNbr = this.offices.indexOf(destination);
 
-        while (pos != start && arksVec[posNbr]) {
+        while (pos != start && arksVec[posNbr]) { //We induce previous Office from incoming arks vector.
             pos = arksVec[posNbr].getExtremity(pos);
-            if (pos == start) break;
             posNbr = this.offices.indexOf(pos);
-            this.path.push(this.offices[posNbr]); //apres cette boucle, path contient tous les sommets
-        }
-        this.path.push(Drone.position);
-        this.path.reverse(); //CECI EST LE PATH
-        // res.json({success: true, message: "chemin convertit"});
-
-    }
+            this.path.push(this.offices[posNbr]);
+        };
+		
+        this.path.reverse(); //We reverse the array to get the order right.
+		console.log("Path has been found :\n" );
+		for (var z in this.path) {
+			console.log("Office : " + this.path[z].researcher);
+		};
+		console.log("\nExiting convertPath() function");
+    };
 
     /**
-     * trouve le chemin
-     * @return {undefined} pas de retour
+     * Finds shortest path, essentially calls dijkstra() followed by convertPath() functions.
+	 * @parameter {Office} Destination, may be used as parameter for dijkstra(), must be used for convertPath.
+     * @return {undefined} No return.
      */
     findPath() {
-        //req : destination désirée
-        var arks = this.dijkstra();
-        // this.path = this.convertPath(arks, req.body.dest);
-        this.path = this.convertPath(arks, req);
-    }
+        var incArks = this.dijkstra(this.destination);
+        this.path = this.convertPath(incArks, this.destination);
+    };
 
     /**
      * parcour du chemin
@@ -128,7 +133,7 @@ class DroneHandler {
      * @return {undefined} pas de retour
      */
     runPath(officeIndex, moveIndex, callback) {
-            console.log("\nentering runPath");
+            console.log("\Entering runPath");
             console.log("position : "+Drone.position.researcher);
             Drone.stop();
 
@@ -136,10 +141,8 @@ class DroneHandler {
 
             if (Drone.position == this.destination) {
                 console.log("end");
-                //res.json...
                 return;
-
-            }
+            };
 
             if (Drone.position != this.destination) {
                 var moves = thisHandler.path[officeIndex].findArk(thisHandler.path[officeIndex + 1]).moves;
@@ -169,38 +172,66 @@ class DroneHandler {
     }
 
     /**
-     * telephone maison
-     * @return {undefined} pas de retour
+     * Sends the drone back to his place.
+     * @return {undefined} No return.
      */
     goHome() {
-        if (Drone.moving) {
-            var posIndex = this.path.indexOf(Drone.position);
-            this.path.splice(posIndex + 1, this.path.length);
-        }
-
-        this.findPath(this.offices[0]);
-        this.runPath();
+        if (Drone.moving) {	//We need to wait for the drone to get to the next Office if he isn't done with his previous order.
+            this.path.splice(this.path.indexOf(Drone.position)++);	//We stop the drone at the next office
+        };
+		while (Drone.moving) {};
+        this.findPath(this.offices[0]);	//We recalculate the path to home.
+        this.runPath();					//We send the drone back.
     }
 
     /**
-     * donne la liste des chercheurs
-     * @return {array} liste des chercheurs
+     * Returns researchers list in alphabetical order (except for special characters).
+     * @return {array} Researchers list in alphabetical order.
      */
-    getResearshers() {
-        return CERV.chercheurs;
-    }
-
-    /**
-     * donne la liste des chercheurs
-     * TODO definir ce truc
+    getResearchers() {
+		var array = CERV.chercheurs;
+		array.sort(alphabetical(a,b)); //Sort using alphabetical order (except for special characters such as é or ç).
+        return array;
+    };
+	
+	/**
+     * Returns researchers list in Unicode order.
+     * @return {number} 1 if a > b, -1 i a < b else 0.
      */
-    readOfficeTxt(file) {
-        require('fs').readFile('./../config/offices.json', 'utf8', function(err, data) {
-            if (err) throw err; // we'll not consider error handling for now
-            var offices = JSON.parse(data);
-        });
-        return offices;
-    }
-}
+	static sortingAlphabetical(a, b) {
+		if (a == b) return 0;
+		var c = (a > b) ? a : b;
+		if ((a >= "a") && (a <= "z") && (a-32==b)) return 0;	//Letter case
+		if ((b >= "a") && (b <= "z") && (b-32==a)) return 0;
+		//Specials characters are a pain
+		if (a > b) return 1;
+		else return -1;
+	};
+	
+	/**
+     * Can be used to sort Offices by id.
+     * @return {number} 1 if a.id > b.id, -1 if a.id < b.id else 0.
+     */
+	static sortingId(a,b) {
+		if (a.id > b.id) return 1;
+		if (a.id < b.id) return -1;
+		return 0;
+	};
+	
+	/**
+     * Can be used to sort Offices by researcher.
+     * @return {number} 1 if a.researcher > b.researcher, -1 if a.researcher < b.researcher else 0.
+     */
+	static sortingResearcher(a,b) {
+		a = a.researcher;
+		b = b.researcher;
+		if (a == b) return 0;
+		if ((a >= "a") && (a <= "z") && (a-32==b)) return 0;	//Letter case
+		if ((b >= "a") && (b <= "z") && (b-32==a)) return 0;
+		//Specials characters are a pain
+		if (a > b) return 1;
+		else return -1;
+	};
+};
 
 module.exports = DroneHandler;
