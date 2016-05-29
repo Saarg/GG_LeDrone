@@ -23,17 +23,17 @@ var test = function() {
 	var file = "./../../config/OfficesData.json";	//path to .JSON file
 	var handler = new DroneHandler(file);			//Will instantiate the handler, read Offices, Arks and moves from file and instantiate them.
 
-    Drone.position = handler.offices[6];
-    handler.destination = handler.offices[0];
-	handler.findPath();								//Dijkstra and convertPath() confirmed working.
+    Drone.position = handler.offices[0];
+    handler.destination = handler.offices[2];
+	handler.findPath();
 	
 	var ark = handler.offices[0].arks[0];
 	console.log(ark.name);
 	ark.getMoves(ark.getExtremity(handler.offices[0]));
 	
-	console.log(handler.getResearchers());
+	console.log(handler.getResearchers());			//work as it should up to there
 
-    handler.runPath(0, 0, null);
+    handler.runPath(0, 0, null);					//should work now
 	//console.log("coming back home");
 	//handler.goHome();
     return;

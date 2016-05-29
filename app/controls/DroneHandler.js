@@ -134,7 +134,7 @@ class DroneHandler {
 	 */
 	runPath(officeIndex, moveIndex, callback) {
 		if (!officeIndex && !moveIndex) console.log("\n\nEntering runPath function() ...\n\nGG is going toward " + this.destination.researcher + "'s office." );
-		console.log("\nDrone is currently at " + Drone.position.researcher + "'s office.\n");
+		if (moveIndex ==  0) console.log("\n\nDrone is currently at " + Drone.position.researcher + "'s office.\n");
 		Drone.stop();
 		var handler = this; 						//this not accessible in setTimeout;
 
@@ -167,20 +167,19 @@ class DroneHandler {
 			Drone.move(moves[0][moveIndex], 50);
 			callback = function() {
 				setTimeout(function() {
-					if (moveIndex == moves.length - 1) {
-						moveIndex=0;
+					if (moveIndex == moves[0].length - 1) {
+						moveIndex = 0;
 						officeIndex++;
 						Drone.position = handler.path[officeIndex];
 					} 
 					else {
 						moveIndex++;
 					};
-					handler.runPath(officeIndex, moveIndex, null);
+					handler.runPath(officeIndex, moveIndex, callback);
 				}, moves[1][moveIndex] || 500);
 				return;
 			}
 		}
-		console.log("end recursion");
 		if (callback) callback();
     };
 
@@ -190,7 +189,7 @@ class DroneHandler {
      */
     goHome() {
         if (Drone.moving) {	//We need to wait for the drone to get to the next Office if he isn't done with his previous order.
-            this.path.splice(this.path.indexOf(Drone.position)++);	//We stop the drone at the next office
+            this.path.splice(this.path.indexOf(Drone.position)+1);	//We stop the drone at the next office
         };
 		while (Drone.moving) { };		//Waiting for the drone to stop.
 		this.destination = Office.findOfficeFromResearcher(this.offices, "_Home");
@@ -229,7 +228,6 @@ class DroneHandler {
 	 * @parameter {number} If 1 decreasing order, else increasing.
      * @return {number} positive if a.id > b.id, negative if a.id < b.id else 0.
      */
-
 	static sortNumbers (array, order){
 		array.sort(function(a,b) {
 			if(order) return b - a;
