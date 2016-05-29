@@ -1,10 +1,11 @@
 .page-header{
   padding-bottom:0px;
 }
-
+html,body{
+    height: 100%
+}
 body{
   background-color: whitesmoke;
-  min-height: 100%;
 }
 
 .centrage{
@@ -20,31 +21,50 @@ header{
   border: 1px solid #EEE;
 }
 
+
 #footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background-color: white;
 }
+
 
 .border{
 
-  border-left: 1px solid black;
-}
-.centrage-droite{
-  text-align: right;
+  border-left: 1px solid gray;
 }
 
 #contents{
-  padding-bottom: 100px;
   position: relative;
-  height: 100%;
+  min-height: 100%;
+}
+
+#footer img{
+  width: auto;
+  height: 60px;
+}
+
+.views{
+  margin-bottom: 20px;
+  padding-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+  .hidden-block{
+    display: none;
+  }
+  .show-block{
+    display: inline-block;
+  }
 }
 
 
 /* make sidebar nav vertical */ 
 @media (min-width: 768px) {
+
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -60,5 +80,8 @@ header{
   .sidebar-nav .navbar li a {
     padding-top: 12px;
     padding-bottom: 12px;
+  }
+  .show-block{
+    display: none;
   }
 }
