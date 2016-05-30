@@ -227,7 +227,7 @@ class DroneHandler {
         if (Drone.moving) {	//We need to wait for the drone to get to the next Office if he isn't done with his previous order.
             this.path.splice(this.path.indexOf(Drone.position)+1);	//We stop the drone at the next office
             callback = function(){  // callback :
-              setTimeout({ //we wait 0.5s before calling back the function and retest if the drone is stopped 
+              setTimeout({ //we wait 0.5s before calling back the function and retest if the drone is stopped
                 thisHandler.goHome()
               },500)
             }
@@ -327,16 +327,17 @@ class DroneHandler {
 
               }
               console.log(grid);
-
+              var time = null;
               var move = img.interprete(grid);
+              if((move == 2 || (move == 3)) time = 620;
               console.log(move);
-              Drone.move(move, 30); //on effectue le mouvements pour se rendre au prochain bureau
+              Drone.move(move, 20); //on effectue le mouvements pour se rendre au prochain bureau
               if (nextColorFound) {
                   callback = function() {
                       setTimeout(function() { //on attend le temps correspondant au mouvement
                           Drone.position = thisHandler.path[index + 1]
                           thisHandler.runPathImg(index + 1, colorGrid, null) //à la fin cette callback, on fait une recursion avec les nouveaux parametres
-                      }, 50);
+                      }, time || 50);
                       return;
                   }
 
