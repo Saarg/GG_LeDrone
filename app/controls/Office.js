@@ -3,11 +3,12 @@
  * @author CREACH Yohann PIGUEL Jeremy
  * @overview Define Offices.
  */
- 
+
 var fs = require('fs');
 var Ark = require("./Ark.js");
 var Drone = require("./Drone.js");
- 
+var CERV = require ('./../../config/CERV.js');
+
 class Office {
     constructor(id, researcher) {
         this.id = id;
@@ -29,7 +30,7 @@ class Office {
         };
 		return null;
 	};
-	
+
 	 /**
      * Read offices from .json file. Must be used at the start of the application.
 	 * @parameter {string} Path to .json file.
@@ -37,27 +38,18 @@ class Office {
      */
 	static getOfficesFromJSON(file) {
 		var offices = [];
-		console.log("Reading Office Data from file : " + file);
-        var data = fs.readFileSync(file, 'utf8');
-		if (!data) {	//We don't want to go there.
-			console.log("Issue when looking for offices file. \n Application will close.")
-			alert("Issue when looking for offices file. \n Application will close.");
-				throw 1;
-		};
-		console.log("Parsing data ...");
-        data = JSON.parse(data);
 		console.log("Instantiating Offices ...\n");
-		for (var i in data.offices) {
-			offices.push(new Office(data.offices[i].id, data.offices[i].researcher));	//Instantiating new Offices
+		for (var i in CERV.offices) {
+			offices.push(new Office(CERV.offices[i].id, CERV.offices[i].researcher));	//Instantiating new Offices
 			console.log("Id : " + offices[i].id + "    Researcher : " + offices[i].researcher);
 		};
 		console.log("Offices instantiation done ...");
-		Ark.getArksFromData(data.arks, offices);							//Instantiating new Arks
+		Ark.getArksFromData(CERV.arks, offices);							//Instantiating new Arks
         return offices;
     };
-	
-	
-	
+
+
+
 	/**
      * Given a researcher and a list of Office, returns the researcher's office if found, null otherwise.
 	 * @parameter {Office} Array of offices.

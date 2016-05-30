@@ -18,7 +18,7 @@
                     <button type="button" class="btn btn-default">Mr Nedelec</button>
                     <button type="button" class="btn btn-default">Mr Parenthoen</button>
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
-        <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c }}</button>
+        <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c.researcher }}</button>
     </div>
     <div class="col-xs-offset-2 col-xs-6 col-sm-offset-2 col-sm-6 col-md-offset-2 col-md-6 col-lg-offset-2 col-lg-6">
         <img src="images/i1.jpg" ng-if="!img">

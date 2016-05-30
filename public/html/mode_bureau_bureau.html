@@ -16,7 +16,7 @@
                     <button type="button" class="btn btn-default">Mr Nedelec</button>
                     <button type="button" class="btn btn-default">Mr Parenthoen</button>
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
-        <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c }}</button>
+        <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c.researcher }}</button>
     </div>
     <div class="col-sm-8">
         <img src="images/i1.jpg" ng-if="!img">
@@ -31,7 +31,7 @@
                     <button type="button" class="btn btn-default">Mr Nedelec</button>
                     <button type="button" class="btn btn-default">Mr Parenthoen</button>
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
-        <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur2(c)" ng-class="{'btn-success' : c == selected2 && selected1 != selected2}">{{ c }}</button>
+        <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur2(c)" ng-class="{'btn-success' : c == selected2 && selected1 != selected2}">{{ c.researcher }}</button>
     </div>
 </section>
 <section class="row">

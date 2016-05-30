@@ -44,7 +44,7 @@ class Mode {
                 if(m.running) {
                     getPicture();
                 }
-            }, 1000);
+            }, 500);
         }
         getPicture();
     }

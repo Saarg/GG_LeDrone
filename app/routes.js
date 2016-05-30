@@ -10,7 +10,8 @@ var fs = require('fs');
 
 module.exports = function(app) {
     // Initialisation du DroneHandler ==========================================
-    var DH = new DroneHandler(__dirname+"/../config/OfficesData.json");
+    var DH = new DroneHandler();
+    Drone.position = DH.offices[0];
 
     // Gestion de la batterie ==================================================
     Drone.low = function() {
@@ -22,18 +23,18 @@ module.exports = function(app) {
     };
 
     // Connect =================================================================
-    // app.get('/api/connect', function(req, res) {
-    //     if(!Drone.connected || Drone.connecting) {
-    //         Drone.connect(function(err, data) {
-    //             console.log("GG est on");
-    //         });
-    //         res.json({success: true, message: "tentative de connection verifiez /api/droneStatus", connected: Drone.isConnected()});
-    //     } else if(Drone.connecting && !Drone.ready) {
-    //         res.json({success: true, message: "attendez suelques secondes puis verifiez /api/droneStatus", connected: Drone.isConnected()});
-    //     } else {
-    //         res.json({success: true, message: "GG est déjà connecté", connected: Drone.isConnected()});
-    //     }
-    // });
+    app.get('/api/connect', function(req, res) {
+        if(!Drone.connected || Drone.connecting) {
+            Drone.connect(function(err, data) {
+                console.log("GG est on");
+            });
+            res.json({success: true, message: "tentative de connection verifiez /api/droneStatus", connected: Drone.isConnected()});
+        } else if(Drone.connecting && !Drone.ready) {
+            res.json({success: true, message: "attendez suelques secondes puis verifiez /api/droneStatus", connected: Drone.isConnected()});
+        } else {
+            res.json({success: true, message: "GG est déjà connecté", connected: Drone.isConnected()});
+        }
+    });
 
     // Infos CERV ==============================================================
     app.get('/api/chercheurs', function(req, res) {
@@ -43,14 +44,17 @@ module.exports = function(app) {
     // DroneHandler ============================================================
     app.post('/api/runPath', function(req, res){
         res.json({success: true, message: "Parcour du chemin"});
+
         DH.findPath(req.body.chercheur1);
         DH.runPath(0, 0, function() {
             if(req.body.chercheur2) {
                 DH.findPath(req.body.chercheur2);
                 DH.runPath(0, 0, function() {
+                    console.log('going home');
                     DH.goHome();
                 });
             } else {
+                console.log('going home');
                 DH.goHome();
             }
         });

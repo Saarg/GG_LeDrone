@@ -3,7 +3,7 @@
  * @author CREACH Yohann PIGUEL Jeremy
  * @overview Define DroneHandler which is responsible for operating the drone.
  */
- 
+
 var Drone = require("./Drone.js");
 var Office = require("./Office.js");
 var Ark = require("./Ark.js");
@@ -11,9 +11,8 @@ var CERV = require ('./../../config/CERV.js');
 var fs = require('fs');
 
 class DroneHandler {
-    constructor(file) {
-		file = file || "config/OfficesData.json";
-		this.offices = Office.getOfficesFromJSON(file);
+    constructor() {
+		this.offices = Office.getOfficesFromJSON();
         this.path = [];
         this.destination;
     };
@@ -27,8 +26,8 @@ class DroneHandler {
     };
 
     /**
-     * Computes shortest paths from Drone's current position to all other Offices (unless destination parameter is used). 
-	 * @parameter {Office} Destination, allows the function to end sooner. If used, will not allow convertPath to induce path for unmarked Offices.
+     * Computes shortest paths from Drone's current position to all other Offices (unless destination parameter is used).
+	 * @param {Office} Destination, allows the function to end sooner. If used, will not allow convertPath to induce path for unmarked Offices.
      * @return {Ark} Incoming arks vector for all (if destination is not given) or some (including all needed to induce path for destination) Offices.
      */
     dijkstra(destination) {
@@ -38,7 +37,7 @@ class DroneHandler {
         var marks = []; 	//Marks vector
         var distance = []; 	//Lengths vector
         var incArks = []; 	//Incoming Arks vector
-		var destIndex = this.offices.indexOf(destination);
+		var destIndex = destination.id;
 
         for (var i = 0; i < len; i++) { 	//Initialisation
             marks[i] = 0;
@@ -52,7 +51,7 @@ class DroneHandler {
             sumMarks = 0;
             var officeIndex;
             var min = 9999999999;
-			
+
             for (var i in this.offices) {	//We look for the closest unmarked Office.
                 if ((marks[i] == 0) && (distance[i] < min)) {
                     min = distance[i];
@@ -105,7 +104,7 @@ class DroneHandler {
             posNbr = this.offices.indexOf(pos);
             this.path.push(this.offices[posNbr]);
         };
-		
+
         this.path.reverse(); //We reverse the array to get the order right.
 		console.log("Path has been found :\n" );
 		for (var z in this.path) {
@@ -116,30 +115,45 @@ class DroneHandler {
 
 	/**
 	 * Finds shortest path, essentially calls dijkstra() followed by convertPath() functions.
-	 * @parameter {Office} Destination, may be used as parameter for dijkstra(), must be used for convertPath.
+	 * @param {Office} Destination, may be used as parameter for dijkstra(), must be used for convertPath.
 	 * @return {undefined} No return.
 	 */
-	findPath() {
+	findPath(dest) {
+        this.destination = this.offices[dest.id];
+
 		var incArks = this.dijkstra(this.destination);
 		this.convertPath(incArks, this.destination);
+
+        var ark = this.offices[0].arks[0];
+    	//console.log(ark.name);
+    	ark.getMoves(ark.getExtremity(this.offices[0]));
+
+        console.log(this.path);
 	};
 
 	/**
 	 * Send the drone to its destination.
-	 * @param  {number} officeIndex corresponds to the current Ark 
+	 * @param  {number} officeIndex corresponds to the current Ark
 	 * @param  {number} moveIndex corresponds to current move in current Ark
 	 * @param  {function} callback TODO definir la valeur
 	 * @return {undefined} No return.
 	 */
 	runPath(officeIndex, moveIndex, callback) {
-		if (!officeIndex && !moveIndex) console.log("\n\nEntering runPath function() ...\n\nGG is going toward " + this.destination.researcher + "'s office." );
-		if (moveIndex ==  0) console.log("\n\nDrone is currently at " + Drone.position.researcher + "'s office.\n");
+		if (!officeIndex && !moveIndex) {
+            console.log("\n\nEntering runPath function() ...\n\nGG is going toward " + this.destination.researcher + "'s office." );
+            this.endCb = callback;
+        }
+
+        if (moveIndex ==  0) console.log("\n\nDrone is currently at " + Drone.position.researcher + "'s office.\n");
 		Drone.stop();
 		var handler = this; 						//this not accessible in setTimeout;
 
 		if (Drone.position == this.destination) { 	//Drone arrived to destination
 			console.log("Drone arrived at destination : " + this.destination.researcher + "'s office.\nExiting runPath() ...");
-			return;
+            if(handler.endCb) {
+                handler.endCb();
+            }
+            return;
 		};
 
 		if (Drone.position != this.destination) {
@@ -178,7 +192,7 @@ class DroneHandler {
 				moves[1].unshift(1);
 				moves[2].unshift(1);
 			}
-			
+
 			var dirStr = "Drone is ";
 			if(moves[1][moveIndex] != 1) {
 				switch(moves[0][moveIndex]) {
@@ -195,7 +209,7 @@ class DroneHandler {
 						dirStr += "turning right for ";
 						break;
 					default:
-					dirStr += "going nowhere for ";	
+					dirStr += "going nowhere for ";
 				};
 				console.log(dirStr + moves[1][moveIndex] + " milliseconds at speed " + moves[2][moveIndex] + ".");
 				Drone.move(moves[0][moveIndex], moves[2][moveIndex]);
@@ -206,7 +220,7 @@ class DroneHandler {
 						moveIndex = 0;
 						officeIndex++;
 						Drone.position = handler.path[officeIndex];
-					} 
+					}
 					else {
 						moveIndex++;
 					};
@@ -227,8 +241,8 @@ class DroneHandler {
             this.path.splice(this.path.indexOf(Drone.position)+1);	//We stop the drone at the next office
         };
 		while (Drone.moving) { };		//Waiting for the drone to stop.
-		this.destination = Office.findOfficeFromResearcher(this.offices, "_Home");
-        this.findPath();		//We recalculate the path to home.
+		//this.destination = this.offices[0];
+        this.findPath(this.offices[0]);		//We recalculate the path to home.
         this.runPath(0, 0, null);			//We send the drone back.
     };
 
@@ -237,9 +251,9 @@ class DroneHandler {
      * @return {array} Researchers list in alphabetical order.
      */
     getResearchers() {
-        return DroneHandler.sortAlphabetical(CERV.chercheurs);
+        return DroneHandler.sortAlphabetical(CERV.offices.slice(1, CERV.offices.length));
     };
-	
+
 	/**
      * Returns researchers list in Unicode order.
      * @return {number} 1 if a > b, -1 i a < b else 0.
@@ -255,12 +269,12 @@ class DroneHandler {
 		});
 		return array;
 	};
-	
-	
+
+
 	/**
      * Can be used to sort array by increasing or decreasing numbers.
-	 * @parameter {array} Array to be sorted.
-	 * @parameter {number} If 1 decreasing order, else increasing.
+	 * @param {array} Array to be sorted.
+	 * @param {number} If 1 decreasing order, else increasing.
      * @return {number} positive if a.id > b.id, negative if a.id < b.id else 0.
      */
 	static sortNumbers (array, order){
@@ -270,13 +284,13 @@ class DroneHandler {
 		});
 		return array;
 	};
-	
-	
-	
+
+
+
 	/**
-     * Can be used to sort Offices by increasing or decreasing id.	 
-	 * @parameter {Office} Array of offices to be sorted.
-	 * @parameter {number} If 1 decreasing order, else increasing.
+     * Can be used to sort Offices by increasing or decreasing id.
+	 * @param {Office} Array of offices to be sorted.
+	 * @param {number} If 1 decreasing order, else increasing.
      * @return {number} positive if a.id > b.id, negative if a.id < b.id else 0.
      */
 	static sortById(offices, order) {
@@ -286,13 +300,13 @@ class DroneHandler {
 		});
 		return offices;
 	};
-	
+
 	/**
      * Can be used to sort Offices by researcher.
      * @return {number} 1 if a.researcher > b.researcher, -1 if a.researcher < b.researcher else 0.
      */
 	static sortByResearcher(offices) {
-		offices.sort(function(a,b) {		
+		offices.sort(function(a,b) {
 			a = a.researcher;
 			b = b.researcher;
 			if (a == b) return 0;
