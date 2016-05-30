@@ -3,7 +3,7 @@
  * @author CREACH Yohann PIGUEL Jeremy
  * @overview Define DroneHandler which is responsible for operating the drone.
  */
- 
+
 var Drone = require("./Drone.js");
 var Office = require("./Office.js");
 var Ark = require("./Ark.js");
@@ -27,7 +27,7 @@ class DroneHandler {
     };
 
     /**
-     * Computes shortest paths from Drone's current position to all other Offices (unless destination parameter is used). 
+     * Computes shortest paths from Drone's current position to all other Offices (unless destination parameter is used).
 	 * @parameter {Office} Destination, allows the function to end sooner. If used, will not allow convertPath to induce path for unmarked Offices.
      * @return {Ark} Incoming arks vector for all (if destination is not given) or some (including all needed to induce path for destination) Offices.
      */
@@ -52,7 +52,7 @@ class DroneHandler {
             sumMarks = 0;
             var officeIndex;
             var min = 9999999999;
-			
+
             for (var i in this.offices) {	//We look for the closest unmarked Office.
                 if ((marks[i] == 0) && (distance[i] < min)) {
                     min = distance[i];
@@ -105,7 +105,7 @@ class DroneHandler {
             posNbr = this.offices.indexOf(pos);
             this.path.push(this.offices[posNbr]);
         };
-		
+
         this.path.reverse(); //We reverse the array to get the order right.
 		console.log("Path has been found :\n" );
 		for (var z in this.path) {
@@ -126,7 +126,7 @@ class DroneHandler {
 
 	/**
 	 * Send the drone to its destination.
-	 * @param  {number} officeIndex corresponds to the current Ark 
+	 * @param  {number} officeIndex corresponds to the current Ark
 	 * @param  {number} moveIndex corresponds to current move in current Ark
 	 * @param  {function} callback TODO definir la valeur
 	 * @return {undefined} No return.
@@ -178,7 +178,7 @@ class DroneHandler {
 				moves[1].unshift(1);
 				moves[2].unshift(1);
 			}
-			
+
 			var dirStr = "Drone is ";
 			if(moves[1][moveIndex] != 1) {
 				switch(moves[0][moveIndex]) {
@@ -195,7 +195,7 @@ class DroneHandler {
 						dirStr += "turning right for ";
 						break;
 					default:
-					dirStr += "going nowhere for ";	
+					dirStr += "going nowhere for ";
 				};
 				console.log(dirStr + moves[1][moveIndex] + " milliseconds at speed " + moves[2][moveIndex] + ".");
 				Drone.move(moves[0][moveIndex], moves[2][moveIndex]);
@@ -206,7 +206,7 @@ class DroneHandler {
 						moveIndex = 0;
 						officeIndex++;
 						Drone.position = handler.path[officeIndex];
-					} 
+					}
 					else {
 						moveIndex++;
 					};
@@ -223,13 +223,22 @@ class DroneHandler {
      * @return {undefined} No return.
      */
     goHome() {
+      thisHandler=this;
         if (Drone.moving) {	//We need to wait for the drone to get to the next Office if he isn't done with his previous order.
             this.path.splice(this.path.indexOf(Drone.position)+1);	//We stop the drone at the next office
+            callback = function(){  // callback :
+              setTimeout({ //on atends 0.5s et on refait le test
+                thisHandler.goHome()
+              },500)
+            }
         };
-		while (Drone.moving) { };		//Waiting for the drone to stop.
-		this.destination = Office.findOfficeFromResearcher(this.offices, "_Home");
+        else{
+		    this.destination = Office.findOfficeFromResearcher(this.offices, "_Home");
         this.findPath();		//We recalculate the path to home.
         this.runPath(0, 0, null);			//We send the drone back.
+      }
+
+      if(callback) callback();
     };
 
     /**
@@ -239,7 +248,7 @@ class DroneHandler {
     getResearchers() {
         return DroneHandler.sortAlphabetical(CERV.chercheurs);
     };
-	
+
 	/**
      * Returns researchers list in Unicode order.
      * @return {number} 1 if a > b, -1 i a < b else 0.
@@ -255,8 +264,110 @@ class DroneHandler {
 		});
 		return array;
 	};
-	
-	
+
+  runPathImg(index, colorGrid, callback) {
+          this.moving = true;
+
+          console.log("\nentering runPath");
+          console.log("position : " + Drone.position.researcher);
+          Drone.stop();
+
+
+          var thisHandler = this; //this pas accessible dans le setTimeout;
+
+          if (Drone.position == this.destination) {
+              Drone.moving = false; //si le drone est arrivé, on quitte la fonction ...
+              //this.goHome()
+              console.log("end");
+              return;
+
+          }
+
+          if (Drone.position != this.destination) {
+
+              var currArk = Drone.position.findArk(thisHandler.path[index + 1]);
+              var currColor = currArk.color;
+
+              var nextArk = thisHandler.path[index + 1].findArk(thisHandler.path[index + 2]);
+              var nextColor = nextArk.color;
+              console.log(nextArk)
+
+              for (var i in colorGrid) {
+                  colorGrid[i].r = nextColor.r;
+                  colorGrid[i].g = nextColor.g;
+                  colorGrid[i].b = nextColor.b;
+              }
+
+              var img = Drone.getPicture();
+              var grid = img.imageAnalysis(colorGrid, 50)
+              console.log(grid);
+
+              var nextColorFound = false;
+              for (var i in grid) {
+                  if (grid[i] == true) nextColorFound = true;
+              }
+
+              if (!nextColorFound) {
+                  for (var i in colorGrid) {
+                      colorGrid[i].r = currColor.r;
+                      colorGrid[i].g = currColor.g;
+                      colorGrid[i].b = currColor.b;
+                  }
+
+
+
+                  var grid = img.imageAnalysis(colorGrid, 50)
+
+
+              }
+              console.log(grid);
+
+              var move = img.interprete(grid);
+              console.log(move);
+              Drone.move(move, 30); //on effectue le mouvements pour se rendre au prochain bureau
+              if (nextColorFound) {
+                  callback = function() {
+                      setTimeout(function() { //on attend le temps correspondant au mouvement
+                          Drone.position = thisHandler.path[index + 1]
+                          thisHandler.runPathImg(index + 1, colorGrid, null) //à la fin cette callback, on fait une recursion avec les nouveaux parametres
+                      }, 50);
+                      return;
+                  }
+
+              } else {
+                  callback = function() {
+                      setTimeout(function() { //on attend le temps correspondant au mouvement
+                          thisHandler.runPathImg(index, colorGrid, null) //à la fin cette callback, on fait une recursion avec les nouveaux parametres
+                      }, 50);
+                      return;
+                  }
+              }
+          }
+
+          console.log("end recursion");
+          if (callback) callback(); //on appelle la callback
+          else thisHandler.runPathImg(index, colorGrid, null)
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
      * Can be used to sort array by increasing or decreasing numbers.
 	 * @parameter {array} Array to be sorted.
@@ -270,11 +381,11 @@ class DroneHandler {
 		});
 		return array;
 	};
-	
-	
-	
+
+
+
 	/**
-     * Can be used to sort Offices by increasing or decreasing id.	 
+     * Can be used to sort Offices by increasing or decreasing id.
 	 * @parameter {Office} Array of offices to be sorted.
 	 * @parameter {number} If 1 decreasing order, else increasing.
      * @return {number} positive if a.id > b.id, negative if a.id < b.id else 0.
@@ -286,13 +397,13 @@ class DroneHandler {
 		});
 		return offices;
 	};
-	
+
 	/**
      * Can be used to sort Offices by researcher.
      * @return {number} 1 if a.researcher > b.researcher, -1 if a.researcher < b.researcher else 0.
      */
 	static sortByResearcher(offices) {
-		offices.sort(function(a,b) {		
+		offices.sort(function(a,b) {
 			a = a.researcher;
 			b = b.researcher;
 			if (a == b) return 0;
