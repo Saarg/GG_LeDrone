@@ -4,16 +4,17 @@
 <head>
     <meta charset="utf-8" />
     <title>interface</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/mode-bureau.css">
     <link rel="stylesheet" href="styles/mode-manuel.css">
     <link rel="stylesheet" href="styles/mode-bureau-bureau.css">
     <!-- Angular -->
-    <script src="angular/angular.js"></script>
-    <script src="angular-ui-router/angular-ui-router.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
     <script src="js/Mode.js"></script>
     <script src="js/Interface.js"></script>
     <script src="js/ModeManuel.js"></script>
@@ -25,14 +26,14 @@
 <body>
     <div class="container-fluid" id="contents">
         <header class="row">
-            <div class="col-sm-4 nomarge hidden-sm-down"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+            <div class="col-sm-4 nomarge hidden-block"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
             <div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
-            <div class="col-sm-4 nomarge hidden-sm-down"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+            <div class="col-sm-4 nomarge hidden-block"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
             <div class="page-header">
                 <h1 class="col-sm-offset-2 col-sm-10 centrage">GG le drone</h1>
             </div>
         </header>
-        <div class="row">
+        <div class="row views">
             <div class="col-sm-2">
                 <div class="sidebar-nav">
                     <div class="navbar navbar-default" role="navigation">
@@ -77,23 +78,42 @@
                 <div class="alert" ng-if="batteryLevel >= 0" ng-class="{'alert-danger' : batteryLevel <= 20, 'alert-success' : batteryLevel >= 90}">
                     Batterie: {{ batteryLevel }}%
                 </div>
-
             </div>
             <!--/.nav-collapse -->
-
             <div class="col-sm-10 ">
                 <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
                 <div ui-view></div>
             </div>
         </div>
         <div class="row nomarge" id="footer">
-            <div class="centrage-droite">
-                <a href="https://github.com/Saarg/GG_LeDrone.git"> Lien Github </a>
+            <div class="pull-left">
+                 <a href="https://www.enib.fr" target="_blank">
+                    <img src="images/logo-enib.jpg">
+                </a>
+                 <a href="https://store.parrot.com/fr/minidrones/112-jumping-sumo-3520410022401.html#/couleur-jumping_black" target="_blank">
+                    <img src="images/logo-parrot.jpg">
+                </a>
+                 <a href="http://getbootstrap.com/" target="_blank">
+                    <img class="hidden-block" src="images/bootstrap-logo.png">
+                    <img class="show-block" src="images/logo-bootstrap-small.png">
+                </a>
+                 <a href="https://angularjs.org/" target="_blank">
+                    <img src="images/Angular-logo.png">
+                </a>
+
+
+
             </div>
+            <a class="pull-right" href="https://github.com/Saarg/GG_LeDrone.git" target="_blank"> 
+                <img class="hidden-block" src="images/logo_github.png"> 
+                <img class="show-block" src="images/logo-github-petit.png">
+            </a>
+
+            
         </div>
     </div>
 </body>
-<script src="jquery/jquery.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </html>
