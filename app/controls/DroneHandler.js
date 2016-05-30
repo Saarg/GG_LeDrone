@@ -227,7 +227,7 @@ class DroneHandler {
         if (Drone.moving) {	//We need to wait for the drone to get to the next Office if he isn't done with his previous order.
             this.path.splice(this.path.indexOf(Drone.position)+1);	//We stop the drone at the next office
             callback = function(){  // callback :
-              setTimeout({ //on atends 0.5s et on refait le test
+              setTimeout({ //we wait 0.5s before calling back the function and retest if the drone is stopped 
                 thisHandler.goHome()
               },500)
             }
@@ -264,7 +264,13 @@ class DroneHandler {
 		});
 		return array;
 	};
-
+  /**
+	 * Send the drone to its destination using the camera.
+	 * @param  {number} index corresponds to the current Ark
+	 * @param  {array} colorGrid corresponds to the patern you want the camera to match
+	 * @param  {function} callback TODO definir la valeur
+	 * @return {undefined} No return.
+	 */
   runPathImg(index, colorGrid, callback) {
           this.moving = true;
 
