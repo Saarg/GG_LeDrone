@@ -10,6 +10,7 @@ var fs = require('fs');
 
 module.exports = function(app) {
     // Initialisation du DroneHandler ==========================================
+    var DH = new DroneHandler("config/OfficesData.json");
 
     // Gestion de la batterie ==================================================
     Drone.low = function() {
