@@ -1,92 +1,128 @@
+/**
+ *  @author Marine Le Mezo
+ *  @author Yoann Fouillard
+ *  @author jean milsonneau
+ *  @overview controller angular
+ */
+
 // Angular
-var app = angular.module('GG_LeDrone', []);
+var app = angular.module('GG_LeDrone', ['ui.router']);
+var inter = new Interface();
+
+// ROUTE =======================================================================
+app.config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/accueil');
+
+    // Accueil STATES AND NESTED VIEWS ========================================
+    $stateProvider.state('accueil', {
+        url: '/accueil',
+        templateUrl: 'html/accueil.html'
+    })
+
+    $stateProvider.state('bureaubase', {
+        url: '/bureaubase',
+        templateUrl: 'html/mode_bureau.html',
+        controller:'bureauCtrl',
+        onEnter: function() {
+            inter.selectMode(1)
+        },
+        onExit: function() {
+            inter.interuptMode()
+        }
+    })
+
+    $stateProvider.state('bureaubureau', {
+        url: '/bureaubureau',
+        templateUrl: 'html/mode_bureau_bureau.html',
+        controller:'bureauABureauCtrl',
+        onEnter: function() {
+            inter.selectMode(2)
+        },
+        onExit: function() {
+            inter.interuptMode()
+        }
+    })
+
+    $stateProvider.state('manuel', {
+        url: '/manuel',
+        templateUrl: 'html/mode_manuel.html',
+        controller:'manuCtrl',
+        onEnter: function() {
+            inter.selectMode(0)
+        },
+        onExit: function() {
+            inter.interuptMode()
+        }
+    })
+
+
+    /*    // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+        $stateProvider.state('about', {
+            // we'll get to this in a bit
+        });*/
+
+});
 
 // INTERFACE ===================================================================
-app.controller('mainCtrl', function($scope, $http) {
-    var interface = new Interface();
-
-    $http.get('/api/test').then(function(res) {
+app.controller('mainCtrl', function($scope, $http, $window) {
+    // Demande de connection au drone
+    /*$http.get('/api/connect').then(function(res) {
         console.log(res.data);
-    });
+    });*/
 
-    $http.post('/api/test', { data: "is_this_data" }).then(function(res) {
-        console.log(res.data);
-    });
+
+    $scope.mode_manuel = function() {
+        inter.selectMode(0, $window);
+    }
+    $scope.mode_bureau = function() {
+        inter.selectMode(1, $window);
+    }
+    $scope.mode_bureau_a_bureau = function() {
+        inter.selectMode(2, $window);
+    }
+
+    // Status ==============================================================
+    $scope.connected = false;
+    $scope.ready = false;
+    $scope.moving = false;
+    $scope.batteryLevel = -1;
+
+    var refreshDroneStatus = function() {
+        $http.get('/api/droneStatus').then(function(res) {
+            $scope.connected = res.data.connected;
+            $scope.ready = res.data.ready;
+            $scope.moving = res.data.moving;
+            $scope.batteryLevel = res.data.batteryLevel;
+        });
+
+        setTimeout(function () {
+            refreshDroneStatus();
+        }, 1000);
+    }
+    refreshDroneStatus()
 
 });
 
 // MANUEL ======================================================================
-app.controller('manuCtrl', function($scope, $http) {
-    var modeManuel = new ModeManuel();
+app.controller('manuCtrl', function($scope, $http, $window) {
+    var modeManuel = inter.getMode(0);
+    modeManuel.display($scope, $http);
 
-    $scope.speed = 50;
-    $scope.img = null;
-
-    $scope.stop = function() {
-        modeManuel.interupt($http);
-    }
-
-    $scope.forward = function() {
-        modeManuel.move($http, 0, $scope.speed);
-    }
-    $scope.backward = function() {
-        modeManuel.move($http, 1, $scope.speed);
-    }
-    $scope.left = function() {
-        modeManuel.move($http, 2, $scope.speed);
-    }
-    $scope.right = function() {
-        modeManuel.move($http, 3, $scope.speed);
-    }
-
-    $scope.arrayBufferToBase64 = function( buffer ) {
-        var binary = '';
-        var bytes = new Uint8Array( buffer );
-        var len = bytes.byteLength;
-        for (var i = 0; i < len; i++) {
-            binary += String.fromCharCode( bytes[ i ] );
-        }
-        return window.btoa( binary );
-    }
-
-    var getPicture = function() {
-        $http.get('/api/picture').then(function(res) {
-            $scope.img = res.data.img;
-        });
-
-        setTimeout(function () {
-            getPicture();
-        }, 100);
-    }
-
-    getPicture();
-
+    modeManuel.run($scope, $http, $window);
 });
 
 // BUREAU ======================================================================
-app.controller('bureauCtrl', function($scope, $http) {
-    var modeBureau = new ModeBureau();
+app.controller('bureauCtrl', function($scope, $http, $window) {
+    var modeBureau = inter.getMode(1);
+    modeBureau.display($scope, $http);
 
-    $http.get('/api/test').then(function(res) {
-        console.log(res.data);
-    });
-
-    $http.post('/api/test', { data: "is_this_data" }).then(function(res) {
-        console.log(res.data);
-    });
-
+    modeBureau.run($scope, $http, $window);
 });
 
-// BUREAU BUREAU================================================================
-app.controller('bureauBureauCtrl', function($scope, $http) {
-    var modeBureau = new ModeBureau();
+// BUREAU A Bureau =============================================================
+app.controller('bureauABureauCtrl', function($scope, $http, $window) {
+    var modeBureauABureau = inter.getMode(2);
+    modeBureauABureau.display($scope, $http);
 
-    $http.get('/api/test').then(function(res) {
-        console.log(res.data);
-    });
-
-    $http.post('/api/test', { data: "is_this_data" }).then(function(res) {
-        console.log(res.data);
-    });
-
+    modeBureauABureau.run($scope, $http, $window);
 });

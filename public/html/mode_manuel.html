@@ -1,99 +1,53 @@
-<!DOCTYPE HTML>
-<html ng-app="GG_LeDrone" ng-controller="manuCtrl">
-    <head>
-        <meta charset="utf-8">
-        <title>Manuel</title>
-
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-        <link rel="stylesheet" href="styles/mode-manuel.css">
-
-        <style type="text/css">
-          [class*="col"] { margin-bottom: 20px; }
-          img { width: 100%; }
-        </style>
-
-        <!-- Angular -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
-        <script src="js/Mode.js"></script>
-        <script src="js/Interface.js"></script>
-        <script src="js/ModeManuel.js"></script>
-        <script src="js/ModeBureau.js"></script>
-        <script src="js/ModeBureauABureau.js"></script>
-        <script src="js/Controllers.js"></script>
-    </head>
-    <body>
-        <div class="container-fluid">
-            <header class="page-header">
-                <h1>Mode Manuel</h1>
-            </header>
-
-            <section class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <p>
-                    Vous voici en mode manuel. Vous pouvez déplacer le drone directement
-                    avec les flèches affichées.
-                    </p>
+<h2>Mode Manuel</h2>
+<section class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p>
+            Vous voici en mode manuel. Vous pouvez déplacer le drone directement avec les flèches affichées.
+        </p>
+    </div>
+</section>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 controls">
+            <div class="form-group row">
+                <label class="col-xs-3" for="speed">Speed:</label>
+                <input class="col-xs-9" ng-model="speed" type="text" name="speed" id="speed">
+            </div>
+            <div class="row">
+                <div class="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
+                    <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="forward()" ng-mouseup="stop()">
+                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                    </button>
                 </div>
-            </section>
-
-            <div class="container-fluid">
-                <div class="row">
-	                <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 controls">
-
-                        <div class="form-group row">
-                            <label class="col-xs-3" for="speed">Speed:</label>
-                            <input class="col-xs-9" ng-model="speed" type="text" name="speed" id="speed">
-                        </div>
-
-                        <div class="row">
-                            <div class ="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
-                                <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="forward()" ng-mouseup="stop()">
-                                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class ="row">
-                            <div class ="col-md-offset-1 col-md-1 col-xs-offset-1 col-xs-1 col-sm-offset-1 col-sm-1 col-lg-offset-1 col-lg-1">
-                                <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="left()" ng-mouseup="stop()">
-                                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                            <div class="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-5 col-lg-1">
-                                <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="right()" ng-mouseup="stop()">
-                                    <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class ="row">
-                            <div class ="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
-                                <button type="button" class="btn btn-default" aria-label="Left Align"  ng-mousedown="backward()" ng-mouseup="stop()">
-                                    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class ="col-md-offset-2 col-md-1 col-xs-offset-2 col-xs-1 col-sm-offset-2 col-sm-1 col-md-offset-2 col-md-1 control2">
-                            <a href="index.html">
-                                <button type="button" class="btn btn-default" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Menu Principal
-                                </button>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-                        <img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(img.data)}}">
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-1 col-xs-offset-1 col-xs-1 col-sm-offset-1 col-sm-1 col-lg-offset-1 col-lg-1">
+                    <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="left()" ng-mouseup="stop()">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-5 col-lg-1">
+                    <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="right()" ng-mouseup="stop()">
+                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-4 col-md-1 col-xs-offset-4 col-xs-1 col-sm-offset-4 col-sm-1 col-lg-offset-4 col-lg-1">
+                    <button type="button" class="btn btn-default" aria-label="Left Align" ng-mousedown="backward()" ng-mouseup="stop()">
+                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                    </button>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        <div class="col-sm-7">
+            <img src="images/i1.jpg" ng-if="!img">
+            <img ng-src="data:image/JPEG;base64,{{img}}" ng-if="img">
+        </div>
+        <div class="col-sm-2">
+            <div class="btn-group-vertical" role="group" aria-label="...">
+                <button ng-repeat="a in anim" type="button" class="btn btn-default" ng-click="executeAnimation(a)">{{ a }}</button>
+            </div>
+        </div>
+    </div>
+</div>

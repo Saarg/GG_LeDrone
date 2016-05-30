@@ -1,58 +1,119 @@
 <!DOCTYPE html>
 <html ng-app="GG_LeDrone" ng-controller="mainCtrl">
-    <head>
-        <meta charset ="utf-8"/>
-        <title>interface</title>
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<head>
+    <meta charset="utf-8" />
+    <title>interface</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/mode-bureau.css">
+    <link rel="stylesheet" href="styles/mode-manuel.css">
+    <link rel="stylesheet" href="styles/mode-bureau-bureau.css">
+    <!-- Angular -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
+    <script src="js/Mode.js"></script>
+    <script src="js/Interface.js"></script>
+    <script src="js/ModeManuel.js"></script>
+    <script src="js/ModeBureau.js"></script>
+    <script src="js/ModeBureauABureau.js"></script>
+    <script src="js/Controllers.js"></script>
+</head>
 
-        <link rel="stylesheet" href="styles/style.css">
-
-        <!-- Angular -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
-        <script src="js/Mode.js"></script>
-        <script src="js/Interface.js"></script>
-        <script src="js/ModeManuel.js"></script>
-        <script src="js/ModeBureau.js"></script>
-        <script src="js/ModeBureauABureau.js"></script>
-        <script src="js/Controllers.js"></script>
-    </head>
-    <body>
-        <div class="container-fluid">
-
-            <header class="row">
-                <div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
-	            <div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
-	            <div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
-                <div class="page-header">
-                    <h1 class="col-sm-12 centrage">GG le drone vous aide :</h1>
+<body>
+    <div class="container-fluid" id="contents">
+        <header class="row">
+            <div class="col-sm-4 nomarge hidden-block"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+            <div class="col-sm-4 nomarge"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+            <div class="col-sm-4 nomarge hidden-block"> <img src="images/cerv-facade.jpg" class="img-responsive"> </div>
+            <div class="page-header">
+                <h1 class="col-sm-offset-2 col-sm-10 centrage">GG le drone</h1>
+            </div>
+        </header>
+        <div class="row views">
+            <div class="col-sm-2">
+                <div class="sidebar-nav">
+                    <div class="navbar navbar-default" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <span class="visible-xs navbar-brand">Menu</span>
+                        </div>
+                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a ui-sref="accueil">
+                                        <span class="glyphicon glyphicon-th-large"></span> Accueil</a>
+                                </li>
+                                <li>
+                                    <a ui-sref="bureaubase">
+                                        <span class="glyphicon glyphicon-user"></span> Mode bureau</a>
+                                </li>
+                                <li>
+                                    <a ui-sref="bureaubureau">
+                                        <span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-user"></span> Mode bureau à bureau</a>
+                                </li>
+                                <li>
+                                    <a ui-sref="manuel">
+                                        <span class="glyphicon glyphicon-edit"></span> Mode manuel</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
                 </div>
-            </header>
-
-            <div class="row centrage">
-	            <p>Choississez votre mode d'utilisation</p>
+                <div class="alert alert-success" ng-if="ready">
+                    Le drone est prêt
+                </div>
+                <div class="alert alert-danger" ng-if="!ready">
+                    Le drone n'est pas prêt
+                </div>
+                <div class="alert" ng-if="batteryLevel >= 0" ng-class="{'alert-danger' : batteryLevel <= 20, 'alert-success' : batteryLevel >= 90}">
+                    Batterie: {{ batteryLevel }}%
+                </div>
             </div>
-
-            <div class="row  centrage">
-                <div class="btn-group-vertical col-sm-4 col-sm-offset-4" role="group" aria-label="...">
-    			  	<a href="/mode_manuel" type="button" class="btn btn-default">
-    			  		<span class="glyphicon glyphicon-edit"></span> Mode manuel</a>
-    			  	<a href="/mode_bureau" type="button" class="btn btn-default">
-    			  		<span class="glyphicon glyphicon-user"></span> Mode bureau</a>
-    			  	<a href="/mode_bureau_a_bureau" type="button" class="btn btn-default">
-    			  		<span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-user"></span> Mode bureau à bureau</a>
-    			</div>
+            <!--/.nav-collapse -->
+            <div class="col-sm-10 ">
+                <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+                <div ui-view></div>
             </div>
-
-            <footer class="row col-sm-12">
-                <div class="panel panel-body">
-    	 			 <p class="centrage-droite"> https://github.com/Saarg/GG_LeDrone.git </p>
-            	</div>
-            </footer>
         </div>
-    </body>
+        <div class="row nomarge" id="footer">
+            <div class="pull-left">
+                 <a href="https://www.enib.fr" target="_blank">
+                    <img src="images/logo-enib.jpg">
+                </a>
+                 <a href="https://store.parrot.com/fr/minidrones/112-jumping-sumo-3520410022401.html#/couleur-jumping_black" target="_blank">
+                    <img src="images/logo-parrot.jpg">
+                </a>
+                 <a href="http://getbootstrap.com/" target="_blank">
+                    <img class="hidden-block" src="images/bootstrap-logo.png">
+                    <img class="show-block" src="images/logo-bootstrap-small.png">
+                </a>
+                 <a href="https://angularjs.org/" target="_blank">
+                    <img src="images/Angular-logo.png">
+                </a>
+
+
+
+            </div>
+            <a class="pull-right" href="https://github.com/Saarg/GG_LeDrone.git" target="_blank"> 
+                <img class="hidden-block" src="images/logo_github.png"> 
+                <img class="show-block" src="images/logo-github-petit.png">
+            </a>
+
+            
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 </html>

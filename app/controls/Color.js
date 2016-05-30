@@ -1,20 +1,33 @@
 "use strict"
-
-var Color = function(r, g, b) {
+/**
+ *  @author jean milsonneau
+ *  @overview Define Color class.
+ */
+class Color {
+    constructor(r, g, b) {
         this.r = r;
         this.g = g;
         this.b = b;
-};
+    };
 
-Color.prototype.isColor = function (c) {
-    if(c.r == this.r && c.g == this.g && c.b == this.b)
-        return true;
+    /**
+     * Compare cette couleur a une autre couleur
+     * @param  {Color} couleur a comparer
+     * @return {boolean} meme couleur ou non
+     */
+    isColor(c) {
+        if(c.r == this.r && c.g == this.g && c.b == this.b)	
+            return true;
+        return false;
+    };
 
-    return false;
-};
-
-Color.prototype.toString = function () {
-    return "R:"+this.r+" G:"+this.g+" B:"+this.b;
+    /**
+     * Retourne un string decrivant la classe
+     * @return {string}
+     */
+    toString() {
+        return "R:"+this.r+" G:"+this.g+" B:"+this.b;
+    };
 };
 
 Color.white = new Color(255, 255, 255);

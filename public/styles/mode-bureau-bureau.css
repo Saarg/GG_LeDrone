@@ -5,3 +5,11 @@
 body{
   background-color: whitesmoke;
 }
+
+.active {
+    background-color: #f00;
+}
+
+img{
+	width: 100%;
+}
