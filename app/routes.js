@@ -10,7 +10,6 @@ var fs = require('fs');
 
 module.exports = function(app) {
     // Initialisation du DroneHandler ==========================================
-    var DH = new DroneHandler();
 
     // Gestion de la batterie ==================================================
     Drone.low = function() {
@@ -37,7 +36,7 @@ module.exports = function(app) {
 
     // Infos CERV ==============================================================
     app.get('/api/chercheurs', function(req, res) {
-        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: DH.getResearshers()});
+        res.json({success: true, message: "liste des chercheurs du CERV", chercheurs: DH.getResearchers()});
     });
 
     // DroneHandler ============================================================
