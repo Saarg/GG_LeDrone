@@ -19,23 +19,23 @@ Drone.connect(function(err, data) {
 });
 
 var test = function() {
-	console.log("\n\n\n\n\nStarting application, instantiating DroneHandler ...\n");
-	var file = "./../../config/OfficesData.json";	//path to .JSON file
-	var handler = new DroneHandler(file);			//Will instantiate the handler, read Offices, Arks and moves from file and instantiate them.
+    console.log("\n\n\n\n\nStarting application, instantiating DroneHandler ...\n");
+    var file = "./config/OfficesData.json"; //path to .JSON file
+// /!\ path must be considered root project !!!
+    var handler = new DroneHandler(file); //Will instantiate the handler, read Offices, Arks and moves from file and instantiate them.
 
     Drone.position = handler.offices[0];
     handler.destination = handler.offices[8];
-	handler.findPath();
-	
-	var ark = handler.offices[0].arks[0];
-	console.log(ark.name);
-	ark.getMoves(ark.getExtremity(handler.offices[0]));
-	
-	console.log(handler.getResearchers());			//work as it should up to there
+    handler.findPath();
+    var ark = handler.offices[0].arks[0];
+    console.log(ark.name);
+    ark.getMoves(ark.getExtremity(handler.offices[0]));
 
-    handler.runPath(0, 0, null);					//should work now
-	//console.log("coming back home");
-	//handler.goHome();
+    console.log(handler.getResearchers()); //work as it should up to there
+
+    handler.runPath(0, 0, null); 
+    //console.log("coming back home");
+    //handler.goHome();
     return;
 };
 
