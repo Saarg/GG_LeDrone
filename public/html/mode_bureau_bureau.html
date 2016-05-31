@@ -7,7 +7,7 @@
     </div>
 </section>
 <section class="row">
-    <div class="btn-group-vertical col-sm-2" role="group" aria-label="...">
+    <div class="btn-group-vertical col-xs-2" role="group" aria-label="...">
         <!--<button type="button" class="btn btn-default">Mr Kubicki</button>
                     <button type="button" class="btn btn-default">Mr Querrec</button>
                     <button type="button" class="btn btn-default">Mr Gaubert</button>
@@ -18,11 +18,11 @@
                     <button type="button" class="btn btn-default">Mr Buche</button>-->
         <button ng-repeat="c in chercheurs" type="button" class="btn btn-default" ng-click="selectChercheur1(c)" ng-class="{'btn-success' : c == selected1}">{{ c.researcher }}</button>
     </div>
-    <div class="col-sm-8">
+    <div class="col-xs-8">
         <img src="images/i1.jpg" ng-if="!img">
         <img ng-src="data:image/JPEG;base64,{{img}}" ng-if="img">
     </div>
-    <div class="btn-group-vertical col-sm-2" role="group" aria-label="...">
+    <div class="btn-group-vertical col-xs-2" role="group" aria-label="...">
         <!--<button type="button" class="btn btn-default">Mr Kubicki</button>
                     <button type="button" class="btn btn-default">Mr Querrec</button>
                     <button type="button" class="btn btn-default">Mr Gaubert</button>
@@ -35,7 +35,7 @@
     </div>
 </section>
 <section class="row">
-    <div class="col-sm-offset-5 col-sm-2" ng-if="selected1 != null && selected2 != null && selected1 != selected2">
+    <div class="col-xs-offset-5 col-xs-2" ng-if="selected1 != null && selected2 != null && selected1 != selected2">
         <button type="button" class="btn btn-danger" ng-click="run()">
             <span class="glyphicon glyphicon-play"></span>
         </button>

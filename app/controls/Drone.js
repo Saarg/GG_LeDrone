@@ -161,14 +161,15 @@ class Drone {
             this.drone.backward(speed);
         else if (dir == this.directions.left) {
             this.drone.left(speed);
-			this.direction ++;
-			if (this.direction = 4) this.direction = 0;
+			this.direction += 1;
+			if (this.direction == 4) this.direction = 0;
 		}
         else if (dir == this.directions.right) {
             this.drone.right(speed);
-			this.direction --;
-			if (this.direction = -1) this.direction = 3;
+			this.direction -=1;
+			if (this.direction == -1) this.direction = 3;
 		}
+        console.log(this.direction);
     };
 
     /**

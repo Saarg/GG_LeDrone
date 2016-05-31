@@ -19,6 +19,7 @@
   "scripts": {
     "start": "node app.js",
     "setup": "cp -r node_modules/bootstrap/dist/ public/bootstrap/ && cp -r node_modules/angular/ public/angular/ && cp -r node_modules/angular-ui-router/release/ public/angular-ui-router/ && cp -r node_modules/jquery/dist/ public/jquery/",
+    "setupDos": "XCOPY node_modules\bootstrap\dist\ public\bootstrap\ \S && XCOPY node_modules\angular\ public\angular\  \S && XCOPY node_modules\angular-ui-router\release\ public\angular-ui-router\  \S && XCOPY node_modules\jquery\dist\ public\jquery\  \S",
     "clean": "rm -r node_modules && rm -r public/bootstrap && rm -r public/angular && rm -r public/angular-ui-router && rm -r public/jquery"
   },
   "contributors": [
