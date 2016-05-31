@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>interface</title>
+    <title>GG le Drone</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <!-- Optional theme -->
@@ -70,10 +70,10 @@
                     </div>
                 </div>
                 <div class="alert alert-success" ng-if="ready">
-                    Le drone est prêt
+                    Le drone est prêt.
                 </div>
                 <div class="alert alert-danger" ng-if="!ready">
-                    Le drone n'est pas prêt
+                    Le drone n'est pas prêt.
                 </div>
                 <div class="alert" ng-if="batteryLevel >= 0" ng-class="{'alert-danger' : batteryLevel <= 20, 'alert-success' : batteryLevel >= 90}">
                     Batterie: {{ batteryLevel }}%

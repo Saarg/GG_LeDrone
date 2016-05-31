@@ -107,11 +107,12 @@ class DroneHandler {
         };
 
         this.path.reverse(); //We reverse the array to get the order right.
-		/*console.log("Path has been found :\n" );
+		console.log("____________________________________________");
+		console.log("Shortest path from " + start.researcher + "'office to " + destination.researcher + "'s office has been found :\n ");
 		for (var z in this.path) {
-			console.log("Office : " + this.path[z].researcher);
+			console.log("Step " + z + " : " + this.path[z].researcher);
 		};
-		console.log("\nExiting convertPath() function ...\n");*/
+		//console.log("\nExiting convertPath() function ...\n");
 	};
 
 	/**
@@ -120,31 +121,31 @@ class DroneHandler {
 	 * @return {undefined} No return.
 	 */
 	findPath(dest) {
-        //console.log(dest);
-        //console.log(this.offices[dest.id]);
         this.destination = this.offices[dest.id];
-
-		var incArks = this.dijkstra(this.destination);
-		this.convertPath(incArks, this.destination);
-
-        //var ark = this.offices[0].arks[0];
-    	//console.log(ark.name);
-    	//ark.getMoves(ark.getExtremity(this.offices[0]));
+		if (!Drone.moving) {
+			var incArks = this.dijkstra(this.destination);
+			this.convertPath(incArks, this.destination);
+		};
 	};
 
     /**
      * Send the drone to its destination.
      * @param  {number} officeIndex corresponds to the current Ark
      * @param  {number} moveIndex corresponds to current move in current Ark
-     * @param  {function} callback TODO definir la valeur
+     * @param  {function} callback
+	 * @param  {array}	do not need to be specified
      * @return {undefined} No return.
      */
     runPath(officeIndex, moveIndex, callback, moves) {
         if (!officeIndex && !moveIndex) {
-            console.log("GG is going toward " + this.destination.researcher + "'s office.");
+			if (Drone.moving) {
+				console.log("Drone is already running");
+				return;
+			};
+            console.log("\nGG is going toward " + this.destination.researcher + "'s office.\n");
             this.endCb = callback;
-        }
-        //if (moveIndex == 0) console.log("\n\nDrone is currently at " + Drone.position.researcher + "'s office.\n");
+        };
+        if (moveIndex == 0) console.log("Drone is currently at " + Drone.position.researcher + "'s office.");
         Drone.stop();
         var handler = this; //this not accessible in setTimeout;
 
@@ -156,9 +157,8 @@ class DroneHandler {
             return;
 		};
 
-
 		if (!moves || moveIndex == 0) {
-            moves = JSON.parse(JSON.stringify(handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).getMoves(Drone.position))); //can probably be optimized
+            moves = JSON.parse(JSON.stringify(handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).getMoves(Drone.position))); //we need to make a copy of this.moves
 			var arkDirection = Drone.position.findArk(handler.path[officeIndex + 1]).getDirection(Drone.position);
 			if ((Drone.direction - arkDirection == 1) || ((Drone.direction == 0) && (arkDirection == 3))) {
 				moves[0].unshift(Drone.directions.right);
@@ -168,7 +168,7 @@ class DroneHandler {
 				moves[0].unshift(Drone.directions.left);
 				moves[1].unshift(620);
 				moves[2].unshift(20);
-			} else if (Math.abs(Drone.direction - arkDirection) == 2) { //180° turn WILL NOT WORK
+			} else if (Math.abs(Drone.direction - arkDirection) == 2) {
 				moves[0].unshift(Drone.directions.left);
 				moves[1].unshift(620);
 				moves[2].unshift(20);
@@ -177,9 +177,8 @@ class DroneHandler {
 				moves[2].unshift(20);
 			};
 		};
-		if (moves[1][moveIndex] != 1) {
-			Drone.move(moves[0][moveIndex], moves[2][moveIndex]);
-		};
+		Drone.move(moves[0][moveIndex], moves[2][moveIndex]);
+
         callback = function() {
 			setTimeout(function() {
 				if (moveIndex == moves[0].length - 1) {
@@ -208,12 +207,6 @@ class DroneHandler {
         } else	{
             this.findPath(this.offices[0]);		//We recalculate the path to home.
             this.runPath(0, 0, function() {
-                //Drone.move(3, 20);
-                //console.log(Drone.direction);
-                /*setTimeout(function () {
-                    Drone.stop();
-                    //Drone.direction = 0;
-                }, 620*(Drone.direction+1));// retour a la position 0*/
             });
         }
     };
