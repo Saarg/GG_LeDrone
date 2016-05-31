@@ -7,7 +7,6 @@
 var fs = require('fs');
 var Ark = require("./Ark.js");
 var Drone = require("./Drone.js");
-var CERV = require ('./../../config/CERV.js');
 
 class Office {
     constructor(id, researcher) {
@@ -36,7 +35,7 @@ class Office {
 	 * @parameter {string} Path to .json file.
      * @return {Office} Return offices read from file.
      */
-	static getOfficesFromJSON(file) {
+	static getOfficesFromJSON(CERV) {
 		var offices = [];
 		//console.log("Instantiating Offices ...\n");
 		for (var i in CERV.offices) {

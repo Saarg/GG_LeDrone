@@ -7,12 +7,12 @@
 var Drone = require("./Drone.js");
 var Office = require("./Office.js");
 var Ark = require("./Ark.js");
-var CERV = require ('./../../config/CERV.js');
+var CERV = require ('./../../config/DEMO.js');
 var fs = require('fs');
 
 class DroneHandler {
     constructor() {
-		this.offices = Office.getOfficesFromJSON();
+		this.offices = Office.getOfficesFromJSON(CERV);
         this.path = [];
         this.destination;
     };

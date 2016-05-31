@@ -223,19 +223,19 @@ class Drone {
                 this.drone.animationsMetronome();
                 break;
             case 5:
-                this.drone.animationOndulation();
+                this.drone.animationsOndulation();
                 break;
             case 6:
-                this.drone.animationSpinJump();
+                this.drone.animationsSpinJump();
                 break;
             case 7:
                 this.drone.animationsSpinToPosture();
                 break;
             case 8:
-                this.drone.animationSpiral();
+                this.drone.animationsSpiral();
                 break;
             case 9:
-                this.drone.animationSlalom();
+                this.drone.animationsSlalom();
                 break;
         }
     }

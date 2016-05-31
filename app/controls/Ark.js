@@ -59,7 +59,7 @@ class Ark {
 						else if (move == "right") ark.moves[0].push(Drone.directions.right);			//right
 						ark.moves[1].push(dataArks[i].moves[k].duration);								//duration
 						ark.moves[2].push(dataArks[i].moves[k].speed);
-						console.log(move + " for " + dataArks[i].moves[k].duration);
+						//console.log(move + " for " + dataArks[i].moves[k].duration);
 					};
 					ark.updateLength();
 					//console.log("Ark total duration : " + ark.length);
