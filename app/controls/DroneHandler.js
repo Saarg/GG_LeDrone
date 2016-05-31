@@ -120,8 +120,8 @@ class DroneHandler {
 	 * @return {undefined} No return.
 	 */
 	findPath(dest) {
-        console.log(dest);
-        console.log(this.offices[dest.id]);
+        //console.log(dest);
+        //console.log(this.offices[dest.id]);
         this.destination = this.offices[dest.id];
 
 		var incArks = this.dijkstra(this.destination);
@@ -141,7 +141,7 @@ class DroneHandler {
      */
     runPath(officeIndex, moveIndex, callback, moves) {
         if (!officeIndex && !moveIndex) {
-            //console.log("\n\nEntering runPath function() ...\n\nGG is going toward " + this.destination.researcher + "'s office.");
+            console.log("GG is going toward " + this.destination.researcher + "'s office.");
             this.endCb = callback;
         }
         //if (moveIndex == 0) console.log("\n\nDrone is currently at " + Drone.position.researcher + "'s office.\n");
@@ -149,7 +149,7 @@ class DroneHandler {
         var handler = this; //this not accessible in setTimeout;
 
         if (Drone.position == this.destination) { 	//Drone arrived to destination
-			//console.log("Drone arrived at destination : " + this.destination.researcher + "'s office.\nExiting runPath() ...");
+			console.log("Drone arrived at destination : " + this.destination.researcher + "'s office.\n");
             if(handler.endCb) {
                 handler.endCb();
             }

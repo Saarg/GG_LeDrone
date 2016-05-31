@@ -44,17 +44,14 @@ module.exports = function(app) {
     // DroneHandler ============================================================
     app.post('/api/runPath', function(req, res){
         res.json({success: true, message: "Parcour du chemin"});
-        console.log(req.body.chercheur1);
         DH.findPath(req.body.chercheur1);
         DH.runPath(0, 0, function() {
             if(req.body.chercheur2) {
                 DH.findPath(req.body.chercheur2);
                 DH.runPath(0, 0, function() {
-                    console.log('going home');
                     DH.goHome();
                 });
             } else {
-                console.log('going home');
                 DH.goHome();
             }
         });
