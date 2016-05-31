@@ -12,7 +12,7 @@ var fs = require('fs');
 
 class DroneHandler {
     constructor(file) {
-        file = file || "config/OfficesData.json";
+        file = file || "config/OfficesData.json";	//path is dependant from where the file who was called with node was
         this.offices = Office.getOfficesFromJSON(file);
         this.path = [];
         this.destination;
@@ -35,9 +35,9 @@ class DroneHandler {
         console.log("\nEntering dijkstra() function ...");
         var sumMarks = 0;
         var len = this.offices.length;
-        var marks = []; //Marks vector
-        var distance = []; //Lengths vector
-        var incArks = []; //Incoming Arks vector
+        var marks = []; 	//Marks vector
+        var distance = []; 	//Lengths vector
+        var incArks = []; 	//Incoming Arks vector
         var destIndex = this.offices.indexOf(destination);
 
         for (var i = 0; i < len; i++) { //Initialisation
@@ -219,12 +219,12 @@ class DroneHandler {
      * @return {undefined} No return.
      */
     goHome() {
-        var thisHandler = this;
+        var handler = this;
         if (Drone.moving) { //We need to wait for the drone to get to the next Office if he isn't done with his previous order.
             this.path.splice(this.path.indexOf(Drone.position) + 1); //We stop the drone at the next office
             callback = function() { // callback :
                 setTimeout(function() { //we wait 0.5s before calling back the function and retest if the drone is stopped
-                    thisHandler.goHome();
+                    handler.goHome();
                 }, 500);
             }
         }
