@@ -38,12 +38,12 @@ class Office {
      */
 	static getOfficesFromJSON(file) {
 		var offices = [];
-		console.log("Instantiating Offices ...\n");
+		//console.log("Instantiating Offices ...\n");
 		for (var i in CERV.offices) {
 			offices.push(new Office(CERV.offices[i].id, CERV.offices[i].researcher));	//Instantiating new Offices
-			console.log("Id : " + offices[i].id + "    Researcher : " + offices[i].researcher);
+			//console.log("Id : " + offices[i].id + "    Researcher : " + offices[i].researcher);
 		};
-		console.log("Offices instantiation done ...");
+		//console.log("Offices instantiation done ...");
 		Ark.getArksFromData(CERV.arks, offices);							//Instantiating new Arks
         return offices;
     };

@@ -75,6 +75,8 @@ module.exports = function(app) {
         // speed dir || none
         Drone.move(req.body.dir, req.body.speed);
         res.json({success: true, message: "ca bouge!"});
+
+        Drone.direction = 0;
     });
     app.post('/api/jump', function(req, res) {
         // jumpType(0, 1) || none
