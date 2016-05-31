@@ -6,42 +6,42 @@ module.exports = {
         },
         {
             id:1,
-            researcher:"Buche"
+            researcher:"Mr Buche"
         },
         {
             id:2,
-            researcher:"Gaubert"
+            researcher:"Mr Gaubert"
         },
         {
             id:3,
-            researcher:"Kubicki"
+            researcher:"Mr Kubicki"
         },
         {
             id:4,
-            researcher:"Maisel"
+            researcher:"M Bevacqua"
         },
         {
             id:5,
-            researcher:"Nedelec"
+            researcher:"Mr Nedelec"
         },
         {
             id:6,
-            researcher:"Parenthoen"
+            researcher:"Mr Parenthoen"
         },
         {
             id:7,
-            researcher:"Querrec"
+            researcher:"Mr Querrec"
         },
         {
             id:8,
-            researcher:"Redou"
+            researcher:"Mr Redou"
         }
     ],
 
     arks:[
         {
             researcher1:"_Home",
-            researcher2:"Buche",
+            researcher2:"Mr Buche",
 			direction1:3,
 			direction2:1,
 			moves:[
@@ -54,7 +54,7 @@ module.exports = {
         },
         {
             researcher1:"_Home",
-            researcher2:"Gaubert",
+            researcher2:"Mr Gaubert",
 			direction1:0,
 			direction2:2,
 			moves:[
@@ -66,8 +66,8 @@ module.exports = {
 			]
         },
 		{
-            researcher1:"Buche",
-            researcher2:"Parenthoen",
+            researcher1:"Mr Buche",
+            researcher2:"Mr Parenthoen",
 			direction1:0,
 			direction2:2,
 			moves:[
@@ -79,8 +79,8 @@ module.exports = {
 			]
         },
 		{
-            researcher1:"Buche",
-            researcher2:"Kubicki",
+            researcher1:"Mr Buche",
+            researcher2:"Mr Kubicki",
 			direction1:3,
 			direction2:1,
 			moves:[
@@ -92,8 +92,8 @@ module.exports = {
 			]
         },
 		{
-            researcher1:"Kubicki",
-            researcher2:"Maisel",
+            researcher1:"Mr Kubicki",
+            researcher2:"M Bevacqua",
 			direction1:0,
 			direction2:2,
 			moves:[
@@ -105,8 +105,8 @@ module.exports = {
 			]
         },
 		{
-            researcher1:"Gaubert",
-            researcher2:"Parenthoen",
+            researcher1:"Mr Gaubert",
+            researcher2:"Mr Parenthoen",
 			direction1:0,
 			direction2:1,
 			moves:[
@@ -127,8 +127,8 @@ module.exports = {
 			]
         },
 		{
-            researcher1:"Maisel",
-            researcher2:"Nedelec",
+            researcher1:"M Bevacqua",
+            researcher2:"Mr Nedelec",
 			direction1:3,
 			direction2:1,
 			moves:[
@@ -140,8 +140,8 @@ module.exports = {
 			]
         },
 		{
-            researcher1:"Parenthoen",
-            researcher2:"Querrec",
+            researcher1:"Mr Parenthoen",
+            researcher2:"Mr Querrec",
 			direction1:3,
 			direction2:2,
 			moves:[
@@ -162,8 +162,8 @@ module.exports = {
 				}
 			]
         },
-		{	researcher1:"Querrec",
-			researcher2:"Redou",
+		{	researcher1:"Mr Querrec",
+			researcher2:"Mr Redou",
 			direction1:0,
 			direction2:2,
 			moves:[
@@ -194,8 +194,8 @@ module.exports = {
 				}
 			]
 		},
-		{	researcher1:"Maisel",
-			researcher2:"Redou",
+		{	researcher1:"M Bevacqua",
+			researcher2:"Mr Redou",
 			direction1:1,
 			direction2:3,
 			moves:[

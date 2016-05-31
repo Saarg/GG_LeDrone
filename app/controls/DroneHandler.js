@@ -7,7 +7,7 @@
 var Drone = require("./Drone.js");
 var Office = require("./Office.js");
 var Ark = require("./Ark.js");
-var CERV = require ('./../../config/DEMO.js');
+var CERV = require ('./../../config/CERV.js');
 var fs = require('fs');
 
 class DroneHandler {
@@ -147,7 +147,7 @@ class DroneHandler {
 		var handler = this; 						//this not accessible in setTimeout;
 
 		if (Drone.position == this.destination) { 	//Drone arrived to destination
-			console.log("Drone arrived at destination : " + this.destination.researcher + "'s office.\nExiting runPath() ...");
+			//console.log("Drone arrived at destination : " + this.destination.researcher + "'s office.\nExiting runPath() ...");
             if(handler.endCb) {
                 handler.endCb();
             }

@@ -35,9 +35,7 @@
     </div>
 </section>
 <section class="row">
-    <div class="col-xs-offset-5 col-xs-2" ng-if="selected1 != null && selected2 != null && selected1 != selected2">
-        <button type="button" class="btn btn-danger" ng-click="run()">
-            <span class="glyphicon glyphicon-play"></span>
-        </button>
-    </div>
+    <button type="button" class="btn btn-danger col-xs-offset-5 col-xs-2" ng-click="run()"  ng-if="selected1 != null && selected2 != null && selected1 != selected2">
+        <span class="glyphicon glyphicon-play"></span>
+    </button>
 </section>

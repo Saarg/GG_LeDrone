@@ -169,7 +169,6 @@ class Drone {
 			this.direction -=1;
 			if (this.direction == -1) this.direction = 3;
 		}
-        console.log(this.direction);
     };
 
     /**
