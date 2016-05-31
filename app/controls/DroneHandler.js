@@ -161,7 +161,6 @@ class DroneHandler {
 				moves[1].unshift(620);
 				moves[2].unshift(20);
 			};
-			console.log(moves);
 		};
 		var dirStr = "Drone is ";
 		if (moves[1][moveIndex] != 1) {
