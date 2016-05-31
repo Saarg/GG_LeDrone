@@ -131,7 +131,7 @@ class DroneHandler {
      * @param  {function} callback TODO definir la valeur
      * @return {undefined} No return.
      */
-    runPath(officeIndex, moveIndex, callback) {
+    runPath(officeIndex, moveIndex, callback, moves) {
         if (!officeIndex && !moveIndex) console.log("\n\nEntering runPath function() ...\n\nGG is going toward " + this.destination.researcher + "'s office.");
         if (moveIndex == 0) console.log("\n\nDrone is currently at " + Drone.position.researcher + "'s office.\n");
         Drone.stop();
@@ -142,76 +142,60 @@ class DroneHandler {
             return;
         };
 
-        if (Drone.position != this.destination) {
-            var moves = handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).getMoves(Drone.position); //can probably be optimized
-            moves = JSON.parse(JSON.stringify(moves)); //we'll copy the moves there to be safe
-            var arkDirection = Drone.position.findArk(handler.path[officeIndex + 1]).getDirection(Drone.position);
-            if ((Drone.direction - arkDirection == 1) || ((Drone.direction == 0) && (arkDirection == 3))) {
-                moves[0].unshift(Drone.directions.right);
-                moves[1].unshift(620);
-                moves[2].unshift(20);
-                moves[0].unshift(0); //dummy
-                moves[1].unshift(1);
-                moves[2].unshift(1);
-            } else if ((Drone.direction - arkDirection == -1) || ((Drone.direction == 3) && (arkDirection == 0))) {
-                moves[0].unshift(Drone.directions.left);
-                moves[1].unshift(620);
-                moves[2].unshift(20);
-                moves[0].unshift(0); //dummy
-                moves[1].unshift(1);
-                moves[2].unshift(1);
-            } else if (Math.abs(Drone.direction - arkDirection) == 2) { //180° turn WILL NOT WORK
-                moves[0].unshift(Drone.directions.left);
-                moves[1].unshift(620);
-                moves[2].unshift(20);
-                moves[0].unshift(Drone.directions.left);
-                moves[1].unshift(620);
-                moves[2].unshift(20);
-            } else { //this is a dummy so that the length doesn't change
-                moves[0].unshift(0); //dummy1
-                moves[1].unshift(1);
-                moves[2].unshift(1);
-                moves[0].unshift(0); //dummy2
-                moves[1].unshift(1);
-                moves[2].unshift(1);
-            }
-
-            var dirStr = "Drone is ";
-            if (moves[1][moveIndex] != 1) {
-                switch (moves[0][moveIndex]) {
-                    case 0:
-                        dirStr += "going forward for ";
-                        break;
-                    case 1:
-                        dirStr += "going backward for ";
-                        break;
-                    case 2:
-                        dirStr += "turning left for ";
-                        break;
-                    case 3:
-                        dirStr += "turning right for ";
-                        break;
-                    default:
-                        dirStr += "going nowhere for ";
-                };
-                console.log(dirStr + moves[1][moveIndex] + " milliseconds at speed " + moves[2][moveIndex] + ".");
-                Drone.move(moves[0][moveIndex], moves[2][moveIndex]);
-            };
-            callback = function() {
-                setTimeout(function() {
-                    if (moveIndex == moves[0].length - 1) {
-                        moveIndex = 0;
-                        officeIndex++;
-                        Drone.position = handler.path[officeIndex];
-                    } else {
-                        moveIndex++;
-                    };
-                    handler.runPath(officeIndex, moveIndex, callback);
-                }, moves[1][moveIndex] || 500);
-                return;
-            }
-        }
-        if (callback) callback();
+		if (!moves || moveIndex == 0) {
+			moves = JSON.parse(JSON.stringify(handler.path[officeIndex].findArk(handler.path[officeIndex + 1]).getMoves(Drone.position))); //can probably be optimized
+			var arkDirection = Drone.position.findArk(handler.path[officeIndex + 1]).getDirection(Drone.position);
+			if ((Drone.direction - arkDirection == 1) || ((Drone.direction == 0) && (arkDirection == 3))) {
+				moves[0].unshift(Drone.directions.right);
+				moves[1].unshift(620);
+				moves[2].unshift(20);
+			} else if ((Drone.direction - arkDirection == -1) || ((Drone.direction == 3) && (arkDirection == 0))) {
+				moves[0].unshift(Drone.directions.left);
+				moves[1].unshift(620);
+				moves[2].unshift(20);
+			} else if (Math.abs(Drone.direction - arkDirection) == 2) { //180° turn WILL NOT WORK
+				moves[0].unshift(Drone.directions.left);
+				moves[1].unshift(620);
+				moves[2].unshift(20);
+				moves[0].unshift(Drone.directions.left);
+				moves[1].unshift(620);
+				moves[2].unshift(20);
+			};
+			console.log(moves);
+		};
+		var dirStr = "Drone is ";
+		if (moves[1][moveIndex] != 1) {
+			switch (moves[0][moveIndex]) {
+				case 0:
+					dirStr += "going forward for ";
+					break;
+				case 1:
+					dirStr += "going backward for ";
+					break;
+				case 2:
+					dirStr += "turning left for ";
+					break;
+				case 3:
+					dirStr += "turning right for ";
+					break;
+				default:
+					dirStr += "going nowhere for ";
+				};
+			console.log(dirStr + moves[1][moveIndex] + " milliseconds at speed " + moves[2][moveIndex] + ".");
+			Drone.move(moves[0][moveIndex], moves[2][moveIndex]);
+		};
+		callback = function() {
+			setTimeout(function() {
+				if (moveIndex == moves[0].length - 1) {
+					moveIndex = 0;
+					officeIndex++;
+					Drone.position = handler.path[officeIndex];
+				} else moveIndex++;
+				handler.runPath(officeIndex, moveIndex, callback, moves);
+				}, moves[1][moveIndex] || 500);
+				return;
+			}
+		if (callback) callback();
     };
 
     /**

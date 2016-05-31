@@ -19,7 +19,7 @@ class Drone {
         this.posture = Drone.postureUnknown;
         this.jumpMotorState = Drone.jumpMotorUnknown;
 
-        this.position = pos || -1;
+        this.position = pos || null;
         this.connected = false;
         this.connecting = false;
         this.ready = false;
