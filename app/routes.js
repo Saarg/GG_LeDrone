@@ -92,10 +92,10 @@ module.exports = function(app) {
     app.get('/api/animations', function(req, res) {
         res.json({success: true, message: "liste des animations", animations: Drone.animations});
     });
-    app.post('/api/animation', function(req, res) {
+    app.post('/api/animations', function(req, res) {
         // none || animations
         Drone.animation(req.body.animation);
-        res.json({succes: true, message: "je fais l'animation"});
+        res.json({success: true, message: "je fais l'animation"});
     });
 
     // Image ===================================================================

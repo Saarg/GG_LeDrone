@@ -228,7 +228,7 @@ class Drone {
                 this.drone.animationSpinJump();
                 break;
             case 7:
-                this.drone.animationSpinToPosture();
+                this.drone.animationsSpinToPosture();
                 break;
             case 8:
                 this.drone.animationSpiral();

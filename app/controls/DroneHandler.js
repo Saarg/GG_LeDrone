@@ -124,9 +124,9 @@ class DroneHandler {
 		var incArks = this.dijkstra(this.destination);
 		this.convertPath(incArks, this.destination);
 
-        var ark = this.offices[0].arks[0];
+        //var ark = this.offices[0].arks[0];
     	//console.log(ark.name);
-    	ark.getMoves(ark.getExtremity(this.offices[0]));
+    	//ark.getMoves(ark.getExtremity(this.offices[0]));
 
         console.log(this.path);
 	};
