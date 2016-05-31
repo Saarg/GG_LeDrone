@@ -22,6 +22,7 @@ class ModeManuel extends Mode{
         var m = this;
         $http.get('/api/animations').then(function(res) {
             if(res.data.success) {
+                $scope.enumAnim = res.data.animations;
                 $scope.anim = Object.keys(res.data.animations);
             } else {
                 console.error("Impossible de charger la liste des chercheurs");
@@ -30,10 +31,11 @@ class ModeManuel extends Mode{
 
         $scope.speed = 50;
         $scope.img = null;
-        //FAIT PAR YOANN, VERIFIER SI C4EST BON
-        $scope.executeAnimation = function(s){
-            console.log(s);
-            $scope.selected = s;
+
+        $scope.executeAnimation = function(a){
+            $http.post('/api/animations', { animation: a }).then(function(res) {
+                console.log(res.data.success);
+            });
         }
 
         $scope.stop = function() {

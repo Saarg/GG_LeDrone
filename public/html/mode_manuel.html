@@ -8,7 +8,7 @@
 </section>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 controls">
+        <div class="col-xs-3 controls">
             <div class="form-group row">
                 <label class="col-xs-3" for="speed">Speed:</label>
                 <input class="col-xs-9" ng-model="speed" type="text" name="speed" id="speed">
@@ -40,13 +40,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-7">
+        <div class="col-xs-7">
             <img src="images/i1.jpg" ng-if="!img">
             <img ng-src="data:image/JPEG;base64,{{img}}" ng-if="img">
         </div>
-        <div class="col-sm-2">
+        <div class="col-xs-2">
             <div class="btn-group-vertical" role="group" aria-label="...">
-                <button ng-repeat="a in anim" type="button" class="btn btn-default" ng-click="executeAnimation(a)">{{ a }}</button>
+                <button ng-repeat="a in anim" type="button" class="btn btn-default" ng-click="executeAnimation($index)">{{ a }}</button>
             </div>
         </div>
     </div>

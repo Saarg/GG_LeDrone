@@ -55,20 +55,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
     })
 
-
-    /*    // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        $stateProvider.state('about', {
-            // we'll get to this in a bit
-        });*/
-
 });
 
 // INTERFACE ===================================================================
 app.controller('mainCtrl', function($scope, $http, $window) {
     // Demande de connection au drone
-    /*$http.get('/api/connect').then(function(res) {
+    $http.get('/api/connect').then(function(res) {
         console.log(res.data);
-    });*/
+    });
 
 
     $scope.mode_manuel = function() {

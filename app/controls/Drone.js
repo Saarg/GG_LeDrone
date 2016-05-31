@@ -161,13 +161,13 @@ class Drone {
             this.drone.backward(speed);
         else if (dir == this.directions.left) {
             this.drone.left(speed);
-			this.direction ++;
-			if (this.direction = 4) this.direction = 0;
+			this.direction += 1;
+			if (this.direction == 4) this.direction = 0;
 		}
         else if (dir == this.directions.right) {
             this.drone.right(speed);
-			this.direction --;
-			if (this.direction = -1) this.direction = 3;
+			this.direction -=1;
+			if (this.direction == -1) this.direction = 3;
 		}
     };
 
@@ -222,19 +222,19 @@ class Drone {
                 this.drone.animationsMetronome();
                 break;
             case 5:
-                this.drone.animationOndulation();
+                this.drone.animationsOndulation();
                 break;
             case 6:
-                this.drone.animationSpinJump();
+                this.drone.animationsSpinJump();
                 break;
             case 7:
-                this.drone.animationSpinToPosture();
+                this.drone.animationsSpinToPosture();
                 break;
             case 8:
-                this.drone.animationSpiral();
+                this.drone.animationsSpiral();
                 break;
             case 9:
-                this.drone.animationSlalom();
+                this.drone.animationsSlalom();
                 break;
         }
     }
